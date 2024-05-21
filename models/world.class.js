@@ -5,6 +5,9 @@ class World {
         new Chicken(),
         new Chicken(),
     ];
+    clouds = [
+        new Cloud(),
+    ];
     canvas; // neue Variable für draw function
     ctx;
 
@@ -24,6 +27,11 @@ class World {
         // forEach-Schleife für enemies-Array, das für jedes Chicken im Array das entsprechende Bild erzeugt
         this.enemies.forEach(enemy => {
             this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
+        });
+
+         // forEach-Schleife für clouds-Array
+        this.clouds.forEach(cloud => {
+            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
         });
 
         // this. kann in requestAnimationFrame nicht verwendet werden, daher neue Variable self, mit der draw() immer wieder aufgerufen wird
