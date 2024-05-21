@@ -8,6 +8,9 @@ class World {
     clouds = [
         new Cloud(),
     ];
+    backgroundObjects = [
+        new BackgroundObject('../img/5_background/layers/1_first_layer/1.png')
+    ];
     canvas; // neue Variable für draw function
     ctx;
 
@@ -21,23 +24,27 @@ class World {
         // löscht das canvas, um es direk danach neu zu zeichnen (für bewegte Bilder)
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
 
-        // malt Pepe
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-        
-        // forEach-Schleife für enemies-Array, das für jedes Chicken im Array das entsprechende Bild erzeugt
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        });
-
-         // forEach-Schleife für clouds-Array
-        this.clouds.forEach(cloud => {
-            this.ctx.drawImage(cloud.img, cloud.x, cloud.y, cloud.width, cloud.height);
-        });
+        this.addToMap(this.character);   
+        this.addObjectsToMap(this.enemies);  
+        this.addObjectsToMap(this.clouds);
+        this.addObjectsToMap(this.backgroundObjects);
 
         // this. kann in requestAnimationFrame nicht verwendet werden, daher neue Variable self, mit der draw() immer wieder aufgerufen wird
         let self = this; 
         requestAnimationFrame(function() {
             self.draw();
         }); 
+    }
+
+    // forEach-Schleife für alle Arrays
+    addObjectsToMap(objects) {
+        objects.forEach(object => {
+            this.addToMap(object);
+        });
+    }
+
+    // Auslagerung von drawImage
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
     }
 }
