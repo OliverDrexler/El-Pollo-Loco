@@ -10,6 +10,7 @@ class Character extends MovableObject {
         '../img/2_character_pepe/2_walk/W-26.png'
     ];
     currentImage = 0;
+    world; //hiermit können wir auf die Variablen aus World zugreifen, u.a. auch auf keyboard
 
     constructor() {
         // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
@@ -21,11 +22,13 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 1 / 6 -> 0 Rest 1 usw...
-            // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, ....
-            let path = this.IMAGES_WALKING[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            if (this.world.keyboard.RIGHT) {
+                let i = this.currentImage % this.IMAGES_WALKING.length; // let i = 1 / 6 -> 0 Rest 1 usw...
+                // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, ....
+                let path = this.IMAGES_WALKING[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
         }, 120);
     }
 

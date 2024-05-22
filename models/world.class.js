@@ -16,11 +16,19 @@ class World {
     ];
     canvas; // neue Variable für draw function
     ctx;
+    keyboard;
 
-    constructor(canvas) { // canvas-Variable aus game.js
+    constructor(canvas, keyboard) { // canvas- & keyboard-Variable aus game.js
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas; // this.canvas = Variable aus diesem Dokument
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
+    }
+
+    setWorld() {
+        // hiermit wird die aktuelle Instanz der Welt (zB alle Variablen) an character übergeben
+        this.character.world = this; 
     }
 
     draw() {
