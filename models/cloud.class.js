@@ -9,17 +9,14 @@ constructor() {
 
     this.x = Math.random() * 700; 
 
-    this.startMoving();
+    this.animate();
 }
 
-startMoving() {
+animate() {
     setInterval(() => {
-        this.moveLeft();
-    }, 80);
+        this.x -= 0.15;
+    }, 1000 / 60); // = 60 FPS
 }
 
-moveLeft() {
-    this.x -= 0.5;
-}
 
 }
