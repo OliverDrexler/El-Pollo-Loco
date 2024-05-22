@@ -1,7 +1,7 @@
 class Cloud extends MovableObject {
 // Werte bei Wolken nicht dynamisch, daher hier definiert
 y = 20; 
-height = 250;
+height = 350;
 width = 500;
 
 constructor() {
