@@ -4,11 +4,24 @@ class MovableObject {
     img;
     height = 250;
     width = 130;
+    imageCache = {};
 
     // loadImage('./img/test.png')
     loadImage(path) {
         this.img = new Image(); // Image bereits vordefiniert
         this.img.src = path;
+    }
+
+    /**
+     * 
+     * @param {JSON} arr - ['img/img1.png', 'img/img2.png', ...]
+     */
+    loadImages(arr) {
+        arr.forEach((path) => {
+            let img = new Image();
+            img.src = path;
+            this.imageCache[path] = path;
+        });
     }
 
     moveRight() {
@@ -17,7 +30,7 @@ class MovableObject {
 
 
     moveLeft() {
-        
+
     }
 
 }
