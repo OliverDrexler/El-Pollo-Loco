@@ -1,5 +1,7 @@
 class Chicken extends MovableObject {
-    y = 290;
+    y = 345;
+    width = 80;
+    height = 80;
     
     constructor() {
         // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen

@@ -1,4 +1,6 @@
 class Character extends MovableObject {
+    height = 300;
+    y = 130;
 
     constructor() {
         // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
