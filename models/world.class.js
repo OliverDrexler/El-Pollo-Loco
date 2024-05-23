@@ -17,7 +17,7 @@ class World {
     canvas; // neue Variable für draw function
     ctx;
     keyboard;
-    camera_x = -100;
+    camera_x = 0;
 
     constructor(canvas, keyboard) { // canvas- & keyboard-Variable aus game.js
         this.ctx = canvas.getContext('2d');
