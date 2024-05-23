@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     height = 300;
     y = 130;
-    speed = 3;
+    speed = 5;
     IMAGES_WALKING = [
         '../img/2_character_pepe/2_walk/W-21.png',
         '../img/2_character_pepe/2_walk/W-22.png',
@@ -32,6 +32,7 @@ class Character extends MovableObject {
                 this.x -= this.speed;
                 this.otherDirection = true;
             }
+            this.world.camera_x = -this.x;
         }, 1000 / 60);
 
         // walk animation
@@ -43,7 +44,7 @@ class Character extends MovableObject {
                 this.img = this.imageCache[path];
                 this.currentImage++;
             }
-        }, 100);
+        }, 80);
     }
 
     jump() {

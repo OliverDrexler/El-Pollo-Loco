@@ -17,6 +17,7 @@ class World {
     canvas; // neue Variable für draw function
     ctx;
     keyboard;
+    camera_x = -100;
 
     constructor(canvas, keyboard) { // canvas- & keyboard-Variable aus game.js
         this.ctx = canvas.getContext('2d');
@@ -35,10 +36,15 @@ class World {
         // löscht das canvas, um es direk danach neu zu zeichnen (für bewegte Bilder)
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
 
+        this.ctx.translate(this.camera_x, 0);
+
         this.addObjectsToMap(this.backgroundObjects);
         this.addObjectsToMap(this.clouds);
         this.addObjectsToMap(this.enemies);  
-        this.addToMap(this.character);   
+        this.addToMap(this.character);  
+        
+        this.ctx.translate(-this.camera_x, 0);
+
 
         // this. kann in requestAnimationFrame nicht verwendet werden, daher neue Variable self, mit der draw() immer wieder aufgerufen wird
         let self = this; 
