@@ -12,6 +12,7 @@ class Character extends MovableObject {
     ];
     currentImage = 0;
     world; //hiermit können wir auf die Variablen aus World zugreifen, u.a. auch auf keyboard
+    walking_sound = new Audio('../audio/running.mp3');
 
     constructor() {
         // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
@@ -24,13 +25,16 @@ class Character extends MovableObject {
     animate() {
         // movement
         setInterval(() => {
+            this.walking_sound.pause();
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
+                this.walking_sound.play();
             }
             if (this.world.keyboard.LEFT && this.x > 0) { // this.x > 0 prevents character from walking further left when canvas ends
                 this.x -= this.speed;
                 this.otherDirection = true;
+                this.walking_sound.play();
             }
             this.world.camera_x = -this.x +100; // Positionierung des Characters 100px weiter rechts
         }, 1000 / 60);
