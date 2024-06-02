@@ -25,18 +25,30 @@ class Character extends MovableObject {
     animate() {
         // movement
         setInterval(() => {
-            this.walking_sound.pause();
+            let isWalking = false;
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.x += this.speed;
                 this.otherDirection = false;
-                this.walking_sound.play();
+                isWalking = true;
             }
             if (this.world.keyboard.LEFT && this.x > 0) { // this.x > 0 prevents character from walking further left when canvas ends
                 this.x -= this.speed;
                 this.otherDirection = true;
-                this.walking_sound.play();
+                isWalking = true;
             }
-            this.world.camera_x = -this.x +100; // Positionierung des Characters 100px weiter rechts
+            this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
+    
+            if (isWalking) {
+                if (this.walking_sound.paused) {
+                    this.walking_sound.currentTime = 0;
+                    this.walking_sound.play();
+                }
+            } else {
+                if (!this.walking_sound.paused) {
+                    this.walking_sound.pause();
+                    this.walking_sound.currentTime = 0;
+                }
+            }
         }, 1000 / 60);
 
         // walk animation
