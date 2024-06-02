@@ -10,7 +10,6 @@ class Character extends MovableObject {
         '../img/2_character_pepe/2_walk/W-25.png',
         '../img/2_character_pepe/2_walk/W-26.png'
     ];
-    currentImage = 0;
     world; //hiermit können wir auf die Variablen aus World zugreifen, u.a. auch auf keyboard
     walking_sound = new Audio('../audio/running.mp3');
 
