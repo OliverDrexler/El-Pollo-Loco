@@ -77,6 +77,15 @@ class Character extends MovableObject {
 
 
     /**
+     * This method plays the jumping sound.
+     */
+    playJumpingSound() {
+        this.jumping_sound.currentTime = 0;
+        this.jumping_sound.play();
+    }
+
+
+    /**
      * This method moves the character based on keyboard input.
      * It updates the character's position and handles the walking sound.
      */
@@ -94,7 +103,7 @@ class Character extends MovableObject {
         }
         if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
             this.jump();
-            this.jumping_sound.play();
+            this.playJumpingSound();
         }
         this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
         this.handleWalkingSound(isWalking);
