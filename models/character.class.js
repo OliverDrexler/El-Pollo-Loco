@@ -24,6 +24,7 @@ class Character extends MovableObject {
     ]
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');
+    jumping_sound = new Audio('../audio/jump3.mp3');
 
 
     /**
@@ -93,6 +94,7 @@ class Character extends MovableObject {
         }
         if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
             this.jump();
+            this.jumping_sound.play();
         }
         this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
         this.handleWalkingSound(isWalking);
