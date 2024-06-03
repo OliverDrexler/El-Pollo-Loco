@@ -1,6 +1,6 @@
 class Character extends MovableObject {
     height = 300;
-    y = 130;
+    y = 40; // y = 130;
     speed = 6;
     IMAGES_WALKING = [
         '../img/2_character_pepe/2_walk/W-21.png',
@@ -17,7 +17,7 @@ class Character extends MovableObject {
         // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
         super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
         this.loadImages(this.IMAGES_WALKING);
-
+        this.applyGravity();
         this.animate();
     }
 
