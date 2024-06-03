@@ -32,13 +32,16 @@ class World {
     }
 
 
+    /**
+     * This method checks for collisions between the character and enemies.
+     * It runs in intervals and logs a message when a collision is detected.
+     */
     checkCollisions() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
                     console.log('collision with character', enemy);
                 }
-                
             });
         }, 1000);
     }
