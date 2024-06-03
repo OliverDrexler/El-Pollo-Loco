@@ -34,7 +34,8 @@ class World {
 
     /**
      * This method checks for collisions between the character and enemies.
-     * It runs in intervals and logs a message when a collision is detected.
+     * It runs in intervals and subtracts energy from the character 
+     * when coliding with an enemy.
      */
     checkCollisions() {
         setInterval(() => {
