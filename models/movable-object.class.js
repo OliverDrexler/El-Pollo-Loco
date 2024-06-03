@@ -72,6 +72,24 @@ class MovableObject {
 
 
     /**
+    * This method checks if the current object is colliding with another object.
+    * @param {Object} obj - The object to check for collision.
+    * @param {number} obj.X - The x position of the other object.
+    * @param {number} obj.Y - The y position of the other object.
+    * @param {number} obj.width - The width of the other object.
+    * @param {number} obj.height - The height of the other object.
+    * @param {boolean} obj.onCollisionCourse - Indicates if the other object is on a collision course.
+    * @returns {boolean} True if the objects are colliding, false otherwise.
+    */
+    isColliding(obj) {
+        return (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
+            (this.Y + this.offsetY + this.height) >= obj.Y &&
+            (this.Y + this.offsetY) <= (obj.Y + obj.height) &&
+            obj.onCollisionCourse;
+    }
+
+
+    /**
      * This method loads multiple images and caches them.
      * @param {string[]} arr - An array of image paths.
      */
@@ -119,5 +137,6 @@ class MovableObject {
     jump() {
         this.speed_y = 27;
     }
+
 
 }
