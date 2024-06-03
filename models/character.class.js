@@ -23,7 +23,7 @@ class Character extends MovableObject {
         '../img/2_character_pepe/3_jump/J-39.png'
     ]
     world; // Allows access to variables from World, including keyboard
-    walking_sound = new Audio('../audio/running.mp3');
+    walking_sound = new Audio('../audio/running_looped.mp3');
 
 
     /**
