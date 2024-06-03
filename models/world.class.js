@@ -1,10 +1,12 @@
 class World {
+
     character = new Character();
     level = level1;
     canvas; // neue Variable für draw function
     ctx;
     keyboard;
     camera_x = 0;
+
 
     constructor(canvas, keyboard) { // canvas- & keyboard-Variable aus game.js
         this.ctx = canvas.getContext('2d');
@@ -14,10 +16,12 @@ class World {
         this.setWorld();
     }
 
+
     setWorld() {
         // hiermit wird die aktuelle Instanz der Welt (zB alle Variablen) an character übergeben
         this.character.world = this; 
     }
+
 
     draw() {
         // löscht das canvas, um es direk danach neu zu zeichnen (für bewegte Bilder)
@@ -40,6 +44,7 @@ class World {
         }); 
     }
 
+
     // forEach-Schleife für alle Arrays
     addObjectsToMap(objects) {
         objects.forEach(object => {
@@ -47,6 +52,7 @@ class World {
         });
     }
 
+    
     // Auslagerung von drawImage
     addToMap(mo) {
         if (mo.otherDirection) {
