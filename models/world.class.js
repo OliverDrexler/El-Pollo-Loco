@@ -9,7 +9,7 @@ class World {
 
 
     /**
-    * This function creates an instance of World.
+    * This method creates an instance of World.
     * @param {HTMLCanvasElement} canvas - The canvas element from game.js.
     * @param {Object} keyboard - The keyboard input object.
     */
@@ -23,7 +23,7 @@ class World {
 
 
     /**
-     * This function sets the current instance of the world to the character.
+     * This method sets the current instance of the world to the character.
      * It assigns the world instance (e.g., all variables) to the character.
      */
     setWorld() {
@@ -32,7 +32,7 @@ class World {
 
 
     /**
-     * This function draws the game world on the canvas.
+     * This method draws the game world on the canvas.
      * It clears the canvas and redraws the entire scene to create animations.
      */
     draw() {
@@ -51,7 +51,7 @@ class World {
 
 
     /**
-     * This function adds multiple objects to the map.
+     * This method adds multiple objects to the map.
      * It is a forEach loop for all arrays in this game.
      * @param {Array} objects - An array of objects to add to the map.
      */
@@ -63,7 +63,7 @@ class World {
 
 
     /**
-     * This function adds a single object to the map.
+     * This method adds a single object to the map.
      * It draws the image of a movable object (mo) on the canvas.
      * @param {MovableObject} mo - The object to be drawn on the map.
      */
@@ -80,7 +80,7 @@ class World {
 
 
     /**
-     * This function mirrors the image of a movable object horizontally.
+     * This method mirrors the image of a movable object horizontally.
      * @param {MovableObject} mo - The object to mirror.
      */
     mirrorImage(mo) {
@@ -92,7 +92,7 @@ class World {
 
 
     /**
-     * This function restores the original orientation of the mirrored movable object.
+     * This method restores the original orientation of the mirrored movable object.
      * @param {MovableObject} mo - The object to restore.
      */
     mirrorImageBack(mo) {
