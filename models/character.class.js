@@ -52,8 +52,8 @@ class Character extends MovableObject {
 
             //console.log('this.speed_y', this.speed_y)
 
-            if (this.world.keyboard.UP) {
-                this.speed_y = 20;
+            if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
+                this.speed_y = 27;
             }
 
             this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
