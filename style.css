@@ -9,7 +9,24 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    color: white;
+
+}
+
+h1 {
+    color: #FFBE35;
+    font-family: "Rye", serif;
+    font-size: 50px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+@font-face {
+    font-family: 'Rye';
+    src: url('fonts/Rye-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
 canvas {
