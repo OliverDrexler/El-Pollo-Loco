@@ -56,15 +56,18 @@ class MovableObject {
 
 
     /**
-     * This method draws a frame around the objects on the canvas.
+     * This method draws a frame around the objects on the canvas 
+     * if it is an instance of Character or Chicken.
      * @param {CanvasRenderingContext2D} ctx - The drawing context of the canvas.
      */
     drawFrame(ctx) {
-        ctx.beginPath();
-        ctx.lineWidth = '10';
-        ctx.strokeStyle = 'blue';
-        ctx.rect(this.x, this.y, this.width, this.height);
-        ctx.stroke();
+        if (this instanceof Character || this instanceof Chicken) {
+            ctx.beginPath();
+            ctx.lineWidth = '10';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
     }
 
 
