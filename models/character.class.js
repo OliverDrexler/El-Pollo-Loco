@@ -45,7 +45,7 @@ class Character extends MovableObject {
      * @param {boolean} isWalking - Whether the character is walking.
      */
     handleWalkingSound(isWalking) {
-        if (isWalking) {
+        if (isWalking && !this.isAboveGround()) {
             this.playWalkingSound();
         } else {
             this.pauseWalkingSound();
