@@ -3,6 +3,9 @@ let world;
 let keyboard = new Keyboard();
 
 
+/**
+ * This function initializes the game by setting up the canvas and world and logging the character.
+ */
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
@@ -10,6 +13,12 @@ function init() {
     console.log('my character is', world.character)
 }
 
+
+/**
+ * Event listener for keydown events.
+ * Sets the appropriate keyboard properties to true based on the pressed key.
+ * @param {KeyboardEvent} event - The keyboard event.
+ */
 document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') {
         keyboard.LEFT = true;
@@ -28,6 +37,12 @@ document.addEventListener('keydown', (event) => {
     }
 });
 
+
+/**
+ * Event listener for keyup events.
+ * Sets the appropriate keyboard properties to false based on the released key.
+ * @param {KeyboardEvent} event - The keyboard event.
+ */
 document.addEventListener('keyup', (event) => {
     if (event.key === 'ArrowLeft') {
         keyboard.LEFT = false;
