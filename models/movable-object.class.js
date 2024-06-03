@@ -11,6 +11,7 @@ class MovableObject {
     currentImage = 0;
     speed_y = 0;
     acceleration = 2;
+    offsetY = 0; // Initialize offsetY with a default value
 
 
     /**
@@ -74,28 +75,31 @@ class MovableObject {
     /**
     * This method checks if the current object is colliding with another object.
     * @param {Object} obj - The object to check for collision.
-    * @param {number} obj.X - The x position of the other object.
-    * @param {number} obj.Y - The y position of the other object.
+    * @param {number} obj.x - The x position of the other object.
+    * @param {number} obj.y - The y position of the other object.
     * @param {number} obj.width - The width of the other object.
     * @param {number} obj.height - The height of the other object.
     * @param {boolean} obj.onCollisionCourse - Indicates if the other object is on a collision course.
     * @returns {boolean} True if the objects are colliding, false otherwise.
     */
-    /*isColliding(obj) {
+    isColliding(obj) {
         return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
             (this.y + this.offsetY + this.height) >= obj.y &&
             (this.y + this.offsetY) <= (obj.y + obj.height) &&
             obj.onCollisionCourse;
-    }*/
+    }
 
 
-    isColliding(mo) {
+    ////////////// OLD & BASIC isColliding METHOD //////////////
+
+    /*isColliding(mo) {
         return this.x + this.width > mo.x && 
         this.y + this.height > mo.y && 
         this.x < mo.x && 
         this. y < mo.y + mo.height
-    }
+    }*/
 
+    ////////////////////////////////////////////////////////////
 
     /**
      * This method loads multiple images and caches them.
