@@ -55,17 +55,27 @@ class World {
 
     // Auslagerung von drawImage
     addToMap(mo) {
-        if (mo.otherDirection) {
-            this.ctx.save();
-            this.ctx.translate(mo.width, 0);
-            this.ctx.scale(-1, 1);
-            mo.x = mo.x * -1;
-        }
-        mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
         if (mo.otherDirection) {
-            mo.x = mo.x * -1;
-            this.ctx.restore();
+            this.mirrorImage(mo);
         }
+        mo.draw(this.ctx);
+        if (mo.otherDirection) {
+            this.mirrorImageBack(mo);
+        }
+    }
+
+
+    mirrorImage(mo) {
+        this.ctx.save();
+        this.ctx.translate(mo.width, 0);
+        this.ctx.scale(-1, 1);
+        mo.x = mo.x * -1;
+    }
+
+
+    mirrorImageBack(mo) {
+        mo.x = mo.x * -1;
+        this.ctx.restore();
     }
 }
