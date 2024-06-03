@@ -19,29 +19,29 @@ class World {
 
     setWorld() {
         // hiermit wird die aktuelle Instanz der Welt (zB alle Variablen) an character übergeben
-        this.character.world = this; 
+        this.character.world = this;
     }
 
 
     draw() {
         // löscht das canvas, um es direk danach neu zu zeichnen (für bewegte Bilder)
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); 
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.camera_x, 0);
 
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.enemies);  
-        this.addToMap(this.character);  
-        
+        this.addObjectsToMap(this.level.enemies);
+        this.addToMap(this.character);
+
         this.ctx.translate(-this.camera_x, 0);
 
 
         // this. kann in requestAnimationFrame nicht verwendet werden, daher neue Variable self, mit der draw() immer wieder aufgerufen wird
-        let self = this; 
-        requestAnimationFrame(function() {
+        let self = this;
+        requestAnimationFrame(function () {
             self.draw();
-        }); 
+        });
     }
 
 
@@ -52,7 +52,7 @@ class World {
         });
     }
 
-    
+
     // Auslagerung von drawImage
     addToMap(mo) {
         if (mo.otherDirection) {
@@ -62,6 +62,11 @@ class World {
             mo.x = mo.x * -1;
         }
         this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '10';
+        this.ctx.strokeStyle = 'blue';
+        this.ctx.rect(50, 50, 150, 80);
+        this.ctx.stroke();
         if (mo.otherDirection) {
             mo.x = mo.x * -1;
             this.ctx.restore();
