@@ -39,13 +39,13 @@ class Character extends MovableObject {
             let isWalking = false;
 
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.x += this.speed;
+                this.moveRight();
                 this.otherDirection = false;
                 isWalking = true;
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) { // this.x > 0 prevents character from walking further left when canvas ends
-                this.x -= this.speed;
+                this.moveLeft();
                 this.otherDirection = true;
                 isWalking = true;
             }
@@ -53,7 +53,7 @@ class Character extends MovableObject {
             //console.log('this.speed_y', this.speed_y)
 
             if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
-                this.speed_y = 27;
+                this.jump();
             }
 
             this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
@@ -86,7 +86,4 @@ class Character extends MovableObject {
         }, 80);
     }
 
-    jump() {
-
-    }
 }
