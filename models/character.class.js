@@ -52,7 +52,7 @@ class Character extends MovableObject {
             this.pauseWalkingSound();
         }
     }
-    
+
 
     /**
      * This method plays the walking sound.
@@ -63,7 +63,7 @@ class Character extends MovableObject {
             this.walking_sound.play();
         }
     }
-    
+
 
     /**
      * This method pauses the walking sound.
@@ -111,32 +111,44 @@ class Character extends MovableObject {
 
 
     /**
-     * This method plays the appropriate animation based on the character's state.
+     * This method plays the character's walking animation.
      */
-    animateCharacter() {
-        if (this.isAboveGround()) {
-            this.playAnimation(this.IMAGES_JUMPING);
-        } else {
-            if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT ) {
-                this.playAnimation(this.IMAGES_WALKING);
-            }
-        } 
+    animateCharacterWalking() {
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation(this.IMAGES_WALKING);
+        }
     }
 
 
     /**
-     * This method starts the character's movement and animation loops.
+     * This method plays the character's jumping animation.
      */
-    animate() {
-        setInterval(() => {
-            this.moveCharacter();
-        }, 1000 / 60);
-
-        setInterval(() => {
-            this.animateCharacter();
-        }, 80);
+    animateCharacterJumping() {
+        if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING);
+        }
     }
 
-    
 
-}
+        /**
+         * This method starts the character's movement and animation loops.
+         * It dynamically adjusts the animation speed based on whether 
+         * the character is in the air.
+         */
+        animate() {
+            setInterval(() => {
+                this.moveCharacter();
+            }, 1000 / 60);
+
+            setInterval(() => {
+                if (this.isAboveGround()) {
+                    this.animateCharacterJumping();
+                } else {
+                    this.animateCharacterWalking();
+                }
+            }, this.isAboveGround() ? 142 : 80);
+        }
+
+
+
+    }
