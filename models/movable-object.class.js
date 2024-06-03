@@ -12,6 +12,7 @@ class MovableObject {
     speed_y = 0;
     acceleration = 2;
     offsetY = 0; // Initialize offsetY with a default value
+    energy = 100;
 
 
     /**
