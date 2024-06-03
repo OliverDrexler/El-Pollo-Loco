@@ -22,13 +22,17 @@ class Character extends MovableObject {
         '../img/2_character_pepe/3_jump/J-38.png',
         '../img/2_character_pepe/3_jump/J-39.png'
     ]
-    world; //hiermit können wir auf die Variablen aus World zugreifen, u.a. auch auf keyboard
+    world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running.mp3');
 
 
+    /**
+     * Creates an instance of Character.
+     * Loads the initial image, walking and jumping animations, 
+     * applies gravity and starts the animation.
+     */
     constructor() {
-        // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
-        super().loadImage('../img/2_character_pepe/2_walk/W-21.png');
+        super().loadImage('../img/2_character_pepe/2_walk/W-21.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
         this.applyGravity();
@@ -36,6 +40,10 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This method handles the walking sound based on the character's walking state.
+     * @param {boolean} isWalking - Whether the character is walking.
+     */
     handleWalkingSound(isWalking) {
         if (isWalking) {
             this.playWalkingSound();
@@ -45,6 +53,9 @@ class Character extends MovableObject {
     }
     
 
+    /**
+     * This method plays the walking sound.
+     */
     playWalkingSound() {
         if (this.walking_sound.paused) {
             this.walking_sound.currentTime = 0;
@@ -53,6 +64,9 @@ class Character extends MovableObject {
     }
     
 
+    /**
+     * This method pauses the walking sound.
+     */
     pauseWalkingSound() {
         if (!this.walking_sound.paused) {
             this.walking_sound.pause();
@@ -61,6 +75,10 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This method moves the character based on keyboard input.
+     * It updates the character's position and handles the walking sound.
+     */
     moveCharacter() {
         let isWalking = false;
         if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
@@ -81,6 +99,9 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This method plays the appropriate animation based on the character's state.
+     */
     animateCharacter() {
         if (this.isAboveGround()) {
             this.playAnimation(this.IMAGES_JUMPING);
@@ -91,7 +112,10 @@ class Character extends MovableObject {
         } 
     }
 
-    
+
+    /**
+     * This method starts the character's movement and animation loops.
+     */
     animate() {
         setInterval(() => {
             this.moveCharacter();

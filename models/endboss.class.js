@@ -15,6 +15,11 @@ class Endboss extends MovableObject {
     ];
 
 
+    /**
+     * Creates an instance of BossEnemy.
+     * Loads the initial image and the walking animation images, sets the initial position
+     * and starts the animation.
+     */
     constructor() {
         super().loadImage('../img/4_enemie_boss_chicken/2_alert/G5.png');
         this.loadImages(this.IMAGES_WALKING);
@@ -23,6 +28,10 @@ class Endboss extends MovableObject {
     }
 
     
+    /**
+     * This method starts the animation for the boss enemy.
+     * It plays the walking animation in intervals.
+     */
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);

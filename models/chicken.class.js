@@ -10,21 +10,24 @@ class Chicken extends MovableObject {
     ];
     
 
+    /**
+     * Creates an instance of Chicken.
+     * Loads the initial image, loads the walking animation images, 
+     * sets a random initial x position and speed and starts the animation.
+     */
     constructor() {
-        // mit super wird die Funtion der übergeordneten Klasse (=MoveableObject) aufgerufen
-        super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png');
-
+        super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_WALKING);
-
-        // // Zahl zwischen 200 & 700
-        this.x = 200 + Math.random() * 500;
-
-        this.speed = 0.15 + Math.random() * 0.25;
-
+        this.x = 200 + Math.random() * 500; // Sets the initial x position to a random value between 200 and 700
+        this.speed = 0.15 + Math.random() * 0.25; // Sets the speed to a random value between 0.15 and 0.40
         this.animate();
     }
 
     
+    /**
+     * This method starts the animation for the chicken.
+     * It moves the chicken to the left and plays the walking animation in intervals.
+     */
     animate() {
         setInterval(() => {
             this.moveLeft();
