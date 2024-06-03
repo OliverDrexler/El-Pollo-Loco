@@ -81,11 +81,19 @@ class MovableObject {
     * @param {boolean} obj.onCollisionCourse - Indicates if the other object is on a collision course.
     * @returns {boolean} True if the objects are colliding, false otherwise.
     */
-    isColliding(obj) {
-        return (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
-            (this.Y + this.offsetY + this.height) >= obj.Y &&
-            (this.Y + this.offsetY) <= (obj.Y + obj.height) &&
+    /*isColliding(obj) {
+        return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
+            (this.y + this.offsetY + this.height) >= obj.y &&
+            (this.y + this.offsetY) <= (obj.y + obj.height) &&
             obj.onCollisionCourse;
+    }*/
+
+
+    isColliding(mo) {
+        return this.x + this.width > mo.x && 
+        this.y + this.height > mo.y && 
+        this.x < mo.x && 
+        this. y < mo.y + mo.height
     }
 
 
