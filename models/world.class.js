@@ -43,7 +43,7 @@ class World {
                     console.log('collision with character', enemy);
                 }
             });
-        }, 1000);
+        }, 200);
     }
 
 
