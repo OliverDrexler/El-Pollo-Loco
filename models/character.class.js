@@ -162,27 +162,32 @@ class Character extends MovableObject {
     }
 
 
-    /**
-     * This method starts the character's movement and animation loops.
-     */
-    animate() {
-
+    checkCharacterStatus() {
         setInterval(() => {
             if (this.isDead()) {
                 this.animateCharacterDead();
             }
         }, 100);
+    }
 
+
+    startCharacterMovement() {
         setInterval(() => {
             this.moveCharacter();
         }, 1000 / 60);
+    }
 
+
+    checkCharacterJumping() {
         setInterval(() => {
             if (this.isAboveGround()) {
                 this.animateCharacterJumping();
             }
         }, 160);
+    }
 
+
+    checkCharacterWalking() {
         setInterval(() => {
             if (!this.isAboveGround()) {
                 this.animateCharacterWalking();
@@ -191,5 +196,14 @@ class Character extends MovableObject {
     }
 
 
+    /**
+     * This method starts the character's movement and animation loops.
+     */
+    animate() {
+        this.checkCharacterStatus();
+        this.startCharacterMovement();
+        this.checkCharacterJumping();
+        this.checkCharacterWalking();
+    }
 
 }
