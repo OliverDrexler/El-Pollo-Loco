@@ -108,8 +108,8 @@ class MovableObject {
 
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // difference in milliseconds
-        timePassed = timePassed / 1000; // difference in seconds
-        return timePassed < 5;
+        //timePassed = timePassed / 1000; // difference in seconds
+        return timePassed < 300;
     }
 
 
