@@ -157,7 +157,7 @@ class Character extends MovableObject {
                 } else {
                     clearInterval(interval);
                 }
-            }, 300);
+            }, 200);
         }
     }
 
