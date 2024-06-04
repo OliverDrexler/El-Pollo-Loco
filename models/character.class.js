@@ -1,7 +1,7 @@
 class Character extends MovableObject {
 
     height = 300;
-    y = 130; 
+    y = 130;
     speed = 6;
     IMAGES_WALKING = [
         '../img/2_character_pepe/2_walk/W-21.png',
@@ -12,15 +12,15 @@ class Character extends MovableObject {
         '../img/2_character_pepe/2_walk/W-26.png'
     ];
     IMAGES_JUMPING = [
-        '../img/2_character_pepe/3_jump/J-31.png',
-        '../img/2_character_pepe/3_jump/J-32.png',
+        /*'../img/2_character_pepe/3_jump/J-31.png',
+        '../img/2_character_pepe/3_jump/J-32.png',*/
         '../img/2_character_pepe/3_jump/J-33.png',
         '../img/2_character_pepe/3_jump/J-34.png',
         '../img/2_character_pepe/3_jump/J-35.png',
         '../img/2_character_pepe/3_jump/J-36.png',
         '../img/2_character_pepe/3_jump/J-37.png',
         '../img/2_character_pepe/3_jump/J-38.png',
-        '../img/2_character_pepe/3_jump/J-39.png'
+        /*'../img/2_character_pepe/3_jump/J-39.png'*/
     ]
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');
@@ -130,25 +130,29 @@ class Character extends MovableObject {
     }
 
 
-        /**
-         * This method starts the character's movement and animation loops.
-         * It dynamically adjusts the animation speed based on whether 
-         * the character is in the air.
-         */
-        animate() {
-            setInterval(() => {
-                this.moveCharacter();
-            }, 1000 / 60);
+    /**
+     * This method starts the character's movement and animation loops.
+     * It dynamically adjusts the animation speed based on whether 
+     * the character is in the air.
+     */
+    animate() {
+        setInterval(() => {
+            this.moveCharacter();
+        }, 1000 / 60);
 
-            setInterval(() => {
-                if (this.isAboveGround()) {
-                    this.animateCharacterJumping();
-                } else {
-                    this.animateCharacterWalking();
-                }
-            }, this.isAboveGround() ? 142 : 80);
-        }
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.animateCharacterJumping();
+            }
+        }, 160);
 
-
-
+        setInterval(() => {
+            if (!this.isAboveGround()) {
+                this.animateCharacterWalking();
+            }
+        }, 80);
     }
+
+
+
+}
