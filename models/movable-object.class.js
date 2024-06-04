@@ -103,6 +103,15 @@ class MovableObject {
     }
 
 
+    /**
+     * 
+     * @returns 
+     */
+    isDead() {
+        return this.energy == 0;
+    }
+
+
     ////////////// OLD & BASIC isColliding METHOD //////////////
 
     /*isColliding(mo) {
