@@ -71,7 +71,7 @@ class Character extends MovableObject {
         this.startCharacterMovement();
         this.checkCharacterJumping();
         this.checkCharacterWalking();
-        //this.checkCharacterHurt();
+        this.checkCharacterHurt();
     }
 
 
@@ -253,7 +253,7 @@ class Character extends MovableObject {
             if (this.isHurt()) {
                 this.animateCharacterHurt();
             }
-        }, 100);
+        }, 200);
     }
 
 

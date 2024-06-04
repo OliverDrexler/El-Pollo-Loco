@@ -13,6 +13,7 @@ class MovableObject {
     acceleration = 2;
     offsetY = 0; // Initialize offsetY with a default value
     energy = 100;
+    lastHit = 0;
 
 
     /**
@@ -99,7 +100,16 @@ class MovableObject {
         this.energy -= 2;
         if (this.energy < 0) {
             this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
         }
+    }
+
+
+    isHurt() {
+        let timePassed = new Date().getTime() - this.lastHit; // difference in milliseconds
+        timePassed = timePassed / 1000; // difference in seconds
+        return timePassed < 5;
     }
 
 
@@ -123,6 +133,7 @@ class MovableObject {
 
     ////////////////////////////////////////////////////////////
 
+
     /**
      * This method loads multiple images and caches them.
      * @param {string[]} arr - An array of image paths.
@@ -141,7 +152,7 @@ class MovableObject {
      * @param {string[]} images - An array of image paths.
      */
     playAnimation(images) {
-        let i = this.currentImage % this.IMAGES_WALKING.length;
+        let i = this.currentImage % images.length;
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
