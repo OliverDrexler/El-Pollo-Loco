@@ -6,6 +6,7 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
+    statusbar = new Statusbar;
 
 
     /**
@@ -59,6 +60,7 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.enemies);
         this.addToMap(this.character);
+        this.addToMap(this.statusbar);
         this.ctx.translate(-this.camera_x, 0); // Resets the canvas translation
         let self = this; // Using 'self' to refer to the current instance in requestAnimationFrame
         requestAnimationFrame(function () {

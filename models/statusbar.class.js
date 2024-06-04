@@ -13,7 +13,11 @@ class Statusbar {
 
 
     constructor() {
+        super();
         this.loadImages(this.IMAGES_STATUSBAR);
+        this.x = 100;
+        this.y = 100;
+        this.setPercentage(100);
     }
 
 
@@ -23,7 +27,7 @@ class Statusbar {
         this.img = this.imageCache[path];
     }
 
-    
+
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;
