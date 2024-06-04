@@ -64,6 +64,18 @@ class Character extends MovableObject {
 
 
     /**
+     * This method starts the character's movement and animation loops.
+     */
+    animate() {
+        this.checkCharacterStatus();
+        this.startCharacterMovement();
+        this.checkCharacterJumping();
+        this.checkCharacterWalking();
+        //this.checkCharacterHurt();
+    }
+
+
+    /**
      * This method handles the walking sound based on the character's walking state.
      * @param {boolean} isWalking - Whether the character is walking.
      */
@@ -245,15 +257,6 @@ class Character extends MovableObject {
     }
 
 
-    /**
-     * This method starts the character's movement and animation loops.
-     */
-    animate() {
-        this.checkCharacterStatus();
-        this.startCharacterMovement();
-        this.checkCharacterJumping();
-        this.checkCharacterWalking();
-        //this.checkCharacterHurt();
-    }
+    
 
 }
