@@ -162,6 +162,10 @@ class Character extends MovableObject {
     }
 
 
+    /**
+    * This method checks the character's status at regular intervals and initiates 
+    * the death animation if the character is dead.
+    */
     checkCharacterStatus() {
         setInterval(() => {
             if (this.isDead()) {
@@ -171,6 +175,9 @@ class Character extends MovableObject {
     }
 
 
+    /**
+    * This method starts the character's movement at a regular interval.
+    */
     startCharacterMovement() {
         setInterval(() => {
             this.moveCharacter();
@@ -178,6 +185,10 @@ class Character extends MovableObject {
     }
 
 
+    /**
+    * This method checks if the character is jumping at regular intervals and initiates 
+    * the jumping animation if the character is above ground.
+    */
     checkCharacterJumping() {
         setInterval(() => {
             if (this.isAboveGround()) {
@@ -187,6 +198,10 @@ class Character extends MovableObject {
     }
 
 
+    /**
+    * This method checks if the character is walking at regular intervals and initiates 
+    * the walking animation if the character is on the ground.
+    */
     checkCharacterWalking() {
         setInterval(() => {
             if (!this.isAboveGround()) {

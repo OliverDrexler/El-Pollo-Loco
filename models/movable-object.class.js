@@ -104,9 +104,9 @@ class MovableObject {
 
 
     /**
-     * 
-     * @returns 
-     */
+    * This method checks if the character is dead based on its energy level.
+    * @returns {boolean} - Returns true if the character's energy is 0, indicating that the character is dead.
+    */
     isDead() {
         return this.energy == 0;
     }
