@@ -19,7 +19,7 @@ class Chicken extends MovableObject {
     constructor() {
         super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_WALKING);
-        this.x = 200 + Math.random() * 2300; // Sets the initial x position to a random value between 200 and 2500
+        this.x = 400 + Math.random() * 2300; // Sets the initial x position to a random value between 200 and 2500
         this.speed = 0.15 + Math.random() * 0.25; // Sets the speed to a random value between 0.15 and 0.40
         this.animate();
     }
