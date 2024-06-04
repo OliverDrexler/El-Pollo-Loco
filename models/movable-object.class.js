@@ -95,6 +95,7 @@ class MovableObject {
     /**
     * This method decreases the energy of the object hit by 2. 
     * If the energy falls below 0, it sets the energy to 0.
+    * It also updates the last hit timestamp.
     */
     hit() {
         this.energy -= 2;
@@ -106,9 +107,12 @@ class MovableObject {
     }
 
 
+    /**
+    * This method checks if the character was hit in the last 300 milliseconds.
+    * @returns {boolean} - Returns true if the character was hit in the last 300 milliseconds, otherwise false.
+    */
     isHurt() {
         let timePassed = new Date().getTime() - this.lastHit; // difference in milliseconds
-        //timePassed = timePassed / 1000; // difference in seconds
         return timePassed < 300;
     }
 
