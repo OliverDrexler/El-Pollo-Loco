@@ -104,6 +104,7 @@ class Character extends MovableObject {
         if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
             this.jump();
             this.playJumpingSound();
+            this.currentImage = 0;
         }
         this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
         this.handleWalkingSound(isWalking);
