@@ -1,14 +1,7 @@
-class MovableObject {
+class MovableObject extends DrawableObject {
 
-    x = 120;
-    y = 180;
-    img;
-    height = 250;
-    width = 130;
-    imageCache = {};
     speed = 0.15;
-    otherDirection = false;
-    currentImage = 0;
+    otherDirection = false;  
     speed_y = 0;
     acceleration = 2;
     offsetY = 0; // Initialize offsetY with a default value
