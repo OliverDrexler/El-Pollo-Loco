@@ -91,6 +91,11 @@ class MovableObject {
     }
 
 
+    hit() {
+        this.energy -= 2;
+    }
+
+
     ////////////// OLD & BASIC isColliding METHOD //////////////
 
     /*isColliding(mo) {
