@@ -7,6 +7,7 @@ class World {
     keyboard;
     camera_x = 0;
     statusbar = new Statusbar;
+    coins = new Coins;
 
 
     /**
@@ -64,6 +65,7 @@ class World {
         this.ctx.translate(-this.camera_x, 0); 
         // ------- Space for fixed objects ------- //
         this.addToMap(this.statusbar);
+        //this.addToMap(this.coins);
         this.ctx.translate(this.camera_x, 0); 
 
         this.addToMap(this.character);
