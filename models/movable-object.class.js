@@ -91,8 +91,15 @@ class MovableObject {
     }
 
 
+    /**
+    * This method decreases the energy of the object hit by 2. 
+    * If the energy falls below 0, it sets the energy to 0.
+    */
     hit() {
         this.energy -= 2;
+        if (this.energy < 0) {
+            this.energy = 0;
+        }
     }
 
 
