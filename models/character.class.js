@@ -132,8 +132,6 @@ class Character extends MovableObject {
 
     /**
      * This method starts the character's movement and animation loops.
-     * It dynamically adjusts the animation speed based on whether 
-     * the character is in the air.
      */
     animate() {
         setInterval(() => {
