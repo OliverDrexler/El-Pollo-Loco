@@ -21,10 +21,20 @@ class Character extends MovableObject {
         '../img/2_character_pepe/3_jump/J-37.png',
         '../img/2_character_pepe/3_jump/J-38.png',
         /*'../img/2_character_pepe/3_jump/J-39.png'*/
-    ]
+    ];
+    IMAGES_DEAD = [
+        '../img/2_character_pepe/5_dead/D-51.png',
+        '../img/2_character_pepe/5_dead/D-52.png',
+        '../img/2_character_pepe/5_dead/D-53.png',
+        '../img/2_character_pepe/5_dead/D-54.png',
+        '../img/2_character_pepe/5_dead/D-55.png',
+        '../img/2_character_pepe/5_dead/D-56.png',
+        '../img/2_character_pepe/5_dead/D-57.png'
+    ];
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
+    isAnimatingDead = false;
 
 
     /**
@@ -36,6 +46,7 @@ class Character extends MovableObject {
         super().loadImage('../img/2_character_pepe/2_walk/W-21.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_JUMPING);
+        this.loadImages(this.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
     }
@@ -132,9 +143,36 @@ class Character extends MovableObject {
 
 
     /**
+     * This method plays the character's death animation once and then stops.
+     */
+    animateCharacterDead() {
+        if (!this.isAnimatingDead) {
+            this.isAnimatingDead = true;
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < this.IMAGES_DEAD.length) {
+                    let path = this.IMAGES_DEAD[i];
+                    this.img = this.imageCache[path];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 300);
+        }
+    }
+
+
+    /**
      * This method starts the character's movement and animation loops.
      */
     animate() {
+
+        setInterval(() => {
+            if (this.isDead()) {
+                this.animateCharacterDead();
+            }
+        }, 100);
+
         setInterval(() => {
             this.moveCharacter();
         }, 1000 / 60);
