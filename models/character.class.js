@@ -253,7 +253,7 @@ class Character extends MovableObject {
             if (this.isHurt()) {
                 this.animateCharacterHurt();
             }
-        }, 200);
+        }, 100);
     }
 
 
