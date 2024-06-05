@@ -45,7 +45,7 @@ class World {
         setInterval(() => {
             this.character.checkCollisionsWithEnemies(this.level.enemies);
             this.statusbarHealth.setPercentage(this.character.energy);
-        }, 200);
+        }, 100);
     }
 
 
