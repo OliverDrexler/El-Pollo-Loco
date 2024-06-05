@@ -28,11 +28,12 @@ class World {
 
 
     /**
-     * This method sets the current instance of the world to the character.
-     * It assigns the world instance (e.g., all variables) to the character.
+     * This method sets the current instance of the world to the character and enemies.
+     * It assigns the world instance (e.g., all variables) to the character and enemies.
      */
     setWorld() {
         this.character.world = this;
+        this.level.enemies.forEach(enemy => enemy.world = this);
     }
 
 
@@ -46,6 +47,18 @@ class World {
             this.character.checkCollisionsWithEnemies(this.level.enemies);
             this.statusbarHealth.setPercentage(this.character.energy);
         }, 100);
+    }
+
+
+    /**
+     * This method removes a specific enemy from the level.
+     * @param {MovableObject} enemy - The enemy to remove.
+     */
+    removeEnemy(enemy) {
+        const index = this.level.enemies.indexOf(enemy);
+        if (index > -1) {
+            this.level.enemies.splice(index, 1);
+        }
     }
 
 

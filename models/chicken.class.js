@@ -47,13 +47,20 @@ class Chicken extends MovableObject {
         }, 150);
     }
 
+    
     /**
      * This method sets the chicken as dead, changes the image and stops the animation.
+     * After 1 second, it removes the chicken from the game.
      */
     die() {
         this.isDead = true;
         this.img.src = this.img_dead;
         this.onCollisionCourse = false;
+        setTimeout(() => {
+            if (this.world) {
+                this.world.removeEnemy(this); 
+            } 
+        }, 1000);
     }
 
 
