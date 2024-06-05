@@ -39,16 +39,12 @@ class World {
     /**
      * This method checks for collisions between the character and enemies.
      * It runs in intervals and subtracts energy from the character 
-     * when coliding with an enemy.
+     * when colliding with an enemy.
      */
     checkCollisions() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusbarHealth.setPercentage(this.character.energy);
-                }
-            });
+            this.character.checkCollisionsWithEnemies(this.level.enemies);
+            this.statusbarHealth.setPercentage(this.character.energy);
         }, 200);
     }
 
@@ -74,7 +70,7 @@ class World {
         this.addToMap(this.statusbarBottle);
         this.addToMap(this.statusbarCoins);
         this.addToMap(this.statusbarEndboss);
-        
+
         this.ctx.translate(this.camera_x, 0); 
 
         this.addToMap(this.character);

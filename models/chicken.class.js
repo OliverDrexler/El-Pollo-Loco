@@ -12,6 +12,7 @@ class Chicken extends MovableObject {
 
     img_dead = '../img/3_enemies_chicken/chicken_normal/2_dead/dead.png';
     onCollisionCourse = true;
+    isDead = false;
     
 
     /**
@@ -34,12 +35,26 @@ class Chicken extends MovableObject {
      */
     animate() {
         setInterval(() => {
-            this.moveLeft();
+            if (!this.isDead) {
+                this.moveLeft();
+            }
         }, 1000 / 60); // = 60 FPS
         
         setInterval(() => {
-            this.playAnimation(this.IMAGES_WALKING);
+            if (!this.isDead) {
+                this.playAnimation(this.IMAGES_WALKING);
+            }
         }, 150);
     }
+
+    /**
+     * This method sets the chicken as dead, changes the image and stops the animation.
+     */
+    die() {
+        this.isDead = true;
+        this.img.src = this.img_dead;
+        this.onCollisionCourse = false;
+    }
+
 
 }

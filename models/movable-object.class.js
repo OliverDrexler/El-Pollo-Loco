@@ -32,6 +32,18 @@ class MovableObject extends DrawableObject {
     }
 
 
+    ////////////// OLD & BASIC isColliding METHOD //////////////
+
+    /*isColliding(mo) {
+        return this.x + this.width > mo.x && 
+        this.y + this.height > mo.y && 
+        this.x < mo.x && 
+        this. y < mo.y + mo.height
+    }*/
+
+    ////////////////////////////////////////////////////////////
+
+
     /**
     * This method checks if the current object is colliding with another object.
     * @param {Object} obj - The object to check for collision.
@@ -50,16 +62,30 @@ class MovableObject extends DrawableObject {
     }
 
 
-    ////////////// OLD & BASIC isColliding METHOD //////////////
+    /**
+     * This method checks if the character is colliding with the top of the given object.
+     * @param {MovableObject} obj - The object to check collision with.
+     * @returns {boolean} - Returns true if colliding from the top, otherwise false.
+     */
+    isCollidingTop(obj) {
+        return this.isColliding(obj) && (this.y + this.height) <= (obj.y + obj.height);
+    }
 
-    /*isColliding(mo) {
-        return this.x + this.width > mo.x && 
-        this.y + this.height > mo.y && 
-        this.x < mo.x && 
-        this. y < mo.y + mo.height
-    }*/
 
-    ////////////////////////////////////////////////////////////
+    /**
+     * This method checks for collisions with enemies.
+     * If the character collides from the top, it does not take damage.
+     * If the character collides from the sides or bottom, it takes damage.
+     */
+    checkCollisionsWithEnemies(enemies) {
+        enemies.forEach((enemy) => {
+            if (this.isCollidingTop(enemy)) {
+                enemy.die();
+            } else if (this.isColliding(enemy)) {
+                this.hit();
+            }
+        });
+    }
 
 
     /**
