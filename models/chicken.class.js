@@ -13,6 +13,7 @@ class Chicken extends MovableObject {
     img_dead = '../img/3_enemies_chicken/chicken_normal/2_dead/dead.png';
     onCollisionCourse = true;
     isDead = false;
+    dying_sound = new Audio('../audio/chicken.mp3');
     
 
     /**
@@ -47,6 +48,15 @@ class Chicken extends MovableObject {
         }, 150);
     }
 
+
+    /**
+     * This method plays the dying sound.
+     */
+    playDyingSound() {
+        this.dying_sound.currentTime = 1;
+        this.dying_sound.play();
+    }
+
     
     /**
      * This method sets the chicken as dead, changes the image and stops the animation.
@@ -56,6 +66,7 @@ class Chicken extends MovableObject {
         this.isDead = true;
         this.img.src = this.img_dead;
         this.onCollisionCourse = false;
+        this.playDyingSound();
         setTimeout(() => {
             if (this.world) {
                 this.world.removeEnemy(this); 
