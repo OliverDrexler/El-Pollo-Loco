@@ -10,7 +10,7 @@ class World {
     statusbarBottle = new StatusbarBottle();
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
-    coins = new Coins;
+    coins = new Coins();
 
 
     /**
