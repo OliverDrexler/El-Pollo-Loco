@@ -70,6 +70,7 @@ class World {
         this.addToMap(this.statusbarHealth);
         this.addToMap(this.statusbarBottle);
         this.addToMap(this.statusbarCoins);
+        this.addToMap(this.statusbarEndboss);
         this.ctx.translate(this.camera_x, 0); 
 
         this.addToMap(this.character);
