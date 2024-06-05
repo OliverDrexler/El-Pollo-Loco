@@ -6,7 +6,10 @@ class World {
     ctx;
     keyboard;
     camera_x = 0;
-    statusbarHealth = new StatusbarHealth;
+    statusbarHealth = new StatusbarHealth();
+    statusbarBottle = new StatusbarBottle();
+    statusbarCoins = new StatusbarCoins();
+    statusbarEndboss = new StatusbarEndboss();
     coins = new Coins;
 
 
