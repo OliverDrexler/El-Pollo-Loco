@@ -1,12 +1,12 @@
 class Coins extends DrawableObject {
 
     IMAGES_COINS = [
-        '../img/8_coin/coin_1.png',
-        '../img/8_coin/coin_2.png'
+        '../img/8_coin/fitted_coin_1.png',
+        '../img/8_coin/fitted_coin_2.png'
     ];
 
-    height = 180;
-    width = 180;
+    height = 70;
+    width = 70;
 
 
     /**
@@ -16,8 +16,8 @@ class Coins extends DrawableObject {
     constructor() {
         super().loadImage('../../img/8_coin/coin_1.png');
         this.loadImages(this.IMAGES_COINS);
-        this.x = 300 + Math.random() * 2100;
-        this.y = 0 + Math.random() * 300;
+        this.x = 300 + Math.random() * 1800;
+        this.y = 70 + Math.random() * 190;
         this.animate();
     }
 
