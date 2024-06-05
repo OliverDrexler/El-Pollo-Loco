@@ -76,19 +76,6 @@ class Character extends MovableObject {
 
 
     /**
-     * This method handles the walking sound based on the character's walking state.
-     * @param {boolean} isWalking - Whether the character is walking.
-     */
-    handleWalkingSound(isWalking) {
-        if (isWalking && !this.isAboveGround()) {
-            this.playWalkingSound();
-        } else {
-            this.pauseWalkingSound();
-        }
-    }
-
-
-    /**
     * This method checks the character's status at regular intervals and initiates 
     * the death animation if the character is dead.
     */
@@ -178,6 +165,19 @@ class Character extends MovableObject {
     playJumpingSound() {
         this.jumping_sound.currentTime = 0;
         this.jumping_sound.play();
+    }
+
+
+    /**
+     * This method handles the walking sound based on the character's walking state.
+     * @param {boolean} isWalking - Whether the character is walking.
+     */
+    handleWalkingSound(isWalking) {
+        if (isWalking && !this.isAboveGround()) {
+            this.playWalkingSound();
+        } else {
+            this.pauseWalkingSound();
+        }
     }
 
 
