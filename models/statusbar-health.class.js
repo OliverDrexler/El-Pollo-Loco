@@ -17,7 +17,7 @@ class StatusbarHealth extends DrawableObject {
 
 
     /**
-     * Creates an instance of Statusbar.
+     * Creates an instance of StatusbarHealth.
      * Loads the initial images and sets the initial percentage to 100.
      */
     constructor() {

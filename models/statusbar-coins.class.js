@@ -1,5 +1,5 @@
 class StatusbarCoins extends DrawableObject {
-    
+
     IMAGES_STATUSBAR = [
         '../img/7_statusbars/1_statusbar/1_statusbar_coin/blue/0.png',
         '../img/7_statusbars/1_statusbar/1_statusbar_coin/blue/20.png',
@@ -16,6 +16,10 @@ class StatusbarCoins extends DrawableObject {
     height = 60;
 
 
+    /**
+     * Creates an instance of StatusbarCoins.
+     * Loads the initial images and sets the initial amount to 0.
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_STATUSBAR);
@@ -23,6 +27,10 @@ class StatusbarCoins extends DrawableObject {
     }
 
 
+    /**
+    * This method sets the amount and updates the status bar image accordingly.
+    * @param {number} amount - The amount to set for the status bar.
+    */
     setAmount(amount) {
         this.amount = amount;
         let path = this.IMAGES_STATUSBAR[this.resolveImageIndex()];
@@ -30,6 +38,10 @@ class StatusbarCoins extends DrawableObject {
     }
 
 
+    /**
+    * This method resolves the image index based on the current amount.
+    * @returns {number} The index of the image to use based on the amount.
+    */
     resolveImageIndex() {
         if (this.amount == 10) {
             return 5;
