@@ -14,7 +14,7 @@ class Chicken extends MovableObject {
     onCollisionCourse = true;
     isDead = false;
     dying_sound = new Audio('../audio/chicken.mp3');
-    
+
 
     /**
      * Creates an instance of Chicken.
@@ -25,22 +25,38 @@ class Chicken extends MovableObject {
         super().loadImage('../img/3_enemies_chicken/chicken_normal/1_walk/1_w.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_WALKING);
         this.x = 400 + Math.random() * 2300;
-        this.speed = 0.15 + Math.random() * 0.25; 
+        this.speed = 0.15 + Math.random() * 0.25;
         this.animate();
     }
 
-    
+
     /**
-     * This method starts the animation for the chicken.
-     * It moves the chicken to the left and plays the walking animation in intervals.
+     * This method starts the animation for the chicken, including movement and walking animation.
      */
     animate() {
+        this.moveChicken();
+        this.playChickenWalkingAnimation();
+    }
+
+
+    /**
+    * This method moves the chicken to the left if it is not dead.
+    * Runs at 60 frames per second.
+    */
+    moveChicken() {
         setInterval(() => {
             if (!this.isDead) {
                 this.moveLeft();
             }
-        }, 1000 / 60); // = 60 FPS
-        
+        }, 1000 / 60);
+    }
+
+
+    /**
+    * This method plays the walking animation for the chicken if it is not dead.
+    * It changes the image every 150 milliseconds.
+    */
+    playChickenWalkingAnimation() {
         setInterval(() => {
             if (!this.isDead) {
                 this.playAnimation(this.IMAGES_WALKING);
@@ -57,7 +73,7 @@ class Chicken extends MovableObject {
         this.dying_sound.play();
     }
 
-    
+
     /**
      * This method sets the chicken as dead, changes the image and stops the animation.
      * After 1 second, it removes the chicken from the game.
@@ -69,8 +85,8 @@ class Chicken extends MovableObject {
         this.playDyingSound();
         setTimeout(() => {
             if (this.world) {
-                this.world.removeEnemy(this); 
-            } 
+                this.world.removeEnemy(this);
+            }
         }, 1000);
     }
 
