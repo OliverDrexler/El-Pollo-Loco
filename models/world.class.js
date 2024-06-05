@@ -67,36 +67,58 @@ class World {
      * It clears the canvas and redraws the entire scene to create animations.
      */
     draw() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.ctx.translate(this.camera_x, 0);
-
-        this.addObjectsToMap(this.level.backgroundObjects);
-        this.addObjectsToMap(this.level.clouds);
-        this.addObjectsToMap(this.level.coins);
-        this.addObjectsToMap(this.level.bottles);
-        
-        this.ctx.translate(-this.camera_x, 0); 
-
-        // ------- Space for fixed objects ------- //
-        this.addToMap(this.statusbarHealth);
-        this.addToMap(this.statusbarBottle);
-        this.addToMap(this.statusbarCoins);
-        this.addToMap(this.statusbarEndboss);
-
-        this.ctx.translate(this.camera_x, 0); 
-
-        this.addToMap(this.character);
-        this.addObjectsToMap(this.level.enemies);
-
-        this.ctx.translate(-this.camera_x, 0); // Resets the canvas translation
-
+        this.clearCanvas();
+        this.drawBackgroundObjects();
+        this.drawFixedObjects();
+        this.drawMovableObjects();
         let self = this; // Using 'self' to refer to the current instance in requestAnimationFrame
         requestAnimationFrame(function () {
             self.draw();
         });
     }
 
+
+    /**
+     * This method clears the entire canvas.
+     */
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+
+
+    /**
+     * This method draws all background objects.
+     */
+    drawBackgroundObjects() {
+        this.ctx.translate(this.camera_x, 0);
+        this.addObjectsToMap(this.level.backgroundObjects);
+        this.addObjectsToMap(this.level.clouds);
+        this.addObjectsToMap(this.level.coins);
+        this.addObjectsToMap(this.level.bottles);
+        this.ctx.translate(-this.camera_x, 0); 
+    }
+
+
+    /**
+     * This method draws all fixed objects.
+     */
+    drawFixedObjects() {
+        this.addToMap(this.statusbarHealth);
+        this.addToMap(this.statusbarBottle);
+        this.addToMap(this.statusbarCoins);
+        this.addToMap(this.statusbarEndboss);
+    }
+
+
+    /**
+     * This method draws the character and enemies.
+     */
+    drawMovableObjects() {
+        this.ctx.translate(this.camera_x, 0); 
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.level.enemies);
+        this.ctx.translate(-this.camera_x, 0); // Resets the canvas translation
+    }
 
 
     /**
