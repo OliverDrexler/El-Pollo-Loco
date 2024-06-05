@@ -50,6 +50,18 @@ class MovableObject extends DrawableObject {
     }
 
 
+    ////////////// OLD & BASIC isColliding METHOD //////////////
+
+    /*isColliding(mo) {
+        return this.x + this.width > mo.x && 
+        this.y + this.height > mo.y && 
+        this.x < mo.x && 
+        this. y < mo.y + mo.height
+    }*/
+
+    ////////////////////////////////////////////////////////////
+
+
     /**
     * This method decreases the energy of the object hit by 2. 
     * If the energy falls below 0, it sets the energy to 0.
@@ -82,18 +94,6 @@ class MovableObject extends DrawableObject {
     isDead() {
         return this.energy == 0;
     }
-
-
-    ////////////// OLD & BASIC isColliding METHOD //////////////
-
-    /*isColliding(mo) {
-        return this.x + this.width > mo.x && 
-        this.y + this.height > mo.y && 
-        this.x < mo.x && 
-        this. y < mo.y + mo.height
-    }*/
-
-    ////////////////////////////////////////////////////////////
 
 
     /**
