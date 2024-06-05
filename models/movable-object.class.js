@@ -64,11 +64,12 @@ class MovableObject extends DrawableObject {
 
     /**
      * This method checks if the character is colliding with the top of the given object.
+     * It only returns true, if the character is in the downward motion of the jump.
      * @param {MovableObject} obj - The object to check collision with.
      * @returns {boolean} - Returns true if colliding from the top, otherwise false.
      */
     isCollidingTop(obj) {
-        return this.isColliding(obj) && (this.y + this.height) <= (obj.y + obj.height);
+        return this.isColliding(obj) && (this.speed_y < 0) && (this.y + this.height) <= (obj.y + obj.height);
     }
 
 
