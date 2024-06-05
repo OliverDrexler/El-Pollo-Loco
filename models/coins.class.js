@@ -5,8 +5,8 @@ class Coins extends DrawableObject {
         '../img/8_coin/coin_2.png'
     ];
 
-    x = 300;
-    y = 100;
+    //x = 300;
+    //y = 100;
     height = 180;
     width = 180;
 
@@ -15,9 +15,11 @@ class Coins extends DrawableObject {
      * Creates an instance of Coins.
      * Loads the initial image and sets up the animation for the coin.
      */
-    constructor() {
+    constructor(x, y) {
         super().loadImage('../../img/8_coin/coin_1.png');
         this.loadImages(this.IMAGES_COINS);
+        this.x = x;
+        this.y = y;
         this.animate();
     }
 

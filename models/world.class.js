@@ -10,7 +10,6 @@ class World {
     statusbarBottle = new StatusbarBottle();
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
-    coins = new Coins();
 
 
     /**
@@ -64,7 +63,7 @@ class World {
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
         this.addObjectsToMap(this.level.clouds);
-        this.addToMap(this.coins);
+        this.addObjectsToMap(this.level.coins);
         
         this.ctx.translate(-this.camera_x, 0); 
         // ------- Space for fixed objects ------- //
