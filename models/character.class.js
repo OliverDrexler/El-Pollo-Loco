@@ -125,23 +125,84 @@ class Character extends MovableObject {
      */
     moveCharacter() {
         let isWalking = false;
-        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-            this.moveRight();
-            this.otherDirection = false;
-            isWalking = true;
+        if (this.shouldWalkRight()) {
+            isWalking = this.characterWalkRight();
         }
-        if (this.world.keyboard.LEFT && this.x > 0) { // this.x > 0 prevents character from walking further left when canvas ends
-            this.moveLeft();
-            this.otherDirection = true;
-            isWalking = true;
+        if (this.shouldWalkLeft()) { // this.x > 0 prevents character from walking further left when canvas ends
+            isWalking = this.characterWalkLeft();
         }
-        if (this.world.keyboard.UP && !this.isAboveGround()) { // keyboard up & is NOT above ground
-            this.jump();
-            this.playJumpingSound();
-            this.currentImage = 0;
+        if (this.shouldJump()) {
+            this.characterJump();
         }
-        this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
+        this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
+    }
+
+
+    /**
+     * This method updates the camera position based on the characters position.
+     */
+    updateCameraPosition() {
+        this.world.camera_x = -this.x + 100; // Positioning of character 100px further right
+    }
+
+
+    /**
+    * This method determines if the character should walk right based on keyboard input.
+    * @returns {boolean} - Returns true if the character should walk right, otherwise false.
+    */
+    shouldWalkRight() {
+        return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
+    }
+
+
+    /**
+    * This method moves the character to the right.
+    * @returns {boolean} - Returns true indicating the character is walking.
+    */
+    characterWalkRight() {
+        this.moveRight();
+        this.otherDirection = false;
+        return true;
+    }
+
+
+    /**
+    * This method determines if the character should walk left based on keyboard input.
+    * @returns {boolean} - Returns true if the character should walk left, otherwise false.
+    */
+    shouldWalkLeft() {
+        return this.world.keyboard.LEFT && this.x > 0;
+    }
+
+
+    /**
+    * This method moves the character to the left.
+    * @returns {boolean} - Returns true indicating the character is walking.
+    */
+    characterWalkLeft() {
+        this.moveLeft();
+        this.otherDirection = true;
+        return true;
+    }
+
+
+    /**
+    * This method determines if the character should jump based on keyboard input.
+    * @returns {boolean} - Returns true if the character should jump, otherwise false.
+    */
+    shouldJump() {
+        return this.world.keyboard.UP && !this.isAboveGround(); // keyboard up & is NOT above ground
+    }
+
+
+    /**
+     * This method makes the character jump and plays the jumping sound.
+     */
+    characterJump() {
+        this.jump();
+        this.playJumpingSound();
+        this.currentImage = 0;
     }
 
 
@@ -257,6 +318,6 @@ class Character extends MovableObject {
     }
 
 
-    
+
 
 }
