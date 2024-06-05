@@ -89,6 +89,68 @@ class Character extends MovableObject {
 
 
     /**
+    * This method checks the character's status at regular intervals and initiates 
+    * the death animation if the character is dead.
+    */
+    checkCharacterStatus() {
+        setInterval(() => {
+            if (this.isDead()) {
+                this.animateCharacterDead();
+            }
+        }, 100);
+    }
+
+
+    /**
+    * This method starts the character's movement at a regular interval.
+    */
+    startCharacterMovement() {
+        setInterval(() => {
+            this.moveCharacter();
+        }, 1000 / 60);
+    }
+
+
+    /**
+    * This method checks if the character is jumping at regular intervals and initiates 
+    * the jumping animation if the character is above ground.
+    */
+    checkCharacterJumping() {
+        setInterval(() => {
+            if (this.isAboveGround()) {
+                this.animateCharacterJumping();
+            }
+        }, 160);
+    }
+
+
+    /**
+    * This method checks if the character is walking at regular intervals and initiates 
+    * the walking animation if the character is on the ground.
+    */
+    checkCharacterWalking() {
+        setInterval(() => {
+            if (!this.isAboveGround()) {
+                this.animateCharacterWalking();
+            }
+        }, 80);
+    }
+
+
+    /**
+    * This method checks if the character is hurt at regular intervals and initiates 
+    * the injury animation if the character is hurt.
+    */
+    checkCharacterHurt() {
+        setInterval(() => {
+            if (this.isHurt()) {
+                this.animateCharacterHurt();
+            }
+        }, 100);
+    }
+
+
+    /**
      * This method plays the walking sound.
      */
     playWalkingSound() {
@@ -254,70 +316,6 @@ class Character extends MovableObject {
             }, 200);
         }
     }
-
-
-    /**
-    * This method checks the character's status at regular intervals and initiates 
-    * the death animation if the character is dead.
-    */
-    checkCharacterStatus() {
-        setInterval(() => {
-            if (this.isDead()) {
-                this.animateCharacterDead();
-            }
-        }, 100);
-    }
-
-
-    /**
-    * This method starts the character's movement at a regular interval.
-    */
-    startCharacterMovement() {
-        setInterval(() => {
-            this.moveCharacter();
-        }, 1000 / 60);
-    }
-
-
-    /**
-    * This method checks if the character is jumping at regular intervals and initiates 
-    * the jumping animation if the character is above ground.
-    */
-    checkCharacterJumping() {
-        setInterval(() => {
-            if (this.isAboveGround()) {
-                this.animateCharacterJumping();
-            }
-        }, 160);
-    }
-
-
-    /**
-    * This method checks if the character is walking at regular intervals and initiates 
-    * the walking animation if the character is on the ground.
-    */
-    checkCharacterWalking() {
-        setInterval(() => {
-            if (!this.isAboveGround()) {
-                this.animateCharacterWalking();
-            }
-        }, 80);
-    }
-
-
-    /**
-    * This method checks if the character is hurt at regular intervals and initiates 
-    * the injury animation if the character is hurt.
-    */
-    checkCharacterHurt() {
-        setInterval(() => {
-            if (this.isHurt()) {
-                this.animateCharacterHurt();
-            }
-        }, 100);
-    }
-
-
 
 
 }
