@@ -15,11 +15,11 @@ class Coins extends DrawableObject {
      * Creates an instance of Coins.
      * Loads the initial image and sets up the animation for the coin.
      */
-    constructor(x, y) {
+    constructor() {
         super().loadImage('../../img/8_coin/coin_1.png');
         this.loadImages(this.IMAGES_COINS);
-        this.x = x;
-        this.y = y;
+        this.x = 100 + Math.random() * 2300;
+        this.y = 80 + Math.random() * 200;
         this.animate();
     }
 
