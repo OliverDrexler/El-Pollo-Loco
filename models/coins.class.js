@@ -16,8 +16,8 @@ class Coins extends DrawableObject {
     constructor() {
         super().loadImage('../../img/8_coin/coin_1.png');
         this.loadImages(this.IMAGES_COINS);
-        this.x = 300 + Math.random() * 1800;
-        this.y = 70 + Math.random() * 190;
+        this.x = 400 + Math.random() * 3700;
+        this.y = 110 + Math.random() * 270;
         this.animate();
     }
 
