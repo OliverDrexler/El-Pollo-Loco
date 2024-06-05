@@ -1,4 +1,4 @@
-class Coins extends MovableObject {
+class Coins extends DrawableObject {
 
     IMAGES_COINS = [
         '../img/8_coin/coin_1.png',
