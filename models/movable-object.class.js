@@ -24,7 +24,7 @@ class MovableObject extends DrawableObject {
 
 
     /**
-    * Checks if the object is above the ground.
+    * This method checks if the object is above the ground.
     * For instances of ThrowableObject, it always returns true.
     * For other objects, it checks if the y position is less than 120.
     * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
