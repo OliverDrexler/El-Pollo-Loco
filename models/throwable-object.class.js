@@ -25,10 +25,10 @@ class ThrowableObject extends MovableObject {
     * It moves the object to the right at a fixed interval.
     */
     throw() {
-        this.speed_y = 20;
+        this.speed_y = 28;
         this.applyGravity();
         setInterval(() => {
-            this.x += 10;
+            this.x += 8;
         }, 25);
     }
 }
