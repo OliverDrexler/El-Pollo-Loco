@@ -107,11 +107,20 @@ class Character extends MovableObject {
 
 
     /**
-    * This method plays the character's idle time animation if no movement keys are pressed.
+    * This method plays the character's idle time animation over a period of time.
+    * If the character is dead, the idle animation interval is cleared.
     */
     animateCharacterIdleTime() {
         if (!this.isDead()) {
-            this.playAnimation(this.IMAGES_IDLE);
+            const idleFrameDuration = 2500 / this.IMAGES_IDLE.length; 
+            if (!this.idleAnimationInterval) {
+                this.idleAnimationInterval = setInterval(() => {
+                    this.playAnimation(this.IMAGES_IDLE);
+                }, idleFrameDuration);
+            }
+        } else {
+            clearInterval(this.idleAnimationInterval);
+            this.idleAnimationInterval = null;
         }
     }
 
@@ -232,7 +241,8 @@ class Character extends MovableObject {
 
     /**
      * This method moves the character based on keyboard input.
-     * It updates the character's position and handles the walking sound.
+     * It updates the character's position and handles the walking sound
+     * and starts/stops the idle animation.
      */
     moveCharacter() {
         let isWalking = false;
