@@ -4,66 +4,7 @@ class Character extends MovableObject {
     y = 130;
     speed = 6;
 
-    IMAGES_IDLE = [
-        '../img/2_character_pepe/1_idle/idle/I-1.png',
-        '../img/2_character_pepe/1_idle/idle/I-2.png',
-        '../img/2_character_pepe/1_idle/idle/I-3.png',
-        '../img/2_character_pepe/1_idle/idle/I-4.png',
-        '../img/2_character_pepe/1_idle/idle/I-5.png',
-        '../img/2_character_pepe/1_idle/idle/I-6.png',
-        '../img/2_character_pepe/1_idle/idle/I-7.png',
-        '../img/2_character_pepe/1_idle/idle/I-8.png',
-        '../img/2_character_pepe/1_idle/idle/I-9.png',
-        '../img/2_character_pepe/1_idle/idle/I-10.png'
-    ];
-
-    IMAGES_SLEEP = [
-        '../img/2_character_pepe/1_idle/long_idle/I-11.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-12.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-13.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-14.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-15.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-16.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-17.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-18.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-19.png',
-        '../img/2_character_pepe/1_idle/long_idle/I-20.png'
-    ];
-
-    IMAGES_WALKING = [
-        '../img/2_character_pepe/2_walk/W-21.png',
-        '../img/2_character_pepe/2_walk/W-22.png',
-        '../img/2_character_pepe/2_walk/W-23.png',
-        '../img/2_character_pepe/2_walk/W-24.png',
-        '../img/2_character_pepe/2_walk/W-25.png',
-        '../img/2_character_pepe/2_walk/W-26.png'
-    ];
-
-    IMAGES_JUMPING = [
-        '../img/2_character_pepe/3_jump/J-33.png',
-        '../img/2_character_pepe/3_jump/J-34.png',
-        '../img/2_character_pepe/3_jump/J-35.png',
-        '../img/2_character_pepe/3_jump/J-36.png',
-        '../img/2_character_pepe/3_jump/J-37.png',
-        '../img/2_character_pepe/3_jump/J-38.png'
-    ];
-
-    IMAGES_DEAD = [
-        '../img/2_character_pepe/5_dead/D-51.png',
-        '../img/2_character_pepe/5_dead/D-52.png',
-        '../img/2_character_pepe/5_dead/D-53.png',
-        '../img/2_character_pepe/5_dead/D-54.png',
-        '../img/2_character_pepe/5_dead/D-55.png',
-        '../img/2_character_pepe/5_dead/D-56.png',
-        '../img/2_character_pepe/5_dead/D-57.png'
-    ];
-
-    IMAGES_HURT = [
-        '../img/2_character_pepe/4_hurt/H-41.png',
-        '../img/2_character_pepe/4_hurt/H-42.png',
-        '../img/2_character_pepe/4_hurt/H-43.png'
-    ];
-
+    
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
@@ -82,13 +23,13 @@ class Character extends MovableObject {
      * applies gravity and starts the animation.
      */
     constructor() {
-        super().loadImage('../img/2_character_pepe/1_idle/idle/I-1.png'); // Calls the function of the parent class (MovableObject)
-        this.loadImages(this.IMAGES_IDLE);
-        this.loadImages(this.IMAGES_SLEEP);
-        this.loadImages(this.IMAGES_WALKING);
-        this.loadImages(this.IMAGES_JUMPING);
-        this.loadImages(this.IMAGES_HURT);
-        this.loadImages(this.IMAGES_DEAD);
+        super().loadImage(CHARACTER_IMAGES.IMAGES_IDLE[0]); // Calls the function of the parent class (MovableObject)
+        this.loadImages(CHARACTER_IMAGES.IMAGES_IDLE);
+        this.loadImages(CHARACTER_IMAGES.IMAGES_SLEEP);
+        this.loadImages(CHARACTER_IMAGES.IMAGES_WALKING);
+        this.loadImages(CHARACTER_IMAGES.IMAGES_JUMPING);
+        this.loadImages(CHARACTER_IMAGES.IMAGES_HURT);
+        this.loadImages(CHARACTER_IMAGES.IMAGES_DEAD);
         this.applyGravity();
         this.animate();
     }
@@ -111,9 +52,9 @@ class Character extends MovableObject {
     */
     startIdleAnimation() {
         if (!this.isDead() && !this.idleAnimationInterval) {
-            const idleFrameDuration = 2500 / this.IMAGES_IDLE.length;
+            const idleFrameDuration = 2500 / CHARACTER_IMAGES.IMAGES_IDLE.length;
             this.idleAnimationInterval = setInterval(() => {
-                this.playAnimation(this.IMAGES_IDLE);
+                this.playAnimation(CHARACTER_IMAGES.IMAGES_IDLE);
             }, idleFrameDuration);
         }
     }
@@ -134,9 +75,9 @@ class Character extends MovableObject {
     */
     startSleepingAnimation() {
         if (!this.isDead() && !this.sleepAnimationInterval) {
-            const sleepFrameDuration = 1500 / this.IMAGES_SLEEP.length;
+            const sleepFrameDuration = 1500 / CHARACTER_IMAGES.IMAGES_SLEEP.length;
             this.sleepAnimationInterval = setInterval(() => {
-                this.playAnimation(this.IMAGES_SLEEP);
+                this.playAnimation(CHARACTER_IMAGES.IMAGES_SLEEP);
             }, sleepFrameDuration);
         }
     }
@@ -368,7 +309,7 @@ class Character extends MovableObject {
      */
     animateCharacterWalking() {
         if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            this.playAnimation(this.IMAGES_WALKING);
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_WALKING);
         }
     }
 
@@ -378,7 +319,7 @@ class Character extends MovableObject {
      */
     animateCharacterJumping() {
         if (this.isAboveGround()) {
-            this.playAnimation(this.IMAGES_JUMPING);
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_JUMPING);
         }
     }
 
@@ -388,7 +329,7 @@ class Character extends MovableObject {
      */
     animateCharacterHurt() {
         if (this.isHurt()) {
-            this.playAnimation(this.IMAGES_HURT);
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_HURT);
         }
     }
 
@@ -401,8 +342,8 @@ class Character extends MovableObject {
             this.isAnimatingDead = true;
             let i = 0;
             const interval = setInterval(() => {
-                if (i < this.IMAGES_DEAD.length) {
-                    let path = this.IMAGES_DEAD[i];
+                if (i < CHARACTER_IMAGES.IMAGES_DEAD.length) {
+                    let path = CHARACTER_IMAGES.IMAGES_DEAD[i];
                     this.img = this.imageCache[path];
                     i++;
                 } else {
