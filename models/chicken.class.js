@@ -66,11 +66,14 @@ class Chicken extends MovableObject {
 
 
     /**
-     * This method plays the dying sound.
+     * This method plays the dying sound from 1 second to 1.72 seconds.
      */
     playDyingSound() {
         this.dying_sound.currentTime = 1;
         this.dying_sound.play();
+        setTimeout(() => {
+            this.dying_sound.pause();
+        }, 720);
     }
 
 

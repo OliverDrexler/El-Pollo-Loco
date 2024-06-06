@@ -79,7 +79,7 @@ class Character extends MovableObject {
      * applies gravity and starts the animation.
      */
     constructor() {
-        super().loadImage('../img/2_character_pepe/2_walk/W-21.png'); // Calls the function of the parent class (MovableObject)
+        super().loadImage('../img/2_character_pepe/1_idle/idle/I-1.png'); // Calls the function of the parent class (MovableObject)
         this.loadImages(this.IMAGES_IDLE);
         this.loadImages(this.IMAGES_SLEEP);
         this.loadImages(this.IMAGES_WALKING);
