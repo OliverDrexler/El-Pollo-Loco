@@ -51,6 +51,7 @@ class Character extends MovableObject {
     startIdleAnimation() {
         if (!this.isDead() && !this.idleAnimationInterval) {
             const idleFrameDuration = 2500 / CHARACTER_IMAGES.IMAGES_IDLE.length;
+            this.currentImage = 0;
             this.idleAnimationInterval = setInterval(() => {
                 this.playAnimation(CHARACTER_IMAGES.IMAGES_IDLE);
             }, idleFrameDuration);
@@ -74,6 +75,7 @@ class Character extends MovableObject {
     startSleepingAnimation() {
         if (!this.isDead() && !this.sleepAnimationInterval) {
             const sleepFrameDuration = 1500 / CHARACTER_IMAGES.IMAGES_SLEEP.length;
+            this.currentImage = 0;
             this.sleepAnimationInterval = setInterval(() => {
                 this.playAnimation(CHARACTER_IMAGES.IMAGES_SLEEP);
             }, sleepFrameDuration);
@@ -88,6 +90,29 @@ class Character extends MovableObject {
         if (this.sleepAnimationInterval) {
             clearInterval(this.sleepAnimationInterval);
             this.sleepAnimationInterval = null;
+        }
+    }
+
+
+    /**
+    * This method handles the logic for starting and stopping the idle and sleep animations.
+    * It checks if the character is idle and increments the idle time.
+    * If the idle time exceeds a certain threshold, it starts the sleep animation.
+    * Otherwise, it starts the idle animation.
+    */
+    handleIdleAndSleepAnimation() {
+        if (!this.isDead() && !this.isHurt() && this.x === this.previousX && this.y === this.previousY) {
+            this.idleTime += 1;
+            if (this.idleTime >= 330) {
+                this.stopIdleAnimation();
+                this.startSleepingAnimation();
+            } else {
+                this.startIdleAnimation();
+            }
+        } else {
+            this.idleTime = 0;
+            this.stopIdleAnimation();
+            this.stopSleepingAnimation();
         }
     }
 
@@ -204,7 +229,7 @@ class Character extends MovableObject {
      * and starts/stops the idle/sleep animation.
      */
     moveCharacter() {
-        let isWalking = false; 
+        let isWalking = false;
         this.previousX = this.x;
         this.previousY = this.y;
         if (this.shouldWalkRight()) {
@@ -218,20 +243,7 @@ class Character extends MovableObject {
         }
         this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
-
-        if (!this.isDead() && !this.isHurt() && this.x === this.previousX && this.y === this.previousY) {
-            this.idleTime += 1;
-            if (this.idleTime >= 330) { 
-                this.stopIdleAnimation();
-                this.startSleepingAnimation();
-            } else {
-                this.startIdleAnimation();
-            }
-        } else {
-            this.idleTime = 0;
-            this.stopIdleAnimation();
-            this.stopSleepingAnimation();
-        }
+        this.handleIdleAndSleepAnimation();
     }
 
 
@@ -350,6 +362,4 @@ class Character extends MovableObject {
             }, 200);
         }
     }
-
-
 }
