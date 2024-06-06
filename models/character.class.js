@@ -113,7 +113,6 @@ class Character extends MovableObject {
         if (!this.isDead()) {
             this.playAnimation(this.IMAGES_IDLE);
         }
-        
     }
 
 
