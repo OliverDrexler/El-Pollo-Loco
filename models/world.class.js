@@ -10,7 +10,7 @@ class World {
     statusbarBottle = new StatusbarBottle();
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
-    throwableObject = [new ThrowableObject()];
+    throwableObject = [];
 
 
     /**
@@ -24,7 +24,7 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
-        this.checkCollisions();
+        this.run();
     }
 
 
@@ -39,15 +39,38 @@ class World {
 
 
     /**
+    * This method starts the main game loop.
+    * Periodically checks for collisions and throwable objects.
+    */
+    run() {
+        setInterval(() => {
+            this.checkCollisions();
+            this.checkThrowObjects();
+        }, 100);
+
+    }
+
+
+    /**
+    * This method checks if the space key is pressed to throw an object.
+    * If the space key is pressed, it creates a new throwable object
+    * and adds it to the list of throwable objects.
+    */
+    checkThrowObjects() {
+        if (this.keyboard.SPACE) {
+            let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            this.throwableObject.push(bottle);
+        }
+    }
+
+
+    /**
      * This method checks for collisions between the character and enemies.
-     * It runs in intervals and subtracts energy from the character 
-     * when colliding with an enemy.
+     * It subtracts energy from the character when colliding with an enemy.
      */
     checkCollisions() {
-        setInterval(() => {
-            this.character.checkCollisionsWithEnemies(this.level.enemies);
-            this.statusbarHealth.setPercentage(this.character.energy);
-        }, 100);
+        this.character.checkCollisionsWithEnemies(this.level.enemies);
+        this.statusbarHealth.setPercentage(this.character.energy);
     }
 
 
@@ -96,7 +119,7 @@ class World {
         this.addObjectsToMap(this.level.clouds);
         this.addObjectsToMap(this.level.coins);
         this.addObjectsToMap(this.level.bottles);
-        this.ctx.translate(-this.camera_x, 0); 
+        this.ctx.translate(-this.camera_x, 0);
     }
 
 
@@ -115,7 +138,7 @@ class World {
      * This method draws the character and enemies.
      */
     drawMovableObjects() {
-        this.ctx.translate(this.camera_x, 0); 
+        this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObject);
