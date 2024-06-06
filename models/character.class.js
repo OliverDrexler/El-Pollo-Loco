@@ -71,6 +71,9 @@ class Character extends MovableObject {
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
     isAnimatingDead = false;
+    idleTime = 0;
+    idleInterval = null;
+    sleepAnimationInterval = null;
     previousX = 0;
     previousY = 0;
 
@@ -107,18 +110,22 @@ class Character extends MovableObject {
 
 
     /**
-    * This method plays the character's idle time animation over a period of time.
-    * If the character is dead, the idle animation interval is cleared.
+    * This method starts the idle animation.
     */
-    animateCharacterIdleTime() {
-        if (!this.isDead()) {
-            const idleFrameDuration = 2500 / this.IMAGES_IDLE.length; 
-            if (!this.idleAnimationInterval) {
-                this.idleAnimationInterval = setInterval(() => {
-                    this.playAnimation(this.IMAGES_IDLE);
-                }, idleFrameDuration);
-            }
-        } else {
+    startIdleAnimation() {
+        if (!this.isDead() && !this.idleAnimationInterval) {
+            const idleFrameDuration = 2500 / this.IMAGES_IDLE.length;
+            this.idleAnimationInterval = setInterval(() => {
+                this.playAnimation(this.IMAGES_IDLE);
+            }, idleFrameDuration);
+        }
+    }
+
+    /**
+     * This method stops the idle animation.
+     */
+    stopIdleAnimation() {
+        if (this.idleAnimationInterval) {
             clearInterval(this.idleAnimationInterval);
             this.idleAnimationInterval = null;
         }
@@ -126,10 +133,26 @@ class Character extends MovableObject {
 
 
     /**
-     * This method plays the character's sleeping animation.
-     */
-    animateCharacterSleeping() {
+    * This method starts the sleeping animation.
+    */
+    startSleepingAnimation() {
+        if (!this.isDead() && !this.sleepAnimationInterval) {
+            const sleepFrameDuration = 1500 / this.IMAGES_SLEEP.length;
+            this.sleepAnimationInterval = setInterval(() => {
+                this.playAnimation(this.IMAGES_SLEEP);
+            }, sleepFrameDuration);
+        }
+    }
 
+
+    /**
+     * This method stops the sleeping animation.
+     */
+    stopSleepingAnimation() {
+        if (this.sleepAnimationInterval) {
+            clearInterval(this.sleepAnimationInterval);
+            this.sleepAnimationInterval = null;
+        }
     }
 
 
@@ -242,7 +265,7 @@ class Character extends MovableObject {
     /**
      * This method moves the character based on keyboard input.
      * It updates the character's position and handles the walking sound
-     * and starts/stops the idle animation.
+     * and starts/stops the idle/sleep animation.
      */
     moveCharacter() {
         let isWalking = false;
@@ -259,8 +282,19 @@ class Character extends MovableObject {
         }
         this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
+
         if (this.x === this.previousX && this.y === this.previousY) {
-            this.animateCharacterIdleTime();
+            this.idleTime += 1;
+            if (this.idleTime >= 330) { 
+                this.stopIdleAnimation();
+                this.startSleepingAnimation();
+            } else {
+                this.startIdleAnimation();
+            }
+        } else {
+            this.idleTime = 0;
+            this.stopIdleAnimation();
+            this.stopSleepingAnimation();
         }
     }
 
