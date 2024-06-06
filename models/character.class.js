@@ -68,11 +68,12 @@ class Character extends MovableObject {
     ];
 
     world; // Allows access to variables from World, including keyboard
-    isIdle = false;
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
     isAnimatingDead = false;
-    
+    previousX = 0;
+    previousY = 0;
+
 
 
     /**
@@ -102,6 +103,25 @@ class Character extends MovableObject {
         this.checkCharacterJumping();
         this.checkCharacterWalking();
         this.checkCharacterHurt();
+    }
+
+
+    /**
+    * This method plays the character's idle time animation if no movement keys are pressed.
+    */
+    animateCharacterIdleTime() {
+        if (!this.isDead()) {
+            this.playAnimation(this.IMAGES_IDLE);
+        }
+        
+    }
+
+
+    /**
+     * This method plays the character's sleeping animation.
+     */
+    animateCharacterSleeping() {
+
     }
 
 
@@ -217,6 +237,8 @@ class Character extends MovableObject {
      */
     moveCharacter() {
         let isWalking = false;
+        this.previousX = this.x;
+        this.previousY = this.y;
         if (this.shouldWalkRight()) {
             isWalking = this.characterWalkRight();
         }
@@ -228,6 +250,9 @@ class Character extends MovableObject {
         }
         this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
+        if (this.x === this.previousX && this.y === this.previousY) {
+            this.animateCharacterIdleTime();
+        }
     }
 
 
@@ -295,23 +320,6 @@ class Character extends MovableObject {
         this.jump();
         this.playJumpingSound();
         this.currentImage = 0;
-    }
-
-
-    /**
-    * This method plays the character's idle time animation if no movement keys are pressed.
-    */
-    animateCharacterIdleTime() {
-        
-
-    }
-
-
-    /**
-     * This method plays the character's sleeping animation.
-     */
-    animateCharacterSleeping() {
-
     }
 
 
