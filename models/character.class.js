@@ -268,7 +268,7 @@ class Character extends MovableObject {
      * and starts/stops the idle/sleep animation.
      */
     moveCharacter() {
-        let isWalking = false;
+        let isWalking = false; 
         this.previousX = this.x;
         this.previousY = this.y;
         if (this.shouldWalkRight()) {
