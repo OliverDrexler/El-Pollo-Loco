@@ -68,9 +68,11 @@ class Character extends MovableObject {
     ];
 
     world; // Allows access to variables from World, including keyboard
+    isIdle = false;
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
     isAnimatingDead = false;
+    
 
 
     /**
@@ -95,7 +97,7 @@ class Character extends MovableObject {
      * This method starts the character's movement and animation loops.
      */
     animate() {
-        this.checkCharacterStatus();
+        this.checkCharacterDead();
         this.startCharacterMovement();
         this.checkCharacterJumping();
         this.checkCharacterWalking();
@@ -107,7 +109,7 @@ class Character extends MovableObject {
     * This method checks the character's status at regular intervals and initiates 
     * the death animation if the character is dead.
     */
-    checkCharacterStatus() {
+    checkCharacterDead() {
         setInterval(() => {
             if (this.isDead()) {
                 this.animateCharacterDead();
@@ -293,6 +295,23 @@ class Character extends MovableObject {
         this.jump();
         this.playJumpingSound();
         this.currentImage = 0;
+    }
+
+
+    /**
+    * This method plays the character's idle time animation if no movement keys are pressed.
+    */
+    animateCharacterIdleTime() {
+        
+
+    }
+
+
+    /**
+     * This method plays the character's sleeping animation.
+     */
+    animateCharacterSleeping() {
+
     }
 
 
