@@ -283,7 +283,7 @@ class Character extends MovableObject {
         this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
 
-        if (this.x === this.previousX && this.y === this.previousY) {
+        if (!this.isDead() && !this.isHurt() && this.x === this.previousX && this.y === this.previousY) {
             this.idleTime += 1;
             if (this.idleTime >= 330) { 
                 this.stopIdleAnimation();
