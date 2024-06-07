@@ -63,6 +63,9 @@ class ThrowableObject extends MovableObject {
     }
 
 
+    /**
+    * This method plays the bottle splash animation.
+    */
     animateBottleSplash() {
         this.playAnimation(this.IMAGES_SPLASH);
     }
@@ -106,6 +109,10 @@ class ThrowableObject extends MovableObject {
     }
 
 
+    /**
+    * Sets the world reference for this throwable object.
+    * @param {World} world - The world instance to which this object belongs.
+    */
     setWorld(world) {
         this.world = world;
     }
@@ -127,6 +134,10 @@ class ThrowableObject extends MovableObject {
     }
 
 
+    /**
+    * Removes this throwable object from the world.
+    * Checks if the world is defined, and if so, removes this object from the world's list of throwable objects.
+    */
     removeFromWorld() {
         if (this.world) {
             this.world.removeThrowableObject(this);

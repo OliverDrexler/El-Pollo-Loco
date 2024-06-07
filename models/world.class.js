@@ -99,6 +99,10 @@ class World {
     }
 
 
+    /**
+     * This method removes a specific throwableObject from the level.
+     * @param {MovableObject} throwableObject - The throwableObject to remove.
+     */
     removeThrowableObject(throwableObject) {
         const index = this.throwableObject.indexOf(throwableObject);
         if (index > -1) {
