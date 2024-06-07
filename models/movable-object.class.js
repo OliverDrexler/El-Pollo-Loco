@@ -14,7 +14,7 @@ class MovableObject extends DrawableObject {
      * It decreases the object's y position and speed_y due to gravity at regular intervals.
      */
     applyGravity() {
-        setInterval(() => {
+        this.gravityInterval = setInterval(() => {
             if (this.isAboveGround() || this.speed_y > 0) {
                 this.y -= this.speed_y;
                 this.speed_y -= this.acceleration;

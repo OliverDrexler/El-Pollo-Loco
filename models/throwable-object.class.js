@@ -45,12 +45,13 @@ class ThrowableObject extends MovableObject {
     throw() {
         this.speed_y = 28;
         this.applyGravity();
-        setInterval(() => {
+        this.animateBottleInterval = setInterval(() => {
             this.animateBottle();
         }, 80);
-        setInterval(() => {
+        this.moveBottleInterval = setInterval(() => {
             this.x += 8;
         }, 25);
+
     }
 
 
@@ -107,9 +108,18 @@ class ThrowableObject extends MovableObject {
 
     /**
     * This method destroys the throwable object.
+    * It stops the bottle animation and plays the splash animation.
     */
     destroy() {
-        
+        clearInterval(this.animateBottleInterval);
+        clearInterval(this.gravityInterval);
+        clearInterval(this.moveBottleInterval);
         this.animateBottleSplash();
+        setTimeout(() => {
+            this.world.removeThrowableObject(this);
+        }, 500);
     }
+
+
+    
 }
