@@ -10,6 +10,15 @@ class ThrowableObject extends MovableObject {
         '../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png'
     ];
 
+    IMAGES_SPLASH = [
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/1_bottle_splash.png',
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/2_bottle_splash.png',
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/3_bottle_splash.png',
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/4_bottle_splash.png',
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
+        '../img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
+    ];
+
 
     /**
     * Creates an instance of a ThrowableObject.
@@ -21,6 +30,7 @@ class ThrowableObject extends MovableObject {
     constructor(x, y) {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
+        this.loadImages(this.IMAGES_SPLASH);
         this.x = x;
         this.y = y;
         this.throw();
@@ -49,5 +59,10 @@ class ThrowableObject extends MovableObject {
     */
     animateBottle() {
         this.playAnimation(this.IMAGES_BOTTLE);
+    }
+
+
+    animateBottleSplash() {
+        this.playAnimation(this.IMAGES_SPLASH);
     }
 }
