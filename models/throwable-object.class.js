@@ -76,6 +76,9 @@ class ThrowableObject extends MovableObject {
     }
 
 
+    /**
+    * This method checks for collisions with the ground.
+    */
     checkGroundCollision() {
         if (this.isCollidingWithGround()) {
             console.log('bottom hit');
@@ -85,7 +88,7 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method checks for collisions with enemies or the ground.
+    * This method checks for collisions with enemies.
     */
     checkBottleCollision(enemies, endboss) {
         if (enemies && enemies.length > 0) {
