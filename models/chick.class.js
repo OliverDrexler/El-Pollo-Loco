@@ -1,6 +1,6 @@
 class Chick extends MovableObject {
 
-    y = 345;
+    y = 365;
     width = 60;
     height = 60;
 
@@ -23,6 +23,8 @@ class Chick extends MovableObject {
      */
     constructor() {
         super().loadImage('../img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
+        this.loadImages(this.IMAGES_WALKING);
+        this.x = 400 + Math.random() * 3700;
         this.speed = 0.10 + Math.random() * 0.20;
         this.animate();
     }
@@ -33,7 +35,7 @@ class Chick extends MovableObject {
      */
     animate() {
         this.moveChick();
-        //this.playChickWalkingAnimation();
+        this.playChickWalkingAnimation();
     }
 
 
