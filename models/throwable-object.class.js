@@ -43,7 +43,6 @@ class ThrowableObject extends MovableObject {
     * It moves the object to the right at a fixed interval.
     */
     throw() {
-        console.log('groundlevel =', this.groundLevel);
         this.speed_y = 28;
         this.applyGravity();
         this.animateBottleInterval = setInterval(() => {
@@ -52,7 +51,9 @@ class ThrowableObject extends MovableObject {
         this.moveBottleInterval = setInterval(() => {
             this.x += 8;
         }, 25);
-
+        this.collisionCheckInterval = setInterval(() => {
+            this.checkGroundCollision();
+        }, 1000 / 25);
     }
 
 
@@ -75,6 +76,14 @@ class ThrowableObject extends MovableObject {
     }
 
 
+    checkGroundCollision() {
+        if (this.isCollidingWithGround()) {
+            console.log('bottom hit');
+            this.onHitGround();
+        }
+    }
+
+
     /**
     * This method checks for collisions with enemies or the ground.
     */
@@ -85,10 +94,7 @@ class ThrowableObject extends MovableObject {
                     this.onHitEnemy(enemy);
                 }
             });
-        } else if (this.isCollidingWithGround()) {
-            console.log('bottom hit');
-            this.onHitGround();
-        }
+        } 
     }
 
 
@@ -136,6 +142,7 @@ class ThrowableObject extends MovableObject {
         clearInterval(this.animateBottleInterval);
         clearInterval(this.gravityInterval);
         clearInterval(this.moveBottleInterval);
+        clearInterval(this.collisionCheckInterval);
         this.animateBottleSplash();
         const self = this;
         setTimeout(() => {

@@ -19,6 +19,7 @@ class MovableObject extends DrawableObject {
             if (this.isAboveGround() || this.speed_y > 0) {
                 this.y -= this.speed_y;
                 this.speed_y -= this.acceleration;
+                //console.log('apllyGravity.y = ', this.y)
             }
         }, 1000 / 25);
     }
@@ -89,8 +90,7 @@ class MovableObject extends DrawableObject {
     * @returns {boolean} - Returns true if the object is colliding with the ground, otherwise false.
     */
     isCollidingWithGround() {
-        console.log('Checking collision with ground:', this.y + this.height, '>=', this.groundLevel);
-        return this.y + this.height >= this.groundLevel;
+        return this.y == 400;
     }
 
 
