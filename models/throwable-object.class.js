@@ -43,6 +43,7 @@ class ThrowableObject extends MovableObject {
     * It moves the object to the right at a fixed interval.
     */
     throw() {
+        console.log('groundlevel =', this.groundLevel);
         this.speed_y = 28;
         this.applyGravity();
         this.animateBottleInterval = setInterval(() => {
@@ -123,6 +124,7 @@ class ThrowableObject extends MovableObject {
     */
     setWorld(world) {
         this.world = world;
+        this.groundLevel = world.groundLevel;
     }
 
 

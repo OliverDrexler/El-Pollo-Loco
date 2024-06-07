@@ -37,7 +37,7 @@ class MovableObject extends DrawableObject {
             return this.y < 120;
         }  
     }
-    
+
 
     ////////////// OLD isAboveGround METHOD //////////////
 
@@ -89,6 +89,7 @@ class MovableObject extends DrawableObject {
     * @returns {boolean} - Returns true if the object is colliding with the ground, otherwise false.
     */
     isCollidingWithGround() {
+        console.log('Checking collision with ground:', this.y + this.height, '>=', this.groundLevel);
         return this.y + this.height >= this.groundLevel;
     }
 
