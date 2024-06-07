@@ -61,6 +61,7 @@ class World {
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
+            bottle.setWorld(this);
             this.throwableObject.push(bottle);
         }
     }
@@ -94,6 +95,14 @@ class World {
         const index = this.level.enemies.indexOf(enemy);
         if (index > -1) {
             this.level.enemies.splice(index, 1);
+        }
+    }
+
+
+    removeThrowableObject(throwableObject) {
+        const index = this.throwableObject.indexOf(throwableObject);
+        if (index > -1) {
+            this.throwableObject.splice(index, 1);
         }
     }
 

@@ -77,7 +77,6 @@ class ThrowableObject extends MovableObject {
                 this.onHitEnemy(enemy);
             }
         });
-        
     }
 
 
@@ -106,6 +105,12 @@ class ThrowableObject extends MovableObject {
         this.destroy();
     }
 
+
+    setWorld(world) {
+        this.world = world;
+    }
+
+
     /**
     * This method destroys the throwable object.
     * It stops the bottle animation and plays the splash animation.
@@ -115,11 +120,18 @@ class ThrowableObject extends MovableObject {
         clearInterval(this.gravityInterval);
         clearInterval(this.moveBottleInterval);
         this.animateBottleSplash();
+        const self = this;
         setTimeout(() => {
-            this.world.removeThrowableObject(this);
-        }, 500);
+            self.removeFromWorld();
+        }, 800);
     }
 
 
-    
+    removeFromWorld() {
+        if (this.world) {
+            this.world.removeThrowableObject(this);
+        }
+    }
+
+
 }
