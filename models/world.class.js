@@ -47,6 +47,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
+            this.checkCollisionsWithThrowableObjects();
         }, 100);
 
     }
@@ -72,6 +73,16 @@ class World {
     checkCollisions() {
         this.character.checkCollisionsWithEnemies(this.level.enemies);
         this.statusbarHealth.setPercentage(this.character.energy);
+    }
+
+
+    /**
+    * This method checks for collisions between throwable objects and enemies or the ground.
+    */
+    checkCollisionsWithThrowableObjects() {
+        this.throwableObject.forEach((throwableObject) => {
+            throwableObject.checkBottleCollision(this.level.enemies, this.level.endboss);
+        });
     }
 
 

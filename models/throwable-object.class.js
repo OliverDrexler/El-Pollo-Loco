@@ -70,7 +70,7 @@ class ThrowableObject extends MovableObject {
     /**
     * This method checks for collisions with enemies or the ground.
     */
-    checkCollision(enemies, endboss) {
+    checkBottleCollision(enemies, endboss) {
         enemies.forEach((enemy) => {
             if (this.isColliding(enemy) && this.isCollidingTop(enemy)) {
                 this.onHitEnemy(enemy);
@@ -114,10 +114,9 @@ class ThrowableObject extends MovableObject {
     * This method destroys the throwable object.
     */
     destroy() {
-        // Logic to remove the object from the game
-        //clearInterval(this.animateInterval);
-        //clearInterval(this.moveInterval);
-        //this.world.removeThrowableObject(this);
         this.animateBottleSplash();
+        setTimeout(() => {
+            this.world.removeThrowableObject(this);
+        }, 500);
     }
 }
