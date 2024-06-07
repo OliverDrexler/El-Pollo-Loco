@@ -11,6 +11,7 @@ class World {
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
     throwableObject = [];
+    groundLevel = 400;
 
 
     /**

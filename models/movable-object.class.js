@@ -69,6 +69,15 @@ class MovableObject extends DrawableObject {
 
 
     /**
+     * This method checks if the object is colliding with the bottom (ground).
+     * @returns {boolean} True if the object's y position is greater than or equal to the ground level.
+     */
+    isCollidingBottom() {
+        return this.y + this.height >= this.world.groundLevel;
+    }
+
+
+    /**
      * This method checks if the character is colliding with the top of the given object.
      * It only returns true, if the character is in the downward motion of the jump.
      * @param {MovableObject} obj - The object to check collision with.

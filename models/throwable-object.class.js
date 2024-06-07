@@ -65,4 +65,59 @@ class ThrowableObject extends MovableObject {
     animateBottleSplash() {
         this.playAnimation(this.IMAGES_SPLASH);
     }
+
+
+    /**
+    * This method checks for collisions with enemies or the ground.
+    */
+    checkCollision(enemies, endboss) {
+        enemies.forEach((enemy) => {
+            if (this.isColliding(enemy) && this.isCollidingTop(enemy)) {
+                this.onHitEnemy(enemy);
+            }
+        });
+        if (this.isColliding(endboss)) {
+            this.onHitEndboss(endboss);
+        }
+        if (this.isCollidingBottom()) {
+            this.onHitGround();
+        }
+    }
+
+
+    /**
+    * This method handles the collision with an enemy.
+    * @param {MovableObject} enemy - The enemy that was hit.
+    */
+    onHitEnemy(enemy) {
+        enemy.die();
+        this.destroy();
+    }
+
+    /**
+    * This method handles the collision with the endboss.
+    * @param {MovableObject} endboss - The endboss that was hit.
+    */
+    onHitEndboss(endboss) {
+        endboss.takeDamage();
+        this.destroy();
+    }
+
+    /**
+    * This method handles the collision with the ground.
+    */
+    onHitGround() {
+        this.destroy();
+    }
+
+    /**
+    * This method destroys the throwable object.
+    */
+    destroy() {
+        // Logic to remove the object from the game
+        //clearInterval(this.animateInterval);
+        //clearInterval(this.moveInterval);
+        //this.world.removeThrowableObject(this);
+        this.animateBottleSplash();
+    }
 }
