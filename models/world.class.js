@@ -62,7 +62,6 @@ class World {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             bottle.setWorld(this);
             this.throwableObject.push(bottle);
-            console.log('bottle y =', bottle)
         }
     }
 

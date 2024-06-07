@@ -81,7 +81,6 @@ class ThrowableObject extends MovableObject {
     */
     checkGroundCollision() {
         if (this.isCollidingWithGround()) {
-            console.log('bottom hit');
             this.onHitGround();
         }
     }
