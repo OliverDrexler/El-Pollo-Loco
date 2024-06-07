@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
 
     speed = 0.15;
-    otherDirection = false;  
+    otherDirection = false;
     speed_y = 0;
     acceleration = 2;
     offsetY = 0; // Initialize offsetY with a default value
@@ -27,28 +27,28 @@ class MovableObject extends DrawableObject {
     /**
     * This method checks if the object is above the ground.
     * For instances of ThrowableObject, it always returns true.
-    * For other objects, it checks if the y position is less than the ground level.
-    * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
-    */
-    isAboveGround() {
-        return this.y + this.height < this.groundLevel;
-    }
-
-
-    ////////////// OLD isAboveGround METHOD //////////////
-    
-    /**
-    * This method checks if the object is above the ground.
-    * For instances of ThrowableObject, it always returns true.
     * For other objects, it checks if the y position is less than 120.
     * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
     */
-    /*isAboveGround() {
+    isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true
         } else {
             return this.y < 120;
         }  
+    }
+    
+
+    ////////////// OLD isAboveGround METHOD //////////////
+
+    /**
+    * This method checks if the object is above the ground.
+    * For instances of ThrowableObject, it always returns true.
+    * For other objects, it checks if the y position is less than the ground level.
+    * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
+    */
+    /*isAboveGround() {
+        return this.y + this.height < this.groundLevel;
     }*/
 
     ////////////////////////////////////////////////////////
@@ -85,11 +85,10 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This method checks if the object is colliding with the bottom (ground).
-     * @returns {boolean} True if the object's y position is greater than or equal to the ground level.
-     */
-    isCollidingBottom() {
-        console.log('groundlevel =', this.groundLevel)
+    * This method checks if the object is colliding with the ground.
+    * @returns {boolean} - Returns true if the object is colliding with the ground, otherwise false.
+    */
+    isCollidingWithGround() {
         return this.y + this.height >= this.groundLevel;
     }
 
