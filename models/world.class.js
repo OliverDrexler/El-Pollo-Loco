@@ -11,6 +11,7 @@ class World {
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
     throwableObject = [];
+    //chick = new Chick();
 
 
     /**
@@ -164,6 +165,7 @@ class World {
     drawMovableObjects() {
         this.ctx.translate(this.camera_x, 0);
         this.addToMap(this.character);
+        //this.addToMap(this.chick);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.throwableObject);
         this.ctx.translate(-this.camera_x, 0); // Resets the canvas translation
