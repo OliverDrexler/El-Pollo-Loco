@@ -76,12 +76,7 @@ class ThrowableObject extends MovableObject {
                 this.onHitEnemy(enemy);
             }
         });
-        if (this.isColliding(endboss)) {
-            this.onHitEndboss(endboss);
-        }
-        if (this.isCollidingBottom()) {
-            this.onHitGround();
-        }
+        
     }
 
 
@@ -114,9 +109,7 @@ class ThrowableObject extends MovableObject {
     * This method destroys the throwable object.
     */
     destroy() {
+        
         this.animateBottleSplash();
-        setTimeout(() => {
-            this.world.removeThrowableObject(this);
-        }, 500);
     }
 }
