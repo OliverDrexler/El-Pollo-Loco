@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
     offsetY = 0; // Initialize offsetY with a default value
     energy = 100;
     lastHit = 0;
+    groundLevel = 400;
 
 
     /**
@@ -26,16 +27,31 @@ class MovableObject extends DrawableObject {
     /**
     * This method checks if the object is above the ground.
     * For instances of ThrowableObject, it always returns true.
-    * For other objects, it checks if the y position is less than 120.
+    * For other objects, it checks if the y position is less than the ground level.
     * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
     */
     isAboveGround() {
+        return this.y + this.height < this.groundLevel;
+    }
+
+
+    ////////////// OLD isAboveGround METHOD //////////////
+    
+    /**
+    * This method checks if the object is above the ground.
+    * For instances of ThrowableObject, it always returns true.
+    * For other objects, it checks if the y position is less than 120.
+    * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
+    */
+    /*isAboveGround() {
         if (this instanceof ThrowableObject) {
             return true
         } else {
             return this.y < 120;
         }  
-    }
+    }*/
+
+    ////////////////////////////////////////////////////////
 
 
     ////////////// OLD & BASIC isColliding METHOD //////////////
@@ -73,7 +89,8 @@ class MovableObject extends DrawableObject {
      * @returns {boolean} True if the object's y position is greater than or equal to the ground level.
      */
     isCollidingBottom() {
-        return this.y + this.height >= this.world.groundLevel;
+        console.log('groundlevel =', this.groundLevel)
+        return this.y + this.height >= this.groundLevel;
     }
 
 
