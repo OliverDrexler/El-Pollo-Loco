@@ -67,7 +67,11 @@ class ThrowableObject extends MovableObject {
     * This method plays the bottle splash animation.
     */
     animateBottleSplash() {
-        this.playAnimation(this.IMAGES_SPLASH);
+        this.currentImage = 0;
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_SPLASH);
+        }, 166);
+        
     }
 
 
@@ -130,7 +134,7 @@ class ThrowableObject extends MovableObject {
         const self = this;
         setTimeout(() => {
             self.removeFromWorld();
-        }, 800);
+        }, 1000);
     }
 
 
