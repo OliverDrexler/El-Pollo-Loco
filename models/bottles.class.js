@@ -8,6 +8,7 @@ class Bottles extends DrawableObject {
     y = 340;
     height = 90;
     width = 90;
+    onCollisionCourse = true;
 
 
     /**

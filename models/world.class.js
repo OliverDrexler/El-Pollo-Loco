@@ -11,7 +11,8 @@ class World {
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
     throwableObject = [];
-    //chick = new Chick();
+    collectedCoins = [];
+    collectedBottles = [];
 
 
     /**
@@ -73,6 +74,8 @@ class World {
      */
     checkCollisions() {
         this.character.checkCollisionsWithEnemies(this.level.enemies);
+        this.character.checkCollisionsWithCoins(this.level.coins);
+        this.character.checkCollisionsWithBottles(this.level.bottles);
         this.statusbarHealth.setPercentage(this.character.energy);
     }
 

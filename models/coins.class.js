@@ -7,6 +7,7 @@ class Coins extends DrawableObject {
 
     height = 70;
     width = 70;
+    onCollisionCourse = true;
 
 
     /**

@@ -104,6 +104,74 @@ class MovableObject extends DrawableObject {
     }
 
 
+    //////////////////////////////////////////////////////////////////
+    
+
+    checkCollisionsWithCoins(coins) {
+        coins.forEach((coin, index) => {
+            if (this.isColliding(coin) || this.isCollidingTop(coin)) {
+                //this.collectCoin(index);
+                console.log('collectCoin called with index:', index);
+            } 
+        });
+    }
+
+
+    collectCoin(index) {
+        console.log('collectCoin called with index:', index);
+        if (!this.collectedCoins) {
+            this.collectedCoins = [];
+        }
+        if (!this.level) {
+            console.error('this.level is undefined');
+            return;
+        }
+        if (!this.level.coins) {
+            console.error('this.level.coins is undefined');
+            return;
+        }
+        if (index < 0 || index >= this.level.coins.length) {
+            console.error('Index out of bounds:', index);
+            return;
+        }
+        if (!this.level.coins[index]) {
+            console.error('Coin at index', index, 'is undefined');
+            return;
+        }
+        this.collectedCoins.push(this.level.coins[index]);
+        this.level.coins.splice(index, 1);
+        this.statusbarCoins.setPercentage(this.collectedCoins.length);
+        console.log('Collected coins:', this.collectedCoins);
+    }
+
+
+    checkCollisionsWithBottles(bottles) {
+        bottles.forEach((bottle, index) => {
+            if (this.isColliding(bottle) || this.isCollidingTop(bottle)) {
+                this.collectBottle(index);
+            } 
+        });
+    }
+
+
+    collectBottle(index) {
+        console.log('collectBottle called with index:', index);
+        if (!this.collectedBottles) {
+            this.collectedBottles = [];
+        }
+        if (!this.level || !this.level.bottles) {
+            console.error('this.level or this.level.bottles is undefined');
+            return;
+        }
+        this.collectedBottles.push(this.level.bottles[index]);
+        this.level.bottles.splice(index, 1);
+        this.statusbarBottle.setPercentage(this.collectedBottles.length);
+    }
+
+
+    //////////////////////////////////////////////////////////////////
+
+
     /**
      * This method checks for collisions with enemies.
      * If the character collides from the top, it does not take damage.
