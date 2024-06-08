@@ -9,6 +9,7 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     groundLevel = 400;
     amountCoins = 0;
+    amountBottles = 0;
 
 
     /**
@@ -36,7 +37,7 @@ class MovableObject extends DrawableObject {
             return true
         } else {
             return this.y < 120;
-        }  
+        }
     }
 
 
@@ -112,28 +113,27 @@ class MovableObject extends DrawableObject {
         coins.forEach((coin) => {
             if (this.isColliding(coin) || this.isCollidingTop(coin)) {
                 this.collectCoin();
-            } 
+            }
         });
     }
 
 
     collectCoin() {
-       this.amountCoins ++;
-       console.log('amount coins:', this.amountCoins)
+        this.amountCoins++;
     }
 
 
     checkCollisionsWithBottles(bottles) {
-        bottles.forEach((bottle, index) => {
+        bottles.forEach((bottle) => {
             if (this.isColliding(bottle) || this.isCollidingTop(bottle)) {
-                this.collectBottle(index);
-            } 
+                this.collectBottle();
+            }
         });
     }
 
 
-    collectBottle(index) {
-        
+    collectBottle() {
+        this.amountBottles++;
     }
 
 
