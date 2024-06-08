@@ -43,15 +43,15 @@ class StatusbarBottle extends DrawableObject {
     * @returns {number} The index of the image to use based on the amount.
     */
     resolveImageIndex() {
-        if (this.amount == 10) {
+        if (this.amount == 9) {
             return 5;
-        } else if (this.amount > 8) {
+        } else if (this.amount > 7) {
             return 4;
-        } else if (this.amount > 6) {
+        } else if (this.amount > 5) {
             return 3;
-        } else if (this.amount > 4) {
+        } else if (this.amount > 3) {
             return 2;
-        } else if (this.amount > 2) {
+        } else if (this.amount > 1) {
             return 1;
         } else {
             return 0;
