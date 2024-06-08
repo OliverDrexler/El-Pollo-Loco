@@ -2,6 +2,8 @@ class Character extends MovableObject {
 
     height = 300;
     y = 130;
+    offsetYTop = 110;
+    offsetX = 20;
     speed = 6;
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');

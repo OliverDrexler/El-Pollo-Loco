@@ -4,7 +4,9 @@ class MovableObject extends DrawableObject {
     otherDirection = false;
     speed_y = 0;
     acceleration = 2;
-    offsetY = 0; // Initialize offsetY with a default value
+    offsetYTop = 0; // Initialize offsetY with a default value
+    offsetYBottom = 0;
+    offsetX = 0;
     energy = 100;
     lastHit = 0;
     groundLevel = 400;
@@ -79,9 +81,10 @@ class MovableObject extends DrawableObject {
     * @returns {boolean} True if the objects are colliding, false otherwise.
     */
     isColliding(obj) {
-        return (this.x + this.width) >= obj.x && this.x <= (obj.x + obj.width) &&
-            (this.y + this.offsetY + this.height) >= obj.y &&
-            (this.y + this.offsetY) <= (obj.y + obj.height) &&
+        return (this.x + this.width - this.offsetX) >= obj.x &&
+            (this.x + this.offsetX) <= (obj.x + obj.width) &&
+            (this.y + this.height - this.offsetYBottom) >= obj.y &&
+            (this.y + this.offsetYTop) <= (obj.y + obj.height) &&
             obj.onCollisionCourse;
     }
 
@@ -106,9 +109,10 @@ class MovableObject extends DrawableObject {
     }
 
 
-    //////////////////////////////////////////////////////////////////
-
-
+    /**
+    * This method checks for collisions with coins and collects them if a collision is detected.
+    * @param {Array<Object>} coins - An array of coin objects to check for collisions.
+    */
     checkCollisionsWithCoins(coins) {
         coins.forEach((coin) => {
             if (this.isColliding(coin) || this.isCollidingTop(coin)) {
@@ -118,12 +122,21 @@ class MovableObject extends DrawableObject {
     }
 
 
+    /**
+    * This method collects a coin, increases the count of collected coins
+    * and removes the coin from the world.
+    * @param {Object} coin - The coin object to be collected.
+    */
     collectCoin(coin) {
         this.amountCoins++;
         this.world.removeCollectableObject(coin, this.world.level.coins);
     }
 
 
+    /**
+    * This method checks for collisions with bottles and collects them if a collision is detected.
+    * @param {Array<Object>} bottles - An array of bottle objects to check for collisions.
+    */
     checkCollisionsWithBottles(bottles) {
         bottles.forEach((bottle) => {
             if (this.isColliding(bottle) || this.isCollidingTop(bottle)) {
@@ -133,13 +146,15 @@ class MovableObject extends DrawableObject {
     }
 
 
+    /**
+    * This method collects a bottle, increases the count of collected bottles
+    * and removes the bottle from the world.
+    * @param {Object} bottle - The bottle object to be collected.
+    */
     collectBottle(bottle) {
         this.amountBottles++;
         this.world.removeCollectableObject(bottle, this.world.level.bottles);
     }
-
-
-    //////////////////////////////////////////////////////////////////
 
 
     /**
