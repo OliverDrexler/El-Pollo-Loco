@@ -103,6 +103,19 @@ class World {
 
 
     /**
+     * This method removes a collectable object from the specified array.
+     * @param {MovableObject} object - The object to remove.
+     * @param {Array} array - The array from which to remove the object.
+     */
+    removeCollectableObject(object, array) {
+        const index = array.indexOf(object);
+        if (index > -1) {
+            array.splice(index, 1);
+        }
+    }
+
+
+    /**
      * This method removes a specific throwableObject from the level.
      * @param {MovableObject} throwableObject - The throwableObject to remove.
      */

@@ -112,28 +112,30 @@ class MovableObject extends DrawableObject {
     checkCollisionsWithCoins(coins) {
         coins.forEach((coin) => {
             if (this.isColliding(coin) || this.isCollidingTop(coin)) {
-                this.collectCoin();
+                this.collectCoin(coin);
             }
         });
     }
 
 
-    collectCoin() {
+    collectCoin(coin) {
         this.amountCoins++;
+        this.world.removeCollectableObject(coin, this.world.level.coins);
     }
 
 
     checkCollisionsWithBottles(bottles) {
         bottles.forEach((bottle) => {
             if (this.isColliding(bottle) || this.isCollidingTop(bottle)) {
-                this.collectBottle();
+                this.collectBottle(bottle);
             }
         });
     }
 
 
-    collectBottle() {
+    collectBottle(bottle) {
         this.amountBottles++;
+        this.world.removeCollectableObject(bottle, this.world.level.bottles);
     }
 
 
