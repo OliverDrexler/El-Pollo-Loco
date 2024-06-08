@@ -43,7 +43,7 @@ class StatusbarCoins extends DrawableObject {
     * @returns {number} The index of the image to use based on the amount.
     */
     resolveImageIndex() {
-        if (this.amount == 16) {
+        if (this.amount >= 16) {
             return 5;
         } else if (this.amount > 12) {
             return 4;

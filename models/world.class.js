@@ -75,6 +75,7 @@ class World {
         this.character.checkCollisionsWithCoins(this.level.coins);
         this.character.checkCollisionsWithBottles(this.level.bottles);
         this.statusbarHealth.setPercentage(this.character.energy);
+        this.statusbarCoins.setAmount(this.character.amountCoins);
     }
 
 

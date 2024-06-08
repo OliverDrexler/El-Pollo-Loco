@@ -8,6 +8,7 @@ class MovableObject extends DrawableObject {
     energy = 100;
     lastHit = 0;
     groundLevel = 400;
+    amountCoins = 0;
 
 
     /**
@@ -117,8 +118,8 @@ class MovableObject extends DrawableObject {
 
 
     collectCoin() {
-       //this.statusbar-coins.amount ++;
-       //this.statusbarCoins.setAmount(this.statusbarCoins.amount);
+       this.amountCoins ++;
+       console.log('amount coins:', this.amountCoins)
     }
 
 
