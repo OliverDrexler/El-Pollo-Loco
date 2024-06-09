@@ -26,13 +26,15 @@ class ThrowableObject extends MovableObject {
     * Initiates the throw action.
     * @param {number} x - The initial x position of the object.
     * @param {number} y - The initial y position of the object.
+    * @param {MovableObject} character - The character throwing the object.
     */
-    constructor(x, y) {
+    constructor(x, y, character) {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
         this.loadImages(this.IMAGES_SPLASH);
         this.x = x;
         this.y = y;
+        this.character = character;
         this.throw();
     }
 
@@ -43,9 +45,8 @@ class ThrowableObject extends MovableObject {
     * It moves the object to the right at a fixed interval.
     */
     throw() {
-        if (this.amountBottles > 0) {
-            this.amountBottles --;
-            this.statusbarCoins.setAmount(this.character.amountCoins);
+        if (this.character.amountBottles > 0) {
+            this.character.amountBottles --;
             this.speed_y = 28;
             this.applyGravity();
             this.animateBottleInterval = setInterval(() => {

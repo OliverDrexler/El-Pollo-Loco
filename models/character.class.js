@@ -14,7 +14,7 @@ class Character extends MovableObject {
     sleepAnimationInterval = null;
     previousX = 0;
     previousY = 0;
-
+    amountBottles = 0;
 
 
     /**
