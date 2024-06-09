@@ -43,17 +43,24 @@ class ThrowableObject extends MovableObject {
     * It moves the object to the right at a fixed interval.
     */
     throw() {
-        this.speed_y = 28;
-        this.applyGravity();
-        this.animateBottleInterval = setInterval(() => {
-            this.animateBottle();
-        }, 80);
-        this.moveBottleInterval = setInterval(() => {
-            this.x += 8;
-        }, 25);
-        this.collisionCheckInterval = setInterval(() => {
-            this.checkGroundCollision();
-        }, 1000 / 25);
+        if (this.amountBottles > 0) {
+            this.amountBottles --;
+            this.statusbarCoins.setAmount(this.character.amountCoins);
+            this.speed_y = 28;
+            this.applyGravity();
+            this.animateBottleInterval = setInterval(() => {
+                this.animateBottle();
+            }, 80);
+            this.moveBottleInterval = setInterval(() => {
+                this.x += 8;
+            }, 25);
+            this.collisionCheckInterval = setInterval(() => {
+                this.checkGroundCollision();
+            }, 1000 / 25);
+       } else {
+            console.log('no more bottles to throw');
+        }
+
     }
 
 
@@ -96,7 +103,7 @@ class ThrowableObject extends MovableObject {
                     this.onHitEnemy(enemy);
                 }
             });
-        } 
+        }
     }
 
 

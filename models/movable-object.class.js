@@ -154,6 +154,7 @@ class MovableObject extends DrawableObject {
     collectBottle(bottle) {
         this.amountBottles++;
         this.world.removeCollectableObject(bottle, this.world.level.bottles);
+        console.log('amountBottles:', this.amountBottles)
     }
 
 
