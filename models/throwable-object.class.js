@@ -58,6 +58,7 @@ class ThrowableObject extends MovableObject {
             this.collisionCheckInterval = setInterval(() => {
                 this.checkGroundCollision();
             }, 1000 / 25);
+            console.log('amountBottles:', this.character.amountBottles)
        } else {
             console.log('no more bottles to throw');
         }
