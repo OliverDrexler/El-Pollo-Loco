@@ -53,12 +53,14 @@ class Endboss extends MovableObject {
     animationPhase = 0;
     currentImageIndex = 0;
     currentImages = this.IMAGES_ALERT;
+    speed = 0.2;
+    isCharacterNearby = false;
 
 
     /**
      * Creates an instance of BossEnemy.
      * Loads the initial image and the walking animation images, sets the initial position
-     * and starts the animation.
+     * and starts checking the position of the character.
      */
     constructor() {
         super().loadImage('../img/4_enemie_boss_chicken/2_alert/G5.png');
@@ -68,7 +70,22 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.x = 4600;
-        this.animate();
+        this.checkCharacterPosition();
+    }
+
+
+    /**
+     * This method starts checking the characters position.
+     * If the character is close enough, it starts the animation.
+     */
+    checkCharacterPosition() {
+        const checkInterval = setInterval(() => {
+            if (this.world.character.x >= 4050) {
+                this.isCharacterNearby = true;
+                this.animate();
+                clearInterval(checkInterval);
+            }
+        }, 100);
     }
 
     
@@ -80,6 +97,7 @@ class Endboss extends MovableObject {
         setInterval(() => {
             this.playAnimationEndboss();
         }, 130);
+        this.moveEndboss();
     }
 
 
@@ -107,6 +125,14 @@ class Endboss extends MovableObject {
         } else {
             this.currentImages = this.IMAGES_WALKING;
         }
+    }
+
+    moveEndboss() {
+        setInterval(() => {
+            if (this.currentImages === this.IMAGES_WALKING) {
+                this.moveLeft();
+            }
+        }, 1000 / 60);
     }
 
 
