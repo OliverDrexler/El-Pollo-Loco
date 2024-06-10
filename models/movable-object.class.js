@@ -180,7 +180,7 @@ class MovableObject extends DrawableObject {
     */
     checkCollisionsWithEndboss(endboss) {
         if (this.isColliding(endboss) || this.isCollidingTop(endboss)) {
-            this.hit();
+            this.hit(endboss);
         }
     }
 
@@ -195,18 +195,25 @@ class MovableObject extends DrawableObject {
         if (this.isCollidingTop(enemy)) {
             enemy.die();
         } else if (this.isColliding(enemy)) {
-            this.hit();
+            this.hit(enemy);
         }
     }
 
 
     /**
-    * This method decreases the energy of the object hit by 2. 
+    * This method decreases the energy of the based on the type of enemy hit. 
     * If the energy falls below 0, it sets the energy to 0.
     * It also updates the last hit timestamp.
+    * @param {Object} enemy - The enemy object that the character collided with.
     */
-    hit() {
-        this.energy -= 2;
+    hit(enemy) {
+        if (enemy instanceof Endboss) {
+            this.energy -= 10;
+        } else if (enemy instanceof Chicken) {
+            this.energy -= 5;
+        } else if (enemy instanceof Chick) {
+            this.energy -= 2;
+        }
         if (this.energy < 0) {
             this.energy = 0;
         } else {
