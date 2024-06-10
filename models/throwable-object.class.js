@@ -59,7 +59,6 @@ class ThrowableObject extends MovableObject {
     */
     throw() {
         this.character.amountBottles--;
-        console.log('Bottle thrown. Remaining bottles:', this.character.amountBottles);
         this.speed_y = 28;
         this.applyGravity();
         this.animateBottleInterval = setInterval(() => {
@@ -136,7 +135,7 @@ class ThrowableObject extends MovableObject {
         this.destroy();
     }
 
-    
+
     /**
     * This method handles the collision with the ground.
     */
