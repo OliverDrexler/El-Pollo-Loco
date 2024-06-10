@@ -207,17 +207,28 @@ class MovableObject extends DrawableObject {
     * @param {Object} enemy - The enemy object that the character collided with.
     */
     hit(enemy) {
-        if (enemy instanceof Endboss) {
-            this.energy -= 10;
-        } else if (enemy instanceof Chicken) {
-            this.energy -= 5;
-        } else if (enemy instanceof Chick) {
-            this.energy -= 2;
-        }
+        let damage = this.claculateDamage(enemy)
+        this.energy -= damage;
         if (this.energy < 0) {
             this.energy = 0;
         } else {
             this.lastHit = new Date().getTime();
+        }
+    }
+
+
+    /**
+    * This method calculates the damage based on the type of enemy.
+    * @param {Object} enemy - The enemy object to calculate damage for.
+    * @returns {number} - The amount of damage to apply.
+    */
+    claculateDamage(enemy) {
+        if (enemy instanceof Endboss) {
+            return 10;
+        } else if (enemy instanceof Chicken) {
+            return 5;
+        } else if (enemy instanceof Chick) {
+            return 2;
         }
     }
 
