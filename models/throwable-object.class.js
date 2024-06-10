@@ -126,6 +126,7 @@ class ThrowableObject extends MovableObject {
         this.destroy();
     }
 
+
     /**
     * This method handles the collision with the endboss.
     * @param {MovableObject} endboss - The endboss that was hit.
@@ -135,6 +136,7 @@ class ThrowableObject extends MovableObject {
         this.destroy();
     }
 
+    
     /**
     * This method handles the collision with the ground.
     */
