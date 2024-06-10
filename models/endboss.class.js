@@ -115,21 +115,39 @@ class Endboss extends MovableObject {
      */
     playAnimationEndboss() {
         if (this.isHurt) {
-            if (this.currentImageIndex < this.IMAGES_HURT.length) {
-                this.img = this.imageCache[this.IMAGES_HURT[this.currentImageIndex]];
-                this.currentImageIndex++;
-            } else {
-                this.isHurt = false;
-                this.currentImageIndex = 0;
-                this.currentImages = this.previousImages;
-            }
+            this.playHurtAnimation();
         } else {
-            if (this.currentImageIndex >= this.currentImages.length) {
-                this.switchAnimation();
-            }
-            this.img = this.imageCache[this.currentImages[this.currentImageIndex]];
-            this.currentImageIndex++;
+            this.playRegularAnimation();
         }
+    }
+
+
+    /**
+    * This method plays the hurt animation.
+    * If the hurt animation completes, it resets to the previous animation.
+    */
+    playHurtAnimation() {
+        if (this.currentImageIndex < this.IMAGES_HURT.length) {
+            this.img = this.imageCache[this.IMAGES_HURT[this.currentImageIndex]];
+            this.currentImageIndex++;
+        } else {
+            this.isHurt = false;
+            this.currentImageIndex = 0;
+            this.currentImages = this.previousImages;
+        }
+    }
+
+
+    /**
+    * This method plays the regular animation (alert, walking, or attack).
+    * It switches the animation set if the current animation set completes.
+    */
+    playRegularAnimation() {
+        if (this.currentImageIndex >= this.currentImages.length) {
+            this.switchAnimation();
+        }
+        this.img = this.imageCache[this.currentImages[this.currentImageIndex]];
+        this.currentImageIndex++;
     }
 
 
