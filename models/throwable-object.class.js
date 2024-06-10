@@ -3,6 +3,7 @@ class ThrowableObject extends MovableObject {
     height = 90;
     width = 90;
     throwInitiated = false;
+    hitEndboss = false;
 
     IMAGES_BOTTLE = [
         '../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -103,7 +104,9 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method checks for collisions with enemies.
+    * This method checks for collisions between the bottle and enemies.
+    * If the bottle collides with an enemy or the endboss, it handles 
+    * the collision accordingly.
     * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
     */
     checkBottleCollision(enemies) {
@@ -111,7 +114,10 @@ class ThrowableObject extends MovableObject {
             enemies.forEach((enemy) => {
                 if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
                     if (enemy instanceof Endboss) {
-                        this.onHitEndboss(enemy);
+                        if (!this.hitEndboss) {
+                            this.hitEndboss = true;
+                            this.onHitEndboss(enemy);
+                        }
                     } else {
                         this.onHitEnemy(enemy);
                     }
