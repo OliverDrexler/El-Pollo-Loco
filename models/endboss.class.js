@@ -5,6 +5,7 @@ class Endboss extends MovableObject {
     y = 30;
     offsetYTop = 110;
     offsetX = 40;
+    statusbar = new StatusbarEndboss();
 
     IMAGES_ALERT = [
         '../img/4_enemie_boss_chicken/2_alert/G5.png',
@@ -76,6 +77,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.x = 4600;
         this.checkCharacterPosition();
+        this.statusbar.setPercentage(this.energy);
     }
 
 
@@ -181,6 +183,7 @@ class Endboss extends MovableObject {
             this.currentImages = this.IMAGES_HURT;
             this.currentImageIndex = 0;
         }
+        this.statusbar.setPercentage(this.energy);
     }
 
 
