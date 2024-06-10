@@ -151,7 +151,7 @@ class Endboss extends MovableObject {
     takeDamage() {
         console.log(`Endboss takes damage. Current energy: ${this.energy}`);
 
-        this.energy -= 25;
+        this.energy -= 20;
         if (this.energy <= 0) {
             this.energy = 0;
             this.die();
