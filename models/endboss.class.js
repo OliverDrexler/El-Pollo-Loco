@@ -155,6 +155,9 @@ class Endboss extends MovableObject {
         if (this.energy <= 0) {
             this.energy = 0;
             this.die();
+            console.log('Endboss died')
+        } else {
+            console.log(`Endboss new energy level: ${this.energy}`);
         }
     }
 
