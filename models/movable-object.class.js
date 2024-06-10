@@ -159,26 +159,44 @@ class MovableObject extends DrawableObject {
 
     /**
     * This method checks for collisions between the character and enemies.
-    * If the character collides with the Endboss, the character takes damage.
-    * If the character collides with other enemies from the top, the enemies die.
-    * If the character collides with other enemies from the sides or bottom, 
-    * the character takes damage.
+    * It handles collisions with the endboss and other enemies separately.
     * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
     */
     checkCollisionsWithEnemies(enemies) {
         enemies.forEach((enemy) => {
             if (enemy instanceof Endboss) {
-                if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
-                    this.hit();
-                }
+                this.checkCollisionsWithEndboss(enemy);
             } else {
-                if (this.isCollidingTop(enemy)) {
-                    enemy.die();
-                } else if (this.isColliding(enemy)) {
-                    this.hit();
-                }
+                this.checkCollisionsWithRegularEnemy(enemy);
             }
         });
+    }
+
+
+    /**
+    * This method checks for collisions with the endboss.
+    * If the character collides with the Endboss, the character takes damage.
+    * @param {Endboss} endboss - The endboss object to check for collisions.
+    */
+    checkCollisionsWithEndboss(endboss) {
+        if (this.isColliding(endboss) || this.isCollidingTop(endboss)) {
+            this.hit();
+        }
+    }
+
+
+    /**
+    * This method checks for collisions with regular enemies.
+    * If the character collides with an enemy from the top, the enemy dies.
+    * If the character collides with an enemy from the sides or bottom, the character takes damage.
+    * @param {Object} enemy - The regular enemy object to check for collisions.
+    */
+    checkCollisionsWithRegularEnemy(enemy) {
+        if (this.isCollidingTop(enemy)) {
+            enemy.die();
+        } else if (this.isColliding(enemy)) {
+            this.hit();
+        }
     }
 
 
