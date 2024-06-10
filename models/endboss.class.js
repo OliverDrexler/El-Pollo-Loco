@@ -19,6 +19,10 @@ class Endboss extends MovableObject {
         '../img/4_enemie_boss_chicken/1_walk/G1.png',
         '../img/4_enemie_boss_chicken/1_walk/G2.png',
         '../img/4_enemie_boss_chicken/1_walk/G3.png',
+        '../img/4_enemie_boss_chicken/1_walk/G4.png',
+        '../img/4_enemie_boss_chicken/1_walk/G1.png',
+        '../img/4_enemie_boss_chicken/1_walk/G2.png',
+        '../img/4_enemie_boss_chicken/1_walk/G3.png',
         '../img/4_enemie_boss_chicken/1_walk/G4.png'
     ];
 
@@ -46,6 +50,9 @@ class Endboss extends MovableObject {
     ]
 
     onCollisionCourse = true;
+    animationPhase = 0;
+    currentImageIndex = 0;
+    currentImages = this.IMAGES_ALERT;
 
 
     /**
@@ -67,12 +74,39 @@ class Endboss extends MovableObject {
     
     /**
      * This method starts the animation for the boss enemy.
-     * It plays the walking animation in intervals.
+     * It plays the alert and walking animation alternately.
      */
     animate() {
         setInterval(() => {
-            this.playAnimation(this.IMAGES_ALERT);
-        }, 230);
+            this.playAnimationEndboss();
+        }, 200);
+    }
+
+
+    /**
+     * This method handles the animation logic, including switching between
+     * alert and walking animations once each set of images has been fully displayed.
+     */
+    playAnimationEndboss() {
+        if (this.currentImageIndex >= this.currentImages.length) {
+            this.switchAnimation();
+        }
+        this.img = this.imageCache[this.currentImages[this.currentImageIndex]];
+        this.currentImageIndex++;
+    }
+
+
+    /**
+     * This method switches the animation between alert and walking.
+     */
+    switchAnimation() {
+        this.currentImageIndex = 0;
+        this.animationPhase++;
+        if (this.animationPhase % 2 === 0) {
+            this.currentImages = this.IMAGES_ALERT;
+        } else {
+            this.currentImages = this.IMAGES_WALKING;
+        }
     }
 
 
