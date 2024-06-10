@@ -104,12 +104,19 @@ class ThrowableObject extends MovableObject {
 
     /**
     * This method checks for collisions with enemies.
+    * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
     */
-    checkBottleCollision(enemies, endboss) {
+    checkBottleCollision(enemies) {
         if (enemies && enemies.length > 0) {
             enemies.forEach((enemy) => {
                 if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
-                    this.onHitEnemy(enemy);
+                    if (enemy instanceof Endboss) {
+                        console.log('Bottle hit endboss:', enemy);
+                        this.onHitEndboss(enemy);
+                    } else {
+                        console.log('Bottle hit enemy:', enemy);
+                        this.onHitEnemy(enemy);
+                    }
                 }
             });
         }
@@ -121,11 +128,7 @@ class ThrowableObject extends MovableObject {
     * @param {MovableObject} enemy - The enemy that was hit.
     */
     onHitEnemy(enemy) {
-        if (enemy instanceof Endboss) {
-            this.onHitEndboss(enemy);
-        } else {
-            enemy.die();
-        }
+        enemy.die();
         this.destroy();
     }
 

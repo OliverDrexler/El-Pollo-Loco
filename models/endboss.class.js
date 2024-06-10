@@ -90,7 +90,7 @@ class Endboss extends MovableObject {
         }, 100);
     }
 
-    
+
     /**
      * This method starts the animation for the boss enemy.
      * It plays the alert and walking animation alternately.
