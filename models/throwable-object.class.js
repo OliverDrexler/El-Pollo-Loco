@@ -111,10 +111,8 @@ class ThrowableObject extends MovableObject {
             enemies.forEach((enemy) => {
                 if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
                     if (enemy instanceof Endboss) {
-                        console.log('Bottle hit endboss:', enemy);
                         this.onHitEndboss(enemy);
                     } else {
-                        console.log('Bottle hit enemy:', enemy);
                         this.onHitEnemy(enemy);
                     }
                 }
