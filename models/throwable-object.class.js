@@ -180,6 +180,4 @@ class ThrowableObject extends MovableObject {
             this.world.removeThrowableObject(this);
         }
     }
-
-
 }
