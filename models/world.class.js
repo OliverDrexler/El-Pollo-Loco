@@ -79,6 +79,10 @@ class World {
         this.statusbarHealth.setPercentage(this.character.energy);
         this.statusbarCoins.setAmount(this.character.amountCoins);
         this.statusbarBottle.setAmount(this.character.amountBottles);
+        const endboss = this.level.enemies.find(enemy => enemy instanceof Endboss);
+        if (endboss) {
+            this.statusbarEndboss.setPercentage(endboss.energy);
+        }
     }
 
 
