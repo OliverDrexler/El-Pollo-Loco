@@ -53,7 +53,7 @@ class Endboss extends MovableObject {
     animationPhase = 0;
     currentImageIndex = 0;
     currentImages = this.IMAGES_ALERT;
-    speed = 0.2;
+    speed = 1;
     isCharacterNearby = false;
     isDead = false;
 
@@ -81,7 +81,7 @@ class Endboss extends MovableObject {
      */
     checkCharacterPosition() {
         const checkInterval = setInterval(() => {
-            if (this.world.character.x >= 4050) {
+            if (this.world.character.x >= 4020) {
                 this.isCharacterNearby = true;
                 this.animate();
                 clearInterval(checkInterval);
