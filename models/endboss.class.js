@@ -156,18 +156,66 @@ class Endboss extends MovableObject {
      * The attack animation is played twice before switching to the next animation.
      */
     switchAnimation() {
+        this.resetImageIndex();
+        this.updateAnimationPhase();
+        this.setAnimationImages();
+    }
+    
+
+    /**
+     * This method resets the current image index to 0.
+     */
+    resetImageIndex() {
         this.currentImageIndex = 0;
-        if (this.animationPhase % 4 === 0) {
-            this.currentImages = this.IMAGES_ALERT;
-        } else if (this.animationPhase % 4 === 1) {
-            this.currentImages = this.IMAGES_WALKING
-        } else {
-            this.currentImages = this.IMAGES_ATTACK;
-        }
-        if (this.currentImages === this.IMAGES_ATTACK && this.animationPhase % 4 === 2) {
-            this.currentImages = this.IMAGES_ATTACK;
-        }
+    }
+    
+
+    /**
+     * This method updates the animation phase counter.
+     */
+    updateAnimationPhase() {
         this.animationPhase++;
+    }
+    
+
+    /**
+     * This method sets the current animation images based on the animation phase.
+     */
+    setAnimationImages() {
+        if (this.isAlertPhase()) {
+            this.currentImages = this.IMAGES_ALERT;
+        } else if (this.isWalkingPhase()) {
+            this.currentImages = this.IMAGES_WALKING;
+        } else if (this.isAttackPhase()) {
+            this.currentImages = this.IMAGES_ATTACK;
+        }
+    }
+    
+
+    /**
+     * This method checks if the current phase is the alert phase.
+     * @returns {boolean} True if it is the alert phase, otherwise false.
+     */
+    isAlertPhase() {
+        return this.animationPhase % 4 === 0;
+    }
+    
+
+    /**
+     * This method checks if the current phase is the walking phase.
+     * @returns {boolean} True if it is the walking phase, otherwise false.
+     */
+    isWalkingPhase() {
+        return this.animationPhase % 4 === 1;
+    }
+    
+    
+    /**
+     * This method checks if the current phase is the attack phase.
+     * @returns {boolean} True if it is the attack phase, otherwise false.
+     */
+    isAttackPhase() {
+        return this.animationPhase % 4 >= 2;
     }
 
 
