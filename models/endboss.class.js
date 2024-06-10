@@ -96,12 +96,14 @@ class Endboss extends MovableObject {
 
     /**
      * This method starts the animation for the boss enemy.
-     * It plays the alert and walking animation alternately.
+     * It ensures the animation interval is not set more than once.
      */
     animate() {
-        setInterval(() => {
-            this.playAnimationEndboss();
-        }, 130);
+        if (!this.animationInterval) {  
+            this.animationInterval = setInterval(() => {
+                this.playAnimationEndboss();
+            }, 130);
+        }
         this.moveEndboss();
     }
 
@@ -109,13 +111,25 @@ class Endboss extends MovableObject {
     /**
      * This method handles the animation logic, including switching between
      * alert and walking animations once each set of images has been fully displayed.
+     * If the endboss is hurt it plays the hurt animation first.
      */
     playAnimationEndboss() {
-        if (this.currentImageIndex >= this.currentImages.length) {
-            this.switchAnimation();
+        if (this.isHurt) {
+            if (this.currentImageIndex < this.IMAGES_HURT.length) {
+                this.img = this.imageCache[this.IMAGES_HURT[this.currentImageIndex]];
+                this.currentImageIndex++;
+            } else {
+                this.isHurt = false;
+                this.currentImageIndex = 0;
+                this.currentImages = this.previousImages;
+            }
+        } else {
+            if (this.currentImageIndex >= this.currentImages.length) {
+                this.switchAnimation();
+            }
+            this.img = this.imageCache[this.currentImages[this.currentImageIndex]];
+            this.currentImageIndex++;
         }
-        this.img = this.imageCache[this.currentImages[this.currentImageIndex]];
-        this.currentImageIndex++;
     }
 
 
@@ -151,24 +165,35 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+    * This method reduces the endboss's energy when it takes damage.
+    * If the energy falls below or equal to zero, the endboss dies.
+    * Otherwise, it sets the endboss to the hurt state and switches to the hurt animation.
+    */
     takeDamage() {
-        console.log(`Endboss takes damage. Current energy: ${this.energy}`);
-
         this.energy -= 20;
         if (this.energy <= 0) {
             this.energy = 0;
             this.die();
-            console.log('Endboss died')
         } else {
-            console.log(`Endboss new energy level: ${this.energy}`);
+            this.isHurt = true;
+            this.previousImages = this.currentImages;
+            this.currentImages = this.IMAGES_HURT;
+            this.currentImageIndex = 0;
         }
     }
 
 
+    /**
+    * This method andles the endboss's death.
+    * It stops the existing animation interval, starts the death animation
+    * and removes the boss from the world after a delay.
+    */
     die() {
         this.isDead = true;
         this.onCollisionCourse = false;
         //this.playDyingSound();
+        clearInterval(this.animationInterval);
         setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);
         }, 250);
