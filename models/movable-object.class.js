@@ -158,16 +158,25 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This method checks for collisions with enemies.
-     * If the character collides from the top, it does not take damage.
-     * If the character collides from the sides or bottom, it takes damage.
-     */
+    * This method checks for collisions between the character and enemies.
+    * If the character collides with the Endboss, the character takes damage.
+    * If the character collides with other enemies from the top, the enemies die.
+    * If the character collides with other enemies from the sides or bottom, 
+    * the character takes damage.
+    * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
+    */
     checkCollisionsWithEnemies(enemies) {
         enemies.forEach((enemy) => {
-            if (this.isCollidingTop(enemy)) {
-                enemy.die();
-            } else if (this.isColliding(enemy)) {
-                this.hit();
+            if (enemy instanceof Endboss) {
+                if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
+                    this.hit();
+                }
+            } else {
+                if (this.isCollidingTop(enemy)) {
+                    enemy.die();
+                } else if (this.isColliding(enemy)) {
+                    this.hit();
+                }
             }
         });
     }
