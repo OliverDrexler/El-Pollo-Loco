@@ -109,6 +109,7 @@ class ThrowableObject extends MovableObject {
         if (enemies && enemies.length > 0) {
             enemies.forEach((enemy) => {
                 if (this.isColliding(enemy) && this.isCollidingTop(enemy)) {
+                    console.log('Bottle hit enemy:', enemy);
                     this.onHitEnemy(enemy);
                 }
             });
@@ -121,7 +122,11 @@ class ThrowableObject extends MovableObject {
     * @param {MovableObject} enemy - The enemy that was hit.
     */
     onHitEnemy(enemy) {
-        enemy.die();
+        if (enemy instanceof Endboss) {
+            this.onHitEndboss(enemy);
+        } else {
+            enemy.die();
+        }
         this.destroy();
     }
 

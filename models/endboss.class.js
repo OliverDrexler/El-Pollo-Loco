@@ -56,6 +56,7 @@ class Endboss extends MovableObject {
     speed = 1;
     isCharacterNearby = false;
     isDead = false;
+    energy = 100;
 
 
     /**
@@ -147,13 +148,24 @@ class Endboss extends MovableObject {
     }
 
 
-    endbossDie() {
+    takeDamage() {
+        console.log(`Endboss takes damage. Current energy: ${this.energy}`);
+
+        this.energy -= 25;
+        if (this.energy <= 0) {
+            this.energy = 0;
+            this.die();
+        }
+    }
+
+
+    die() {
         this.isDead = true;
         this.onCollisionCourse = false;
         //this.playDyingSound();
         setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);
-        }, 150);
+        }, 250);
         setTimeout(() => {
             if (this.world) {
                 this.world.removeEnemy(this);
