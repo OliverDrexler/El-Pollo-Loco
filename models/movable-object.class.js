@@ -72,6 +72,8 @@ class MovableObject extends DrawableObject {
 
     /**
     * This method checks if the current object is colliding with another object.
+    * It includes an additional collision distance specifically for collisions 
+    * between throwable objects and the Endboss to account for visual offset.
     * @param {Object} obj - The object to check for collision.
     * @param {number} obj.x - The x position of the other object.
     * @param {number} obj.y - The y position of the other object.
@@ -81,7 +83,8 @@ class MovableObject extends DrawableObject {
     * @returns {boolean} True if the objects are colliding, false otherwise.
     */
     isColliding(obj) {
-        return (this.x + this.width - this.offsetX) >= obj.x &&
+        let extraCollisionDistance = (this instanceof ThrowableObject && obj instanceof Endboss) ? -100 : 0;
+        return (this.x + this.width - this.offsetX + extraCollisionDistance) >= obj.x &&
             (this.x + this.offsetX) <= (obj.x + obj.width) &&
             (this.y + this.height - this.offsetYBottom) >= obj.y &&
             (this.y + this.offsetYTop) <= (obj.y + obj.height) &&
