@@ -99,7 +99,7 @@ class Endboss extends MovableObject {
      * It ensures the animation interval is not set more than once.
      */
     animate() {
-        if (!this.animationInterval) {  
+        if (!this.animationInterval) {
             this.animationInterval = setInterval(() => {
                 this.playAnimationEndboss();
             }, 130);
@@ -160,7 +160,7 @@ class Endboss extends MovableObject {
         this.updateAnimationPhase();
         this.setAnimationImages();
     }
-    
+
 
     /**
      * This method resets the current image index to 0.
@@ -168,7 +168,7 @@ class Endboss extends MovableObject {
     resetImageIndex() {
         this.currentImageIndex = 0;
     }
-    
+
 
     /**
      * This method updates the animation phase counter.
@@ -176,7 +176,7 @@ class Endboss extends MovableObject {
     updateAnimationPhase() {
         this.animationPhase++;
     }
-    
+
 
     /**
      * This method sets the current animation images based on the animation phase.
@@ -190,7 +190,7 @@ class Endboss extends MovableObject {
             this.currentImages = this.IMAGES_ATTACK;
         }
     }
-    
+
 
     /**
      * This method checks if the current phase is the alert phase.
@@ -199,7 +199,7 @@ class Endboss extends MovableObject {
     isAlertPhase() {
         return this.animationPhase % 4 === 0;
     }
-    
+
 
     /**
      * This method checks if the current phase is the walking phase.
@@ -208,8 +208,8 @@ class Endboss extends MovableObject {
     isWalkingPhase() {
         return this.animationPhase % 4 === 1;
     }
-    
-    
+
+
     /**
      * This method checks if the current phase is the attack phase.
      * @returns {boolean} True if it is the attack phase, otherwise false.
@@ -237,19 +237,44 @@ class Endboss extends MovableObject {
     * Otherwise, it sets the endboss to the hurt state and switches to the hurt animation.
     */
     takeDamage() {
-        this.energy -= 20;
-        if (this.energy <= 0) {
+        this.reduceEnergy();
+        if (this.isEnergyDepleted()) {
             this.energy = 0;
             this.die();
         } else {
-            this.isHurt = true;
-            this.previousImages = this.currentImages;
-            this.currentImages = this.IMAGES_HURT;
-            this.currentImageIndex = 0;
+            this.enterHurtState();
         }
     }
 
 
+    /**
+     * This method reduces the endboss's energy by a fixed amount.
+     */
+    reduceEnergy() {
+        this.energy -= 20;
+    }
+
+
+    /**
+     * This method checks if the endboss's energy is depleted.
+     * @returns {boolean} True if the energy is zero or less, otherwise false.
+     */
+    isEnergyDepleted() {
+        return this.energy <= 0;
+    }
+
+
+    /**
+     * This method sets the endboss to the hurt state and switches to the hurt animation.
+     */
+    enterHurtState() {
+        this.isHurt = true;
+        this.previousImages = this.currentImages;
+        this.currentImages = this.IMAGES_HURT;
+        this.currentImageIndex = 0;
+    }
+
+    
     /**
     * This method andles the endboss's death.
     * It stops the existing animation interval, starts the death animation
