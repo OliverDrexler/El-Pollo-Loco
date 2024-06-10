@@ -55,6 +55,7 @@ class Endboss extends MovableObject {
     currentImages = this.IMAGES_ALERT;
     speed = 0.2;
     isCharacterNearby = false;
+    isDead = false;
 
 
     /**
@@ -143,6 +144,21 @@ class Endboss extends MovableObject {
                 this.moveLeft();
             }
         }, 1000 / 60);
+    }
+
+
+    endbossDie() {
+        this.isDead = true;
+        this.onCollisionCourse = false;
+        //this.playDyingSound();
+        setInterval(() => {
+            this.playAnimation(this.IMAGES_DEAD);
+        }, 150);
+        setTimeout(() => {
+            if (this.world) {
+                this.world.removeEnemy(this);
+            }
+        }, 1000);
     }
 
 
