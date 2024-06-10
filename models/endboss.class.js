@@ -115,16 +115,22 @@ class Endboss extends MovableObject {
 
 
     /**
-     * This method switches the animation between alert and walking.
+     * This method switches the animation between alert, walking and attack.
+     * The attack animation is played twice before switching to the next animation.
      */
     switchAnimation() {
         this.currentImageIndex = 0;
-        this.animationPhase++;
-        if (this.animationPhase % 2 === 0) {
+        if (this.animationPhase % 4 === 0) {
             this.currentImages = this.IMAGES_ALERT;
+        } else if (this.animationPhase % 4 === 1) {
+            this.currentImages = this.IMAGES_WALKING
         } else {
-            this.currentImages = this.IMAGES_WALKING;
+            this.currentImages = this.IMAGES_ATTACK;
         }
+        if (this.currentImages === this.IMAGES_ATTACK && this.animationPhase % 4 === 2) {
+            this.currentImages = this.IMAGES_ATTACK;
+        }
+        this.animationPhase++;
     }
 
 
