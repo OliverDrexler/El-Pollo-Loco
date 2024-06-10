@@ -51,7 +51,7 @@ class StatusbarCoins extends DrawableObject {
             return 3;
         } else if (this.amount > 4) {
             return 2;
-        } else if (this.amount > 1) {
+        } else if (this.amount >= 1) {
             return 1;
         } else {
             return 0;

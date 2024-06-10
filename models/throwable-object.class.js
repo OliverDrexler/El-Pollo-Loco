@@ -2,6 +2,7 @@ class ThrowableObject extends MovableObject {
 
     height = 90;
     width = 90;
+    throwInitiated = false;
 
     IMAGES_BOTTLE = [
         '../img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -32,10 +33,11 @@ class ThrowableObject extends MovableObject {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
         this.loadImages(this.IMAGES_SPLASH);
-        this.x = x;
-        this.y = y;
         this.character = character;
         if (this.character.amountBottles > 0) {
+            this.throwInitiated = true;
+            this.x = x;
+            this.y = y;
             this.throw();
         } else {
             console.log('No more bottles to throw');
