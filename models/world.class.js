@@ -55,13 +55,15 @@ class World {
     /**
     * This method checks if the space key is pressed to throw an object.
     * If the space key is pressed, it creates a new throwable object
-    * and adds it to the list of throwable objects.
+    * and adds it to the list of throwable objects if the throw is initiated.
     */
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, this.character);
             bottle.setWorld(this);
-            this.throwableObject.push(bottle);
+            if (bottle.throwInitiated) {
+                this.throwableObject.push(bottle);
+            }
         }
     }
 

@@ -24,7 +24,7 @@ class ThrowableObject extends MovableObject {
     /**
     * Creates an instance of a ThrowableObject.
     * Loads the initial image and sets the initial position.
-    * Initiates the throw action.
+    * Initiates the throw action if there are enough bottles.
     * @param {number} x - The initial x position of the object.
     * @param {number} y - The initial y position of the object.
     * @param {MovableObject} character - The character throwing the object.
@@ -33,14 +33,21 @@ class ThrowableObject extends MovableObject {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
         this.loadImages(this.IMAGES_SPLASH);
+        this.x = x;
+        this.y = y;
         this.character = character;
+        this.initiateThrow();
+    }
+
+
+    /**
+     * This method checks, if the character has bottles to throw 
+     * and initiates the throw action
+     */
+    initiateThrow() {
         if (this.character.amountBottles > 0) {
             this.throwInitiated = true;
-            this.x = x;
-            this.y = y;
             this.throw();
-        } else {
-            console.log('No more bottles to throw');
         }
     }
 
