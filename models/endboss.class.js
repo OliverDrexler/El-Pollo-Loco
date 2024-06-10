@@ -59,6 +59,7 @@ class Endboss extends MovableObject {
     isCharacterNearby = false;
     isDead = false;
     energy = 100;
+    isHurt = false;
 
 
     /**
