@@ -69,13 +69,29 @@ class World {
 
 
     /**
-     * This method checks for collisions between the character and enemies.
-     * It subtracts energy from the character when colliding with an enemy.
+     * This method checks for collisions and updates the statusbars accordingly.
      */
     checkCollisions() {
+        this.checkCharacterCollisions();
+        this.updateStatusbars();
+    }
+
+
+    /**
+     * This method checks for collisions between the character and various objects.
+     */
+    checkCharacterCollisions() {
         this.character.checkCollisionsWithEnemies(this.level.enemies);
         this.character.checkCollisionsWithCoins(this.level.coins);
         this.character.checkCollisionsWithBottles(this.level.bottles);
+    }
+
+
+    /**
+     * This method updates the statusbars for character health, collected coins, 
+     * collected bottles and endboss energy.
+     */
+    updateStatusbars() {
         this.statusbarHealth.setPercentage(this.character.energy);
         this.statusbarCoins.setAmount(this.character.amountCoins);
         this.statusbarBottle.setAmount(this.character.amountBottles);
