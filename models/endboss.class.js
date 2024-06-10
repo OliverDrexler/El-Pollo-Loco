@@ -79,7 +79,7 @@ class Endboss extends MovableObject {
     animate() {
         setInterval(() => {
             this.playAnimationEndboss();
-        }, 200);
+        }, 130);
     }
 
 
