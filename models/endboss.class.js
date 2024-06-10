@@ -127,6 +127,10 @@ class Endboss extends MovableObject {
         }
     }
 
+
+    /**
+     * This method moves the endboss to the left when in walking animation.
+     */
     moveEndboss() {
         setInterval(() => {
             if (this.currentImages === this.IMAGES_WALKING) {
