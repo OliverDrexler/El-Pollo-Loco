@@ -105,7 +105,7 @@ class Character extends MovableObject {
     handleIdleAndSleepAnimation() {
         if (!this.isDead() && !this.isHurt() && !this.isAboveGround() && this.x === this.previousX && this.y === this.previousY) {
             this.idleTime += 1;
-            if (this.idleTime >= 330) {
+            if (this.idleTime >= 500) {
                 this.stopIdleAnimation();
                 this.startSleepingAnimation();
             } else {
