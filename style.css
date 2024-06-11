@@ -68,6 +68,10 @@ canvas {
     color: white;
 }
 
+.imprint-container a:hover {
+    cursor: pointer;
+}
+
 .privacy-container {
     overflow-x: auto;
     scrollbar-color: rgba(255, 190, 53, 0.5) rgba(0, 0, 0, 0.5);
@@ -92,4 +96,56 @@ canvas {
 
 .privacy-container a {
     color: white;
+}
+
+.privacy-container a:hover {
+    cursor: pointer;
+}
+
+.legal-container {
+    position: absolute;
+    bottom: 30px;
+    display: flex;
+    gap: 30px;
+    font-family: 'Rye', serif;
+    font-size: 18px;
+}
+
+.return-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    font-family: 'Rye', serif;
+    font-size: 18px;
+    color: #FFBE35 !important;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.return-container:hover {
+    cursor: pointer;
+    color: #7F559E !important;
+}
+
+.arrow-back {
+    transform: rotate(180deg);
+    width: 50px;
+}
+
+.legal-link {
+    color: #FFBE35;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.legal-link:hover {
+    cursor: pointer;
+    color: #7F559E;
 }
