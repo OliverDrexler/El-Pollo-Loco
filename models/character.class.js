@@ -48,78 +48,6 @@ class Character extends MovableObject {
 
 
     /**
-    * This method starts the idle animation.
-    */
-    startIdleAnimation() {
-        if (!this.isDead() && !this.idleAnimationInterval) {
-            const idleFrameDuration = 2500 / CHARACTER_IMAGES.IMAGES_IDLE.length;
-            this.currentImage = 0;
-            this.idleAnimationInterval = setInterval(() => {
-                this.playAnimation(CHARACTER_IMAGES.IMAGES_IDLE);
-            }, idleFrameDuration);
-        }
-    }
-
-    /**
-     * This method stops the idle animation.
-     */
-    stopIdleAnimation() {
-        if (this.idleAnimationInterval) {
-            clearInterval(this.idleAnimationInterval);
-            this.idleAnimationInterval = null;
-        }
-    }
-
-
-    /**
-    * This method starts the sleeping animation.
-    */
-    startSleepingAnimation() {
-        if (!this.isDead() && !this.sleepAnimationInterval) {
-            const sleepFrameDuration = 1500 / CHARACTER_IMAGES.IMAGES_SLEEP.length;
-            this.currentImage = 0;
-            this.sleepAnimationInterval = setInterval(() => {
-                this.playAnimation(CHARACTER_IMAGES.IMAGES_SLEEP);
-            }, sleepFrameDuration);
-        }
-    }
-
-
-    /**
-     * This method stops the sleeping animation.
-     */
-    stopSleepingAnimation() {
-        if (this.sleepAnimationInterval) {
-            clearInterval(this.sleepAnimationInterval);
-            this.sleepAnimationInterval = null;
-        }
-    }
-
-
-    /**
-    * This method handles the logic for starting and stopping the idle and sleep animations.
-    * It checks if the character is idle and increments the idle time.
-    * If the idle time exceeds a certain threshold, it starts the sleep animation.
-    * Otherwise, it starts the idle animation.
-    */
-    handleIdleAndSleepAnimation() {
-        if (!this.isDead() && !this.isHurt() && !this.isAboveGround() && this.x === this.previousX && this.y === this.previousY) {
-            this.idleTime += 1;
-            if (this.idleTime >= 500) {
-                this.stopIdleAnimation();
-                this.startSleepingAnimation();
-            } else {
-                this.startIdleAnimation();
-            }
-        } else {
-            this.idleTime = 0;
-            this.stopIdleAnimation();
-            this.stopSleepingAnimation();
-        }
-    }
-
-
-    /**
     * This method checks the character's status at regular intervals and initiates 
     * the death animation if the character is dead.
     */
@@ -182,45 +110,51 @@ class Character extends MovableObject {
 
 
     /**
-     * This method plays the walking sound.
+     * This method plays the character's death animation once and then stops.
      */
-    playWalkingSound() {
-        if (this.walking_sound.paused) {
-            this.walking_sound.currentTime = 0;
-            this.walking_sound.play();
+    animateCharacterDead() {
+        if (!this.isAnimatingDead) {
+            this.isAnimatingDead = true;
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < CHARACTER_IMAGES.IMAGES_DEAD.length) {
+                    let path = CHARACTER_IMAGES.IMAGES_DEAD[i];
+                    this.img = this.imageCache[path];
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 200);
         }
     }
 
 
     /**
-     * This method pauses the walking sound.
+     * This method plays the character's walking animation.
      */
-    pauseWalkingSound() {
-        if (!this.walking_sound.paused) {
-            this.walking_sound.pause();
-            this.walking_sound.currentTime = 0;
+    animateCharacterWalking() {
+        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_WALKING);
         }
     }
 
 
     /**
-     * This method plays the jumping sound.
+     * This method plays the character's jumping animation.
      */
-    playJumpingSound() {
-        this.jumping_sound.currentTime = 0;
-        this.jumping_sound.play();
+    animateCharacterJumping() {
+        if (this.isAboveGround()) {
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_JUMPING);
+        }
     }
 
 
     /**
-     * This method handles the walking sound based on the character's walking state.
-     * @param {boolean} isWalking - Whether the character is walking.
+     * This method plays the character's injury animation.
      */
-    handleWalkingSound(isWalking) {
-        if (isWalking && !this.isAboveGround()) {
-            this.playWalkingSound();
-        } else {
-            this.pauseWalkingSound();
+    animateCharacterHurt() {
+        if (this.isHurt()) {
+            this.playAnimation(CHARACTER_IMAGES.IMAGES_HURT);
         }
     }
 
@@ -336,51 +270,118 @@ class Character extends MovableObject {
 
 
     /**
-     * This method plays the character's walking animation.
+     * This method handles the walking sound based on the character's walking state.
+     * @param {boolean} isWalking - Whether the character is walking.
      */
-    animateCharacterWalking() {
-        if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-            this.playAnimation(CHARACTER_IMAGES.IMAGES_WALKING);
+    handleWalkingSound(isWalking) {
+        if (isWalking && !this.isAboveGround()) {
+            this.playWalkingSound();
+        } else {
+            this.pauseWalkingSound();
         }
     }
 
 
     /**
-     * This method plays the character's jumping animation.
+     * This method plays the walking sound.
      */
-    animateCharacterJumping() {
-        if (this.isAboveGround()) {
-            this.playAnimation(CHARACTER_IMAGES.IMAGES_JUMPING);
+    playWalkingSound() {
+        if (this.walking_sound.paused) {
+            this.walking_sound.currentTime = 0;
+            this.walking_sound.play();
         }
     }
 
 
     /**
-     * This method plays the character's injury animation.
+     * This method pauses the walking sound.
      */
-    animateCharacterHurt() {
-        if (this.isHurt()) {
-            this.playAnimation(CHARACTER_IMAGES.IMAGES_HURT);
+    pauseWalkingSound() {
+        if (!this.walking_sound.paused) {
+            this.walking_sound.pause();
+            this.walking_sound.currentTime = 0;
         }
     }
 
 
     /**
-     * This method plays the character's death animation once and then stops.
+     * This method plays the jumping sound.
      */
-    animateCharacterDead() {
-        if (!this.isAnimatingDead) {
-            this.isAnimatingDead = true;
-            let i = 0;
-            const interval = setInterval(() => {
-                if (i < CHARACTER_IMAGES.IMAGES_DEAD.length) {
-                    let path = CHARACTER_IMAGES.IMAGES_DEAD[i];
-                    this.img = this.imageCache[path];
-                    i++;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 200);
+    playJumpingSound() {
+        this.jumping_sound.currentTime = 0;
+        this.jumping_sound.play();
+    }
+
+
+    /**
+    * This method handles the logic for starting and stopping the idle and sleep animations.
+    * It checks if the character is idle and increments the idle time.
+    * If the idle time exceeds a certain threshold, it starts the sleep animation.
+    * Otherwise, it starts the idle animation.
+    */
+    handleIdleAndSleepAnimation() {
+        if (!this.isDead() && !this.isHurt() && !this.isAboveGround() && this.x === this.previousX && this.y === this.previousY) {
+            this.idleTime += 1;
+            if (this.idleTime >= 500) {
+                this.stopIdleAnimation();
+                this.startSleepingAnimation();
+            } else {
+                this.startIdleAnimation();
+            }
+        } else {
+            this.idleTime = 0;
+            this.stopIdleAnimation();
+            this.stopSleepingAnimation();
+        }
+    }
+
+
+    /**
+     * This method stops the idle animation.
+     */
+    stopIdleAnimation() {
+        if (this.idleAnimationInterval) {
+            clearInterval(this.idleAnimationInterval);
+            this.idleAnimationInterval = null;
+        }
+    }
+
+
+    /**
+    * This method starts the sleeping animation.
+    */
+    startSleepingAnimation() {
+        if (!this.isDead() && !this.sleepAnimationInterval) {
+            const sleepFrameDuration = 1500 / CHARACTER_IMAGES.IMAGES_SLEEP.length;
+            this.currentImage = 0;
+            this.sleepAnimationInterval = setInterval(() => {
+                this.playAnimation(CHARACTER_IMAGES.IMAGES_SLEEP);
+            }, sleepFrameDuration);
+        }
+    }
+
+
+    /**
+    * This method starts the idle animation.
+    */
+    startIdleAnimation() {
+        if (!this.isDead() && !this.idleAnimationInterval) {
+            const idleFrameDuration = 2500 / CHARACTER_IMAGES.IMAGES_IDLE.length;
+            this.currentImage = 0;
+            this.idleAnimationInterval = setInterval(() => {
+                this.playAnimation(CHARACTER_IMAGES.IMAGES_IDLE);
+            }, idleFrameDuration);
+        }
+    }
+
+
+    /**
+     * This method stops the sleeping animation.
+     */
+    stopSleepingAnimation() {
+        if (this.sleepAnimationInterval) {
+            clearInterval(this.sleepAnimationInterval);
+            this.sleepAnimationInterval = null;
         }
     }
 }
