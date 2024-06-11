@@ -39,7 +39,7 @@ canvas {
     overflow-x: auto;
     scrollbar-color: rgba(255, 190, 53, 0.5) rgba(0, 0, 0, 0.5);
     scrollbar-width: thin;
-    padding: 20px;
+    padding: 40px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
 }
