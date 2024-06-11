@@ -67,3 +67,29 @@ canvas {
 .imprint-container a {
     color: white;
 }
+
+.privacy-container {
+    overflow-x: auto;
+    scrollbar-color: rgba(255, 190, 53, 0.5) rgba(0, 0, 0, 0.5);
+    scrollbar-width: thin;
+    padding: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: 'Roboto';
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.privacy-container h1 {
+    margin-top: 10px;
+}
+
+.privacy-container p {
+    font-size: 16px;
+}
+
+.privacy-container a {
+    color: white;
+}
