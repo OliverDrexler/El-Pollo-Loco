@@ -186,12 +186,13 @@ class ThrowableObject extends MovableObject {
 
     /**
     * Removes this throwable object from the world.
-    * Checks if the world is defined, and if so, removes this object from the world's list of throwable objects.
+    * Checks if the world is defined, and if so, removes this 
+    * object from the world's list of throwable objects.
     */
     removeFromWorld() {
         if (this.world) {
             this.world.removeThrowableObject(this);
         }
     }
-    
+
 }
