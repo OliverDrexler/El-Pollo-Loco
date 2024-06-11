@@ -232,20 +232,39 @@ class Character extends MovableObject {
      */
     moveCharacter() {
         let isWalking = false;
-        this.previousX = this.x;
-        this.previousY = this.y;
-        if (this.shouldWalkRight()) {
-            isWalking = this.characterWalkRight();
-        }
-        if (this.shouldWalkLeft()) { // this.x > 0 prevents character from walking further left when canvas ends
-            isWalking = this.characterWalkLeft();
-        }
+        this.savePreviousPosition();
+        isWalking = this.processMovement();
         if (this.shouldJump()) {
             this.characterJump();
         }
         this.updateCameraPosition();
         this.handleWalkingSound(isWalking);
         this.handleIdleAndSleepAnimation();
+    }
+
+
+    /**
+     * This method saves the previous position of the character.
+     */
+    savePreviousPosition() {
+        this.previousX = this.x;
+        this.previousY = this.y;
+    }
+
+
+    /**
+     * This method processes the characters movement to the left or right.
+     * @returns {boolean} - Returns true if the character is walking.
+     */
+    processMovement() {
+        let isWalking = false;
+        if (this.shouldWalkRight()) {
+            isWalking = this.characterWalkRight();
+        }
+        if (this.shouldWalkLeft()) { // this.x > 0 prevents character from walking further left when canvas ends
+            isWalking = this.characterWalkLeft();
+        }
+        return isWalking;
     }
 
 
