@@ -44,6 +44,10 @@ canvas {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+.imprint-container h1 {
+    margin-top: 10px;
+}
+
 .imprint-container a {
     color: white;
 }
