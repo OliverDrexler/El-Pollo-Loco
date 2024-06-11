@@ -31,9 +31,14 @@ const level1 = new Level(
         new Cloud(),
         new Cloud(),
         new Cloud(),
-        new Cloud(),
-        new Cloud(),
-        new Cloud()
+        new Cloud(400),
+        new Cloud(2400),
+        new Cloud(2900),
+        new Cloud(3200),
+        new Cloud(3800),
+        new Cloud(4200),
+        new Cloud(4400),
+        new Cloud(4700)
     ],
 
     [

@@ -20,7 +20,7 @@ class Chick extends MovableObject {
      * Creates an instance of Chick.
      * Loads the initial image, loads the walking animation images, 
      * sets a random initial x position and speed and starts the animation.
-     * @param {number} [x] - The optional initial x position for the chicken.
+     * @param {number} [x] - The optional initial x position for the chick.
      */
     constructor(x) {
         super().loadImage('../img/3_enemies_chicken/chicken_small/1_walk/1_w.png');

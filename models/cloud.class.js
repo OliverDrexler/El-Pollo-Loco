@@ -8,10 +8,11 @@ class Cloud extends MovableObject {
     /**
      * Creates an instance of Cloud.
      * Loads the initial image, sets a random initial x position and starts the animation.
+     * @param {number} [x] - The optional initial x position for the cloud.
      */
-    constructor() {
+    constructor(x) {
         super().loadImage('../img/5_background/layers/4_clouds/1.png');
-        this.x = Math.random() * 2500;
+        this.x = x !== undefined ? x : Math.random() * 2500;
         this.animate();
     }
 
