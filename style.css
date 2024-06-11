@@ -22,6 +22,10 @@ h1 {
         -2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+.d-none {
+    display: none;
+}
+
 @font-face {
     font-family: 'Rye';
     src: url('fonts/Rye-Regular.ttf') format('truetype');
@@ -34,6 +38,11 @@ h1 {
     src: url('fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
+
+#start-screen {
+    border-radius: 30px;
+    border: 5px solid #7F559E;
 }
 
 canvas {
