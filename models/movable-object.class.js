@@ -43,33 +43,6 @@ class MovableObject extends DrawableObject {
     }
 
 
-    ////////////// OLD isAboveGround METHOD //////////////
-
-    /**
-    * This method checks if the object is above the ground.
-    * For instances of ThrowableObject, it always returns true.
-    * For other objects, it checks if the y position is less than the ground level.
-    * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
-    */
-    /*isAboveGround() {
-        return this.y + this.height < this.groundLevel;
-    }*/
-
-    ////////////////////////////////////////////////////////
-
-
-    ////////////// OLD & BASIC isColliding METHOD //////////////
-
-    /*isColliding(mo) {
-        return this.x + this.width > mo.x && 
-        this.y + this.height > mo.y && 
-        this.x < mo.x && 
-        this. y < mo.y + mo.height
-    }*/
-
-    ////////////////////////////////////////////////////////////
-
-
     /**
     * This method checks if the current object is colliding with another object.
     * It includes an additional collision distance specifically for collisions 
@@ -278,5 +251,32 @@ class MovableObject extends DrawableObject {
     jump() {
         this.speed_y = 27;
     }
+
+
+    ////////////// OLD isAboveGround METHOD //////////////
+
+    /**
+    * This method checks if the object is above the ground.
+    * For instances of ThrowableObject, it always returns true.
+    * For other objects, it checks if the y position is less than the ground level.
+    * @returns {boolean} - Returns true if the object is above the ground, otherwise false.
+    */
+    /*isAboveGround() {
+        return this.y + this.height < this.groundLevel;
+    }*/
+
+    ////////////////////////////////////////////////////////
+
+
+    ////////////// OLD & BASIC isColliding METHOD //////////////
+
+    /*isColliding(mo) {
+        return this.x + this.width > mo.x && 
+        this.y + this.height > mo.y && 
+        this.x < mo.x && 
+        this. y < mo.y + mo.height
+    }*/
+
+    ////////////////////////////////////////////////////////////
 
 }
