@@ -57,4 +57,5 @@ class StatusbarBottle extends DrawableObject {
             return 0;
         }
     }
+    
 }

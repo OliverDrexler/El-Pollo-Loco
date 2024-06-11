@@ -57,4 +57,5 @@ class StatusbarEndboss extends DrawableObject {
             return 0;
         }
     }
+    
 }

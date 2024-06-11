@@ -93,4 +93,5 @@ class Chick extends MovableObject {
             }
         }, 1000);
     }
+    
 }

@@ -384,4 +384,5 @@ class Character extends MovableObject {
             this.sleepAnimationInterval = null;
         }
     }
+    
 }
