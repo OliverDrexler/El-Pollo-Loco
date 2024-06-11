@@ -55,7 +55,7 @@ class Endboss extends MovableObject {
     animationPhase = 0;
     currentImageIndex = 0;
     currentImages = this.IMAGES_ALERT;
-    speed = 1;
+    speed = 3;
     isCharacterNearby = false;
     isDead = false;
     energy = 100;
