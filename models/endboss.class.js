@@ -276,8 +276,8 @@ class Endboss extends MovableObject {
     
     /**
      * This method andles the endboss's death.
-     * It stops the existing animation interval, starts the death animation
-     * and removes the boss from the world after a delay.
+     * It stops the existing animation interval and starts the death animation.
+     * It removes the endboss from the world and shows the game won screen after a delay.
      */
     die() {
         this.isDead = true;
