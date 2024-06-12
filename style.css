@@ -112,11 +112,34 @@ canvas {
     border: 5px solid #7F559E;
 }
 
+.controls-container {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+}
+
+.controls span {
+    font-family: 'Rye', Arial, Helvetica, sans-serif;
+    color: #FFBE35;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 .arrow-right,
 .arrow-left,
 .arrow-up {
-    width: 90px;
-    height: 60px;
+    width: 80px;
+    height: 50px;
 }
 
 .arrow-left {
@@ -139,7 +162,7 @@ canvas {
     padding: 40px;
     color: white;
     background-color: rgba(0, 0, 0, 0.8);
-    font-family: 'Roboto';
+    font-family: 'Roboto', Arial, Helvetica, sans-serif;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
         -2px -2px 5px rgba(0, 0, 0, 0.4),
         2px -2px 5px rgba(0, 0, 0, 0.4),
