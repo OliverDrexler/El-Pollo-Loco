@@ -48,9 +48,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method checks the character's status at regular intervals and initiates 
-    * the death animation if the character is dead.
-    */
+     * This method checks the character's status at regular intervals and initiates 
+     * the death animation if the character is dead.
+     */
     checkCharacterDead() {
         setInterval(() => {
             if (this.isDead()) {
@@ -61,8 +61,8 @@ class Character extends MovableObject {
 
 
     /**
-    * This method starts the character's movement at a regular interval.
-    */
+     * This method starts the character's movement at a regular interval.
+     */
     startCharacterMovement() {
         setInterval(() => {
             this.moveCharacter();
@@ -71,9 +71,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method checks if the character is jumping at regular intervals and initiates 
-    * the jumping animation if the character is above ground.
-    */
+     * This method checks if the character is jumping at regular intervals and initiates 
+     * the jumping animation if the character is above ground.
+     */
     checkCharacterJumping() {
         setInterval(() => {
             if (this.isAboveGround()) {
@@ -84,9 +84,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method checks if the character is walking at regular intervals and initiates 
-    * the walking animation if the character is on the ground.
-    */
+     * This method checks if the character is walking at regular intervals and initiates 
+     * the walking animation if the character is on the ground.
+     */
     checkCharacterWalking() {
         setInterval(() => {
             if (!this.isAboveGround()) {
@@ -97,9 +97,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method checks if the character is hurt at regular intervals and initiates 
-    * the injury animation if the character is hurt.
-    */
+     * This method checks if the character is hurt at regular intervals and initiates 
+     * the injury animation if the character is hurt.
+     */
     checkCharacterHurt() {
         setInterval(() => {
             if (this.isHurt()) {
@@ -211,18 +211,18 @@ class Character extends MovableObject {
 
 
     /**
-    * This method determines if the character should walk right based on keyboard input.
-    * @returns {boolean} - Returns true if the character should walk right, otherwise false.
-    */
+     * This method determines if the character should walk right based on keyboard input.
+     * @returns {boolean} - Returns true if the character should walk right, otherwise false.
+     */
     shouldWalkRight() {
         return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
     }
 
 
     /**
-    * This method moves the character to the right.
-    * @returns {boolean} - Returns true indicating the character is walking.
-    */
+     * This method moves the character to the right.
+     * @returns {boolean} - Returns true indicating the character is walking.
+     */
     characterWalkRight() {
         this.moveRight();
         this.otherDirection = false;
@@ -231,9 +231,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method determines if the character should walk left based on keyboard input.
-    * @returns {boolean} - Returns true if the character should walk left, otherwise false.
-    */
+     * This method determines if the character should walk left based on keyboard input.
+     * @returns {boolean} - Returns true if the character should walk left, otherwise false.
+     */
     shouldWalkLeft() {
         return this.world.keyboard.LEFT && this.x > 0;
     }
@@ -251,9 +251,9 @@ class Character extends MovableObject {
 
 
     /**
-    * This method determines if the character should jump based on keyboard input.
-    * @returns {boolean} - Returns true if the character should jump, otherwise false.
-    */
+     * This method determines if the character should jump based on keyboard input.
+     * @returns {boolean} - Returns true if the character should jump, otherwise false.
+     */
     shouldJump() {
         return this.world.keyboard.UP && !this.isAboveGround(); // keyboard up & is NOT above ground
     }
@@ -314,11 +314,11 @@ class Character extends MovableObject {
 
 
     /**
-    * This method handles the logic for starting and stopping the idle and sleep animations.
-    * It checks if the character is idle and increments the idle time.
-    * If the idle time exceeds a certain threshold, it starts the sleep animation.
-    * Otherwise, it starts the idle animation.
-    */
+     * This method handles the logic for starting and stopping the idle and sleep animations.
+     * It checks if the character is idle and increments the idle time.
+     * If the idle time exceeds a certain threshold, it starts the sleep animation.
+     * Otherwise, it starts the idle animation.
+     */
     handleIdleAndSleepAnimation() {
         if (!this.isDead() && !this.isHurt() && !this.isAboveGround() && this.x === this.previousX && this.y === this.previousY) {
             this.idleTime += 1;
@@ -348,8 +348,8 @@ class Character extends MovableObject {
 
 
     /**
-    * This method starts the sleeping animation.
-    */
+     * This method starts the sleeping animation.
+     */
     startSleepingAnimation() {
         if (!this.isDead() && !this.sleepAnimationInterval) {
             const sleepFrameDuration = 1500 / CHARACTER_IMAGES.IMAGES_SLEEP.length;
@@ -362,8 +362,8 @@ class Character extends MovableObject {
 
 
     /**
-    * This method starts the idle animation.
-    */
+     * This method starts the idle animation.
+     */
     startIdleAnimation() {
         if (!this.isDead() && !this.idleAnimationInterval) {
             const idleFrameDuration = 2500 / CHARACTER_IMAGES.IMAGES_IDLE.length;
@@ -384,5 +384,5 @@ class Character extends MovableObject {
             this.sleepAnimationInterval = null;
         }
     }
-    
+
 }

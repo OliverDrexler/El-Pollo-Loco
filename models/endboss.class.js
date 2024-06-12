@@ -231,10 +231,10 @@ class Endboss extends MovableObject {
 
 
     /**
-    * This method reduces the endboss's energy when it takes damage.
-    * If the energy falls below or equal to zero, the endboss dies.
-    * Otherwise, it sets the endboss to the hurt state and switches to the hurt animation.
-    */
+     * This method reduces the endboss's energy when it takes damage.
+     * If the energy falls below or equal to zero, the endboss dies.
+     * Otherwise, it sets the endboss to the hurt state and switches to the hurt animation.
+     */
     takeDamage() {
         this.reduceEnergy();
         if (this.isEnergyDepleted()) {
@@ -275,10 +275,10 @@ class Endboss extends MovableObject {
 
     
     /**
-    * This method andles the endboss's death.
-    * It stops the existing animation interval, starts the death animation
-    * and removes the boss from the world after a delay.
-    */
+     * This method andles the endboss's death.
+     * It stops the existing animation interval, starts the death animation
+     * and removes the boss from the world after a delay.
+     */
     die() {
         this.isDead = true;
         this.onCollisionCourse = false;

@@ -28,9 +28,9 @@ class StatusbarBottle extends DrawableObject {
 
 
     /**
-    * This method sets the amount and updates the status bar image accordingly.
-    * @param {number} amount - The amount to set for the status bar.
-    */
+     * This method sets the amount and updates the status bar image accordingly.
+     * @param {number} amount - The amount to set for the status bar.
+     */
     setAmount(amount) {
         this.amount = amount;
         let path = this.IMAGES_STATUSBAR[this.resolveImageIndex()];
@@ -39,9 +39,9 @@ class StatusbarBottle extends DrawableObject {
 
 
     /**
-    * This method resolves the image index based on the current amount.
-    * @returns {number} The index of the image to use based on the amount.
-    */
+     * This method resolves the image index based on the current amount.
+     * @returns {number} The index of the image to use based on the amount.
+     */
     resolveImageIndex() {
         if (this.amount >= 9) {
             return 5;

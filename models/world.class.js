@@ -14,10 +14,10 @@ class World {
 
 
     /**
-    * This method creates an instance of World.
-    * @param {HTMLCanvasElement} canvas - The canvas element from game.js.
-    * @param {Object} keyboard - The keyboard input object.
-    */
+     * This method creates an instance of World.
+     * @param {HTMLCanvasElement} canvas - The canvas element from game.js.
+     * @param {Object} keyboard - The keyboard input object.
+     */
     constructor(canvas, keyboard) { // canvas- & keyboard-variable from game.js
         this.character = new Character();
         this.level = level1;
@@ -41,10 +41,10 @@ class World {
 
 
     /**
-    * This method starts the main game loop.
-    * Periodically checks for collisions, throwable objects
-    * and game over status.
-    */
+     * This method starts the main game loop.
+     * Periodically checks for collisions, throwable objects
+     * and game over status.
+     */
     run() {
         setInterval(() => {
             this.checkCollisions();
@@ -82,10 +82,10 @@ class World {
 
 
     /**
-    * This method checks if the space key is pressed to throw an object.
-    * If the space key is pressed, it creates a new throwable object
-    * and adds it to the list of throwable objects if the throw is initiated.
-    */
+     * This method checks if the space key is pressed to throw an object.
+     * If the space key is pressed, it creates a new throwable object
+     * and adds it to the list of throwable objects if the throw is initiated.
+     */
     checkThrowObjects() {
         if (this.keyboard.SPACE) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, this.character);
@@ -132,8 +132,8 @@ class World {
 
 
     /**
-    * This method checks for collisions between throwable objects and enemies or the ground.
-    */
+     * This method checks for collisions between throwable objects and enemies or the ground.
+     */
     checkCollisionsWithThrowableObjects() {
         this.throwableObject.forEach((throwableObject) => {
             throwableObject.checkBottleCollision(this.level.enemies, this.level.endboss);

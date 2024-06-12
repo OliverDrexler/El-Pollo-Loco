@@ -20,9 +20,9 @@ class DrawableObject {
 
 
     /**
-    * This method draws the object on the canvas.
-    * @param {CanvasRenderingContext2D} ctx - The drawing context of the canvas.
-    */
+     * This method draws the object on the canvas.
+     * @param {CanvasRenderingContext2D} ctx - The drawing context of the canvas.
+     */
     draw(ctx) {
         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }

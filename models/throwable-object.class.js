@@ -23,13 +23,13 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * Creates an instance of a ThrowableObject.
-    * Loads the initial image and sets the initial position.
-    * Initiates the throw action if there are enough bottles.
-    * @param {number} x - The initial x position of the object.
-    * @param {number} y - The initial y position of the object.
-    * @param {MovableObject} character - The character throwing the object.
-    */
+     * Creates an instance of a ThrowableObject.
+     * Loads the initial image and sets the initial position.
+     * Initiates the throw action if there are enough bottles.
+     * @param {number} x - The initial x position of the object.
+     * @param {number} y - The initial y position of the object.
+     * @param {MovableObject} character - The character throwing the object.
+     */
     constructor(x, y, character) {
         super().loadImage('../img/6_salsa_bottle/bottle_rotation/4_bottle_rotation.png');
         this.loadImages(this.IMAGES_BOTTLE);
@@ -54,10 +54,10 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method initiates the throw action.
-    * It sets the initial vertical speed and applies gravity.
-    * It moves the object to the right at a fixed interval.
-    */
+     * This method initiates the throw action.
+     * It sets the initial vertical speed and applies gravity.
+     * It moves the object to the right at a fixed interval.
+     */
     throw() {
         this.character.amountBottles--;
         this.speed_y = 28;
@@ -75,16 +75,16 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method plays the bottle animation.
-    */
+     * This method plays the bottle animation.
+     */
     animateBottle() {
         this.playAnimation(this.IMAGES_BOTTLE);
     }
 
 
     /**
-    * This method plays the bottle splash animation.
-    */
+     * This method plays the bottle splash animation.
+     */
     animateBottleSplash() {
         this.currentImage = 0;
         setInterval(() => {
@@ -94,8 +94,8 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method checks for collisions with the ground.
-    */
+     * This method checks for collisions with the ground.
+     */
     checkGroundCollision() {
         if (this.isCollidingWithGround()) {
             this.onHitGround();
@@ -104,11 +104,11 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method checks for collisions between the bottle and enemies.
-    * If the bottle collides with an enemy or the endboss, it handles 
-    * the collision accordingly.
-    * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
-    */
+     * This method checks for collisions between the bottle and enemies.
+     * If the bottle collides with an enemy or the endboss, it handles 
+     * the collision accordingly.
+     * @param {Array<Object>} enemies - An array of enemy objects to check for collisions.
+     */
     checkBottleCollision(enemies) {
         if (enemies && enemies.length > 0) {
             enemies.forEach((enemy) => {
@@ -121,8 +121,8 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method handles the collision with an enemy or the endboss.
-    * @param {Object} enemy - The enemy object that the bottle collided with.
+     * This method handles the collision with an enemy or the endboss.
+     * @param {Object} enemy - The enemy object that the bottle collided with.
      */
     handleCollision(enemy) {
         if (enemy instanceof Endboss) {
@@ -134,10 +134,10 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method handles the collision with the endboss.
-    * It ensures the endboss is only hit once per bottle.
-    * @param {Endboss} endboss - The endboss object that the bottle collided with.
-    */
+     * This method handles the collision with the endboss.
+     * It ensures the endboss is only hit once per bottle.
+     * @param {Endboss} endboss - The endboss object that the bottle collided with.
+     */
     handleEndbossCollision(endboss) {
         if (!this.hitEndboss) {
             this.hitEndboss = true;
@@ -147,9 +147,9 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method handles the collision with an enemy.
-    * @param {MovableObject} enemy - The enemy that was hit.
-    */
+     * This method handles the collision with an enemy.
+     * @param {MovableObject} enemy - The enemy that was hit.
+     */
     onHitEnemy(enemy) {
         enemy.die();
         this.destroy();
@@ -157,9 +157,9 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method handles the collision with the endboss.
-    * @param {MovableObject} endboss - The endboss that was hit.
-    */
+     * This method handles the collision with the endboss.
+     * @param {MovableObject} endboss - The endboss that was hit.
+     */
     onHitEndboss(endboss) {
         endboss.takeDamage();
         this.destroy();
@@ -167,17 +167,17 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method handles the collision with the ground.
-    */
+     * This method handles the collision with the ground.
+     */
     onHitGround() {
         this.destroy();
     }
 
 
     /**
-    * Sets the world reference for this throwable object.
-    * @param {World} world - The world instance to which this object belongs.
-    */
+     * Sets the world reference for this throwable object.
+     * @param {World} world - The world instance to which this object belongs.
+     */
     setWorld(world) {
         this.world = world;
         this.groundLevel = world.groundLevel;
@@ -185,9 +185,9 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * This method destroys the throwable object.
-    * It stops the bottle animation and plays the splash animation.
-    */
+     * This method destroys the throwable object.
+     * It stops the bottle animation and plays the splash animation.
+     */
     destroy() {
         clearInterval(this.animateBottleInterval);
         clearInterval(this.gravityInterval);
@@ -202,10 +202,10 @@ class ThrowableObject extends MovableObject {
 
 
     /**
-    * Removes this throwable object from the world.
-    * Checks if the world is defined, and if so, removes this 
-    * object from the world's list of throwable objects.
-    */
+     * Removes this throwable object from the world.
+     * Checks if the world is defined, and if so, removes this 
+     * object from the world's list of throwable objects.
+     */
     removeFromWorld() {
         if (this.world) {
             this.world.removeThrowableObject(this);

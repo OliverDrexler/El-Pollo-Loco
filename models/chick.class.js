@@ -41,9 +41,9 @@ class Chick extends MovableObject {
 
 
     /**
-    * This method moves the chicken to the left if it is not dead.
-    * Runs at 60 frames per second.
-    */
+     * This method moves the chicken to the left if it is not dead.
+     * Runs at 60 frames per second.
+     */
     moveChick() {
         setInterval(() => {
             if (!this.isDead) {
@@ -54,9 +54,9 @@ class Chick extends MovableObject {
 
 
     /**
-    * This method plays the walking animation for the chick if it is not dead.
-    * It changes the image every 150 milliseconds.
-    */
+     * This method plays the walking animation for the chick if it is not dead.
+     * It changes the image every 150 milliseconds.
+     */
     playChickWalkingAnimation() {
         setInterval(() => {
             if (!this.isDead) {
