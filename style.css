@@ -13,7 +13,8 @@ body {
 }
 
 h1 {
-    margin: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     color: #FFBE35;
     font-family: 'Rye', serif;
     font-size: 80px;
