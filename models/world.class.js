@@ -59,11 +59,13 @@ class World {
 
     /**
      * This method checks if the game is over.
-     * If the character is dead, it triggers the game over screen.
+     * If the character is dead, it triggers the game over screen after 1850 milliseconds.
      */
     checkGameOver() {
         if (this.character.isDead()) {
-            this.stopGame();
+            setTimeout(() => {
+                this.stopGame();
+            }, 1850);
         }
     }
 
