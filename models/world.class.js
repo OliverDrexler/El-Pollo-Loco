@@ -42,15 +42,42 @@ class World {
 
     /**
     * This method starts the main game loop.
-    * Periodically checks for collisions and throwable objects.
+    * Periodically checks for collisions, throwable objects
+    * and game over status.
     */
     run() {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
             this.checkCollisionsWithThrowableObjects();
+            this.checkGameOver();
         }, 100);
+    }
 
+
+    /**
+     * This method checks if the game is over.
+     * If the character is dead, it triggers the game over screen.
+     */
+    checkGameOver() {
+        if (this.character.isDead()) {
+            this.stopGame();
+        }
+    }
+
+    /**
+     * This method stops the game, hides the canvas and shows the game over screen.
+     */
+    stopGame() {
+        this.displayGameOverScreen();
+    }
+
+    /**
+     * This method displays the game over screen.
+     */
+    displayGameOverScreen() {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('game-over-screen').classList.remove('d-none');
     }
 
 
