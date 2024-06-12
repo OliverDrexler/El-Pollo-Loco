@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let gameIntervals = [];
 
 
 /**
@@ -26,11 +27,15 @@ function startGame() {
 
 
 function restartGame() {
-    world.stopAllIntervals();
+    clearAllIntervals();
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
 }
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+  }
 
 
 /**

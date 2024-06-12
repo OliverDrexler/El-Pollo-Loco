@@ -1,16 +1,10 @@
 class World {
 
-    character;
-    level;
+    
     canvas; // New variable for draw function
     ctx;
     keyboard;
-    camera_x = 0;
-    statusbarHealth = new StatusbarHealth();
-    statusbarBottle = new StatusbarBottle();
-    statusbarCoins = new StatusbarCoins();
-    statusbarEndboss = new StatusbarEndboss();
-    throwableObject = [];
+    
 
 
     /**
@@ -18,17 +12,27 @@ class World {
      * @param {HTMLCanvasElement} canvas - The canvas element from game.js.
      * @param {Object} keyboard - The keyboard input object.
      */
-    constructor(canvas, keyboard) { // canvas- & keyboard-variable from game.js
-        this.character = new Character();
-        this.level = level1;
+    constructor(canvas, keyboard) {
+        this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
-        this.canvas = canvas; // this.canvas = Variable from this document
         this.keyboard = keyboard;
+        this.initLevel();
         this.draw();
         this.setWorld();
         this.run();
     }
 
+    initLevel() {
+        this.character = new Character();
+        this.level = level1;
+        this.camera_x = 0;
+        this.statusbarHealth = new StatusbarHealth();
+        this.statusbarBottle = new StatusbarBottle();
+        this.statusbarCoins = new StatusbarCoins();
+        this.statusbarEndboss = new StatusbarEndboss();
+        this.throwableObject = [];
+        this.setWorld();
+    }
 
     /**
      * This method sets the current instance of the world to the character and enemies.
@@ -41,26 +45,16 @@ class World {
 
 
     /**
-     * This method stops all intervals to ensure the game can be restarted cleanly.
-     */
-    stopAllIntervals() {
-        clearInterval(this.animationInterval);
-        clearInterval(this.checkCollisionsInterval);
-        clearInterval(this.throwObjectsInterval);
-        clearInterval(this.checkCollisionsWithThrowableObjectsInterval);
-        clearInterval(this.checkGameOverInterval);
-    }
-
-    
-    /**
      * This method starts the main game loop.
      * Periodically checks for collisions, throwable objects, and game over status.
      */
     run() {
-        this.checkCollisionsInterval = setInterval(() => this.checkCollisions(), 100);
-        this.throwObjectsInterval = setInterval(() => this.checkThrowObjects(), 100);
-        this.checkCollisionsWithThrowableObjectsInterval = setInterval(() => this.checkCollisionsWithThrowableObjects(), 100);
-        this.checkGameOverInterval = setInterval(() => this.checkGameOver(), 100);
+        setInterval(() => {
+            this.checkCollisions();
+            this.checkThrowObjects();
+            this.checkCollisionsWithThrowableObjects();
+            this.checkGameOver();
+        }, 100);
     }
 
 

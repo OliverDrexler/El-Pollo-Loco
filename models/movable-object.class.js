@@ -123,10 +123,10 @@ class MovableObject extends DrawableObject {
 
 
     /**
-    * This method collects a bottle, increases the count of collected bottles
-    * and removes the bottle from the world.
-    * @param {Object} bottle - The bottle object to be collected.
-    */
+     * This method collects a bottle, increases the count of collected bottles
+     * and removes the bottle from the world.
+     * @param {Object} bottle - The bottle object to be collected.
+     */
     collectBottle(bottle) {
         this.amountBottles++;
         this.world.removeCollectableObject(bottle, this.world.level.bottles);
@@ -162,11 +162,11 @@ class MovableObject extends DrawableObject {
 
 
     /**
-    * This method checks for collisions with regular enemies.
-    * If the character collides with an enemy from the top, the enemy dies.
-    * If the character collides with an enemy from the sides or bottom, the character takes damage.
-    * @param {Object} enemy - The regular enemy object to check for collisions.
-    */
+     * This method checks for collisions with regular enemies.
+     * If the character collides with an enemy from the top, the enemy dies.
+     * If the character collides with an enemy from the sides or bottom, the character takes damage.
+     * @param {Object} enemy - The regular enemy object to check for collisions.
+     */
     checkCollisionsWithRegularEnemy(enemy) {
         if (this.isCollidingTop(enemy)) {
             enemy.die();
