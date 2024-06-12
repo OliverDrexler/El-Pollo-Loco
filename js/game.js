@@ -15,6 +15,16 @@ function init() {
 
 
 /**
+ * This function hides the startscreen, shows the canvas and initializes the game.
+ */
+function startGame() {
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('canvas').classList.remove('d-none');
+    init();
+}
+
+
+/**
  * Event listener for keydown events.
  * Sets the appropriate keyboard properties to true based on the pressed key.
  * @param {KeyboardEvent} event - The keyboard event.
