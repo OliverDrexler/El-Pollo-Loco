@@ -53,7 +53,7 @@ h1 {
 }
 
 #start-screen img,
-#game-over-screen img:first-child {
+#game-over-screen img:nth-child(2) {
     position: relative;
     z-index: 1;
     width: 720px;
@@ -63,7 +63,7 @@ h1 {
 
 .start-game-btn {
     position: absolute;
-    z-index: 2;
+    z-index: 4;
     margin-top: 20px;
     display: flex;
     justify-content: center;

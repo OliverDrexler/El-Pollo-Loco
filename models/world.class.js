@@ -41,17 +41,26 @@ class World {
 
 
     /**
+     * This method stops all intervals to ensure the game can be restarted cleanly.
+     */
+    stopAllIntervals() {
+        clearInterval(this.animationInterval);
+        clearInterval(this.checkCollisionsInterval);
+        clearInterval(this.throwObjectsInterval);
+        clearInterval(this.checkCollisionsWithThrowableObjectsInterval);
+        clearInterval(this.checkGameOverInterval);
+    }
+
+    
+    /**
      * This method starts the main game loop.
-     * Periodically checks for collisions, throwable objects
-     * and game over status.
+     * Periodically checks for collisions, throwable objects, and game over status.
      */
     run() {
-        setInterval(() => {
-            this.checkCollisions();
-            this.checkThrowObjects();
-            this.checkCollisionsWithThrowableObjects();
-            this.checkGameOver();
-        }, 100);
+        this.checkCollisionsInterval = setInterval(() => this.checkCollisions(), 100);
+        this.throwObjectsInterval = setInterval(() => this.checkThrowObjects(), 100);
+        this.checkCollisionsWithThrowableObjectsInterval = setInterval(() => this.checkCollisionsWithThrowableObjects(), 100);
+        this.checkGameOverInterval = setInterval(() => this.checkGameOver(), 100);
     }
 
 

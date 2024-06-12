@@ -25,6 +25,14 @@ function startGame() {
 }
 
 
+function restartGame() {
+    world.stopAllIntervals();
+    document.getElementById('game-over-screen').classList.add('d-none');
+    document.getElementById('canvas').classList.remove('d-none');
+    init();
+}
+
+
 /**
  * Event listener for keydown events.
  * Sets the appropriate keyboard properties to true based on the pressed key.
