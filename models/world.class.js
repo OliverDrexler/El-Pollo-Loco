@@ -1,6 +1,5 @@
 class World {
 
-    
     canvas; // New variable for draw function
     ctx;
     keyboard;
