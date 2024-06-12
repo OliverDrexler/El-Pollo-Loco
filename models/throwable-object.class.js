@@ -117,11 +117,9 @@ class ThrowableObject extends MovableObject {
                         if (!this.hitEndboss) {
                             this.hitEndboss = true;
                             this.onHitEndboss(enemy);
-                            console.log('collision detected')
                         }
                     } else {
                         this.onHitEnemy(enemy);
-                        console.log('collision detected')
                     }
                 }
             });

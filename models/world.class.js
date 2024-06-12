@@ -1,7 +1,7 @@
 class World {
 
-    character = new Character();
-    level = level1;
+    character;
+    level;
     canvas; // New variable for draw function
     ctx;
     keyboard;
@@ -19,6 +19,8 @@ class World {
     * @param {Object} keyboard - The keyboard input object.
     */
     constructor(canvas, keyboard) { // canvas- & keyboard-variable from game.js
+        this.character = new Character();
+        this.level = level1;
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas; // this.canvas = Variable from this document
         this.keyboard = keyboard;
@@ -258,5 +260,5 @@ class World {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
-    
+
 }

@@ -4,18 +4,19 @@ let keyboard = new Keyboard();
 
 
 /**
- * This function initializes the game by setting up the canvas and world and logging the character.
+ * This function initializes the game by setting up the canvas and world.
+ * It also starts checking the position of the endboss relative to the character.
  */
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
-
-    console.log('my character is', world.character)
+    world.level.endboss.checkCharacterPosition();
 }
 
 
 /**
- * This function hides the startscreen, shows the canvas and initializes the game.
+ * This function starts the game by hiding the startscreen, 
+ * showing the canvas and initializing the game.
  */
 function startGame() {
     document.getElementById('start-screen').style.display = 'none';

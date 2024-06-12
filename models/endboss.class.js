@@ -64,8 +64,8 @@ class Endboss extends MovableObject {
 
     /**
      * Creates an instance of BossEnemy.
-     * Loads the initial image and the walking animation images, sets the initial position
-     * and starts checking the position of the character.
+     * Loads the initial image and the walking animation images 
+     * and sets the initial position.
      */
     constructor() {
         super().loadImage('../img/4_enemie_boss_chicken/2_alert/G5.png');
@@ -75,7 +75,6 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_HURT);
         this.loadImages(this.IMAGES_DEAD);
         this.x = 4600;
-        this.checkCharacterPosition();
     }
 
 
@@ -85,7 +84,7 @@ class Endboss extends MovableObject {
      */
     checkCharacterPosition() {
         const checkInterval = setInterval(() => {
-            if (this.world.character.x >= 4020) {
+            if (this.world && this.world.character && this.world.character.x >= 4020) {
                 this.isCharacterNearby = true;
                 this.animate();
                 clearInterval(checkInterval);
