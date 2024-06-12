@@ -8,6 +8,7 @@ let keyboard = new Keyboard();
  * It also starts checking the position of the endboss relative to the character.
  */
 function init() {
+    initLevel();
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     world.level.endboss.checkCharacterPosition();
@@ -29,8 +30,11 @@ function restartGame() {
     clearAllIntervals();
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
+    //let context = canvas.getContext('2d');
+    //context.clearRect(0, 0, canvas.width, canvas.height);
     init();
 }
+
 
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);

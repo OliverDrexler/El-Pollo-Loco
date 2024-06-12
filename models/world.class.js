@@ -1,8 +1,16 @@
 class World {
 
+    character = new Character();
+    level = level1;
+    camera_x = 0;
     canvas; // New variable for draw function
     ctx;
     keyboard;
+    statusbarHealth = new StatusbarHealth();
+    statusbarBottle = new StatusbarBottle();
+    statusbarCoins = new StatusbarCoins();
+    statusbarEndboss = new StatusbarEndboss();
+    throwableObject = [];
     
 
 
@@ -15,23 +23,11 @@ class World {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.keyboard = keyboard;
-        this.initLevel();
         this.draw();
         this.setWorld();
         this.run();
     }
 
-    initLevel() {
-        this.character = new Character();
-        this.level = level1;
-        this.camera_x = 0;
-        this.statusbarHealth = new StatusbarHealth();
-        this.statusbarBottle = new StatusbarBottle();
-        this.statusbarCoins = new StatusbarCoins();
-        this.statusbarEndboss = new StatusbarEndboss();
-        this.throwableObject = [];
-        this.setWorld();
-    }
 
     /**
      * This method sets the current instance of the world to the character and enemies.
@@ -75,6 +71,7 @@ class World {
     stopGame() {
         this.displayGameOverScreen();
     }
+
 
     /**
      * This method displays the game over screen.
