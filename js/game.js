@@ -33,6 +33,7 @@ function startGame() {
 function restartGame() {
     clearAllIntervals();
     document.getElementById('game-over-screen').classList.add('d-none');
+    document.getElementById('game-won-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
 }

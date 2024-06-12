@@ -290,6 +290,7 @@ class Endboss extends MovableObject {
         setTimeout(() => {
             if (this.world) {
                 this.world.removeEnemy(this);
+                this.world.displayWinScreen();
             }
         }, 1000);
     }

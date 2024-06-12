@@ -83,6 +83,15 @@ class World {
 
 
     /**
+     * This method displays the game over screen.
+     */
+    displayWinScreen() {
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('game-won-screen').classList.remove('d-none');
+    }
+
+
+    /**
      * This method checks if the space key is pressed to throw an object.
      * If the space key is pressed, it creates a new throwable object
      * and adds it to the list of throwable objects if the throw is initiated.
