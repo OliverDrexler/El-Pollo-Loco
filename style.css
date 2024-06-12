@@ -43,7 +43,8 @@ h1 {
 }
 
 #start-screen,
-#game-over-screen {
+#game-over-screen,
+#game-won-screen {
     display: flex;
     justify-content: center;
     width: 720px; 
@@ -53,7 +54,8 @@ h1 {
 }
 
 #start-screen img,
-#game-over-screen img:nth-child(2) {
+#game-over-screen img:nth-child(2),
+#game-won-screen img:nth-child(2) {
     position: relative;
     z-index: 1;
     width: 720px;
@@ -96,7 +98,7 @@ h1 {
     background: #7F559E;
 }
 
-.game-over-text-img {
+.second-layer-img{
     position: absolute;
     z-index: 3;
     width: 720px;
