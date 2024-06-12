@@ -113,16 +113,35 @@ class ThrowableObject extends MovableObject {
         if (enemies && enemies.length > 0) {
             enemies.forEach((enemy) => {
                 if (this.isColliding(enemy) || this.isCollidingTop(enemy)) {
-                    if (enemy instanceof Endboss) {
-                        if (!this.hitEndboss) {
-                            this.hitEndboss = true;
-                            this.onHitEndboss(enemy);
-                        }
-                    } else {
-                        this.onHitEnemy(enemy);
-                    }
+                    this.handleCollision(enemy);
                 }
             });
+        }
+    }
+
+
+    /**
+    * This method handles the collision with an enemy or the endboss.
+    * @param {Object} enemy - The enemy object that the bottle collided with.
+     */
+    handleCollision(enemy) {
+        if (enemy instanceof Endboss) {
+            this.handleEndbossCollision(enemy);
+        } else {
+            this.onHitEnemy(enemy);
+        }
+    }
+
+
+    /**
+    * This method handles the collision with the endboss.
+    * It ensures the endboss is only hit once per bottle.
+    * @param {Endboss} endboss - The endboss object that the bottle collided with.
+    */
+    handleEndbossCollision(endboss) {
+        if (!this.hitEndboss) {
+            this.hitEndboss = true;
+            this.onHitEndboss(endboss);
         }
     }
 
