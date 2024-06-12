@@ -1,12 +1,12 @@
 let level1;
 
 
+/**
+ * This function initializes the game level by creating a new instance of the Level class
+ * and populating it with enemies, clouds, background objects, coins and bottles.
+ */
 function initLevel() {
-
-
-
     level1 = new Level(
-
         [
             new Chicken(),
             new Chicken(),
@@ -120,8 +120,5 @@ function initLevel() {
             new Bottles(),
             new Bottles()
         ]
-
-
     );
-
 }

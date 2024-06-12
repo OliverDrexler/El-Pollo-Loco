@@ -26,16 +26,23 @@ function startGame() {
 }
 
 
+/**
+ * This function restarts the game by clearing all intervals,
+ * hiding the game over screen, showing the canvas and reinitializing the game.
+ */
 function restartGame() {
     clearAllIntervals();
     document.getElementById('game-over-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
-    //let context = canvas.getContext('2d');
-    //context.clearRect(0, 0, canvas.width, canvas.height);
     init();
 }
 
 
+
+/**
+ * This function clears all active intervals.
+ * It iterates through a large range of interval IDs and clears each one.
+ */
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
