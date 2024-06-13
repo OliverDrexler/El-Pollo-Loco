@@ -122,7 +122,7 @@ class World {
 
 
     /**
-     * This method checks if the space key is pressed to throw an object.
+     * This method checks if the D key is pressed to throw an object.
      * If the space key is pressed, it creates a new throwable object
      * and adds it to the list of throwable objects if the throw is initiated.
      */
