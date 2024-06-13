@@ -8,6 +8,7 @@ game_theme.loop = true;
 game_theme.volume = 0.2;
 let win_theme = new Audio('./audio/win.mp3');
 let lose_theme = new Audio('./audio/lose.mp3');
+let isMuted = false;
 
 
 /**
