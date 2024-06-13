@@ -13,7 +13,6 @@ class Chick extends MovableObject {
     img_dead = '../img/3_enemies_chicken/chicken_small/2_dead/dead.png';
     onCollisionCourse = true;
     isDead = false;
-    dying_sound = new Audio('../audio/chick.mp3');
 
 
     /**
@@ -70,10 +69,10 @@ class Chick extends MovableObject {
      * This method plays the dying sound from 1 second to 1.72 seconds.
      */
     playDyingSound() {
-        this.dying_sound.currentTime = 0.2;
-        this.dying_sound.play();
+        chick_dying_sound.currentTime = 0.2;
+        chick_dying_sound.play();
         setTimeout(() => {
-            this.dying_sound.pause();
+            chick_dying_sound.pause();
         }, 720);
     }
 
