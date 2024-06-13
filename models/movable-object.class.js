@@ -12,6 +12,7 @@ class MovableObject extends DrawableObject {
     groundLevel = 400;
     amountCoins = 0;
     amountBottles = 0;
+    coin_sound = new Audio('../audio/coin.mp3');
 
 
     /**
@@ -99,13 +100,23 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This method collects a coin, increases the count of collected coins
-     * and removes the coin from the world.
+     * This method collects a coin, increases the count of collected coins,
+     * removes the coin from the world and plays the coin-collect sound.
      * @param {Object} coin - The coin object to be collected.
      */
     collectCoin(coin) {
         this.amountCoins++;
         this.world.removeCollectableObject(coin, this.world.level.coins);
+        this.playCoinSound();
+    }
+
+
+    /**
+     * This method plays the sound, when a coin is collected.
+     */
+    playCoinSound() {
+        this.coin_sound.currentTime = 0;
+        this.coin_sound.play();
     }
 
 
