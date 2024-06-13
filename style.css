@@ -39,10 +39,12 @@ h2 {
 }
 
 #start-question {
-    margin-top: 20px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-bottom: 15%;
 }
 
 .btn {
