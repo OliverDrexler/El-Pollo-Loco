@@ -80,6 +80,9 @@ function resumeMusic() {
         if (isGameActive()) {
             playIngameMusic();
         }
+        if (condition) {
+            
+        }
     }
 }
 
