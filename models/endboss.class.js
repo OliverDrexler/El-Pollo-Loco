@@ -57,6 +57,7 @@ class Endboss extends MovableObject {
     currentImages = this.IMAGES_ALERT;
     speed = 3;
     isCharacterNearby = false;
+    endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
     isDead = false;
     energy = 100;
     isHurt = false;
@@ -96,6 +97,7 @@ class Endboss extends MovableObject {
     /**
      * This method starts the animation for the boss enemy.
      * It ensures the animation interval is not set more than once.
+     * It also plays the enboss theme. 
      */
     animate() {
         if (!this.animationInterval) {
@@ -104,6 +106,26 @@ class Endboss extends MovableObject {
             }, 130);
         }
         this.moveEndboss();
+        this.playEndbossTheme();
+    }
+
+
+    /**
+     * This method starts the endboss theme.
+     */
+    playEndbossTheme() {
+        pauseIngameMusic();
+        this.endboss_theme.currentTime = 0;
+        this.endboss_theme.play();
+    }
+
+
+    /**
+     * This method stops the endboss theme.
+     */
+    stopEndbossTheme() {
+        this.endboss_theme.pause();
+        this.endboss_theme.currentTime = 0;
     }
 
 
@@ -277,7 +299,8 @@ class Endboss extends MovableObject {
     /**
      * This method andles the endboss's death.
      * It stops the existing animation interval and starts the death animation.
-     * It removes the endboss from the world and shows the game won screen after a delay.
+     * It stops the endboss theme, removes the endboss from the world 
+     * and shows the game won screen after a delay.
      */
     die() {
         this.isDead = true;
@@ -289,6 +312,7 @@ class Endboss extends MovableObject {
         }, 250);
         setTimeout(() => {
             if (this.world) {
+                this.stopEndbossTheme();
                 this.world.removeEnemy(this);
                 this.world.displayWinScreen();
             }
