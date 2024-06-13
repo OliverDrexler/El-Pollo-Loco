@@ -78,7 +78,7 @@ function updateAllSounds() {
 }
 
 function updateMuteButtonText() {
-    const button = document.getElementById('muteButton');
+    const button = document.getElementById('mute-button');
     if (isMuted) {
         button.textContent = 'AUDIO ON';
     } else {
