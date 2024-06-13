@@ -11,8 +11,8 @@ class World {
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
     throwableObject = [];
+    endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
     
-
 
     /**
      * This method creates an instance of World.
@@ -74,8 +74,8 @@ class World {
 
 
     /**
-     * This method displays the game over screen, stops the ingame music
-     * and plays the lose music.
+     * This method displays the game over screen, stops the endboss theme and 
+     * ingame music and plays the lose music.
      */
     displayGameOverScreen() {
         document.getElementById('canvas').classList.add('d-none');
@@ -83,6 +83,7 @@ class World {
         clearAllIntervals();
         pauseIngameMusic();
         playLoseMusic();
+        this.stopEndbossTheme();
     }
 
 
@@ -96,6 +97,25 @@ class World {
         clearAllIntervals();
         pauseIngameMusic();
         playWinMusic();
+    }
+
+
+    /**
+     * This method plays the endboss theme.
+     */
+    playEndbossTheme() {
+        pauseIngameMusic();
+        this.endboss_theme.currentTime = 0;
+        this.endboss_theme.play();
+    }
+
+
+    /**
+     * This method stops the endboss theme.
+     */
+    stopEndbossTheme() {
+        this.endboss_theme.pause();
+        this.endboss_theme.currentTime = 0;
     }
 
 

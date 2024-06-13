@@ -57,7 +57,6 @@ class Endboss extends MovableObject {
     currentImages = this.IMAGES_ALERT;
     speed = 5;
     isCharacterNearby = false;
-    endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
     hurt_sound = new Audio('../audio/endboss_hurt.mp3');
     isDead = false;
     energy = 100;
@@ -107,26 +106,7 @@ class Endboss extends MovableObject {
             }, 130);
         }
         this.moveEndboss();
-        this.playEndbossTheme();
-    }
-
-
-    /**
-     * This method plays the endboss theme.
-     */
-    playEndbossTheme() {
-        pauseIngameMusic();
-        this.endboss_theme.currentTime = 0;
-        this.endboss_theme.play();
-    }
-
-
-    /**
-     * This method stops the endboss theme.
-     */
-    stopEndbossTheme() {
-        this.endboss_theme.pause();
-        this.endboss_theme.currentTime = 0;
+        this.world.playEndbossTheme();
     }
 
 
@@ -322,7 +302,7 @@ class Endboss extends MovableObject {
         }, 250);
         setTimeout(() => {
             if (this.world) {
-                this.stopEndbossTheme();
+                this.world.stopEndbossTheme();
                 this.world.removeEnemy(this);
                 this.world.displayWinScreen();
             }
