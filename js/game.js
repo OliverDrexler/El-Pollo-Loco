@@ -5,7 +5,7 @@ let startscreen_theme = new Audio('./audio/theme.mp3');
 startscreen_theme.loop = true;
 let game_theme = new Audio('./audio/ingame_music.mp3');
 game_theme.loop = true;
-game_theme.volume = 0.5;
+game_theme.volume = 0.2;
 let win_theme = new Audio('./audio/win.mp3');
 let lose_theme = new Audio('./audio/lose.mp3');
 

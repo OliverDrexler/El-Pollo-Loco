@@ -349,7 +349,7 @@ class Character extends MovableObject {
 
 
     /**
-     * This method starts the sleeping animation.
+     * This method starts the sleeping animation and initiates the sleeping sound.
      */
     startSleepingAnimation() {
         if (!this.isDead() && !this.sleepAnimationInterval) {
@@ -358,6 +358,7 @@ class Character extends MovableObject {
             this.sleepAnimationInterval = setInterval(() => {
                 this.playAnimation(CHARACTER_IMAGES.IMAGES_SLEEP);
             }, sleepFrameDuration);
+            this.playSleepingSound();
         }
     }
 
@@ -377,13 +378,33 @@ class Character extends MovableObject {
 
 
     /**
-     * This method stops the sleeping animation.
+     * This method stops the sleeping animation and the sleeping sound.
      */
     stopSleepingAnimation() {
         if (this.sleepAnimationInterval) {
             clearInterval(this.sleepAnimationInterval);
             this.sleepAnimationInterval = null;
+            this.pauseSleepingSound();
         }
+    }
+
+
+    /**
+     * This method plays the sleeping sound of the character.
+     */
+    playSleepingSound() {
+        this.snoring_sound.currentTime = 0;
+        this.snoring_sound.loop = true;
+        this.snoring_sound.play();
+    }
+
+
+    /**
+     * This method stops the sleeping sound of the character.
+     */
+    pauseSleepingSound() {
+        this.snoring_sound.pause();
+        this.snoring_sound.currentTime = 0;
     }
 
 }
