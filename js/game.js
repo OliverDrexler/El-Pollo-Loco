@@ -2,8 +2,9 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 let startscreen_theme = new Audio('./audio/theme.mp3');
-startscreen_theme.loop = true;
-
+let game_theme = new Audio('./audio/ingame_music.mp3');
+let win_theme = new Audio('./audio/win.mp3');
+let lose_theme = new Audio('./audio/lose.mp3');
 let walking_sound = new Audio('../audio/running_looped.mp3');
 let jumping_sound = new Audio('../audio/jump3.mp3');
 let snoring_sound = new Audio('../audio/snore.mp3');
@@ -15,12 +16,9 @@ let coin_sound = new Audio('../audio/coin.mp3');
 let bottle_sound = new Audio('../audio/collect_bottle.mp3');
 let splashing_bottle_sound = new Audio('../audio/glass_break.mp3');
 let endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
-
-let game_theme = new Audio('./audio/ingame_music.mp3');
+startscreen_theme.loop = true;
 game_theme.loop = true;
 game_theme.volume = 0.2;
-let win_theme = new Audio('./audio/win.mp3');
-let lose_theme = new Audio('./audio/lose.mp3');
 let isMuted = false;
 
 
