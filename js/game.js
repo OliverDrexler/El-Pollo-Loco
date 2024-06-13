@@ -68,13 +68,10 @@ function updateAllSounds() {
     sounds.forEach(audio => {
         audio.muted = isMuted;
     });
-
-    // Wenn das Spiel stummgeschaltet wird, pausieren Sie alle Sounds.
     if (isMuted) {
         sounds.forEach(audio => audio.pause());
     } else {
-        // Falls nötig, können Sie hier die Wiedergabe von Musik oder Soundeffekten wieder aufnehmen.
-        // Beispiel: playIngameMusic();
+        //playIngameMusic();
     }
 }
 
