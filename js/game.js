@@ -14,6 +14,7 @@ let endboss_hurt_sound = new Audio('../audio/endboss_hurt.mp3');
 let coin_sound = new Audio('../audio/coin.mp3');
 let bottle_sound = new Audio('../audio/collect_bottle.mp3');
 let splashing_bottle_sound = new Audio('../audio/glass_break.mp3');
+let endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
 
 let game_theme = new Audio('./audio/ingame_music.mp3');
 game_theme.loop = true;

@@ -11,7 +11,6 @@ class World {
     statusbarCoins = new StatusbarCoins();
     statusbarEndboss = new StatusbarEndboss();
     throwableObject = [];
-    endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
     
 
     /**
@@ -105,8 +104,8 @@ class World {
      */
     playEndbossTheme() {
         pauseIngameMusic();
-        this.endboss_theme.currentTime = 0;
-        this.endboss_theme.play();
+        endboss_theme.currentTime = 0;
+        endboss_theme.play();
     }
 
 
@@ -114,8 +113,8 @@ class World {
      * This method stops the endboss theme.
      */
     stopEndbossTheme() {
-        this.endboss_theme.pause();
-        this.endboss_theme.currentTime = 0;
+        endboss_theme.pause();
+        endboss_theme.currentTime = 0;
     }
 
 
