@@ -29,6 +29,7 @@ function showStartscreen() {
     document.getElementById('start-question').classList.add('d-none');
     document.getElementById('start-screen').classList.remove('d-none');
     document.getElementById('controls').classList.remove('d-none');
+    document.getElementById('mute-button').classList.remove('d-none');
     playStartscreenMusic();
     checkMuteStatus();
 }
