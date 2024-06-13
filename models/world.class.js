@@ -88,6 +88,7 @@ class World {
     displayWinScreen() {
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('game-won-screen').classList.remove('d-none');
+        clearAllIntervals();
     }
 
 

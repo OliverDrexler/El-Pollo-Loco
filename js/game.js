@@ -20,7 +20,7 @@ function init() {
  * showing the canvas and initializing the game.
  */
 function startGame() {
-    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('start-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
 }
