@@ -3,6 +3,12 @@ let world;
 let keyboard = new Keyboard();
 let startscreen_theme = new Audio('./audio/theme.mp3');
 startscreen_theme.loop = true;
+
+let walking_sound = new Audio('../audio/running_looped.mp3');
+let jumping_sound = new Audio('../audio/jump3.mp3');
+let snoring_sound = new Audio('../audio/snore.mp3');
+let hurt_sound = new Audio('../audio/character_hurt.mp3');
+
 let game_theme = new Audio('./audio/ingame_music.mp3');
 game_theme.loop = true;
 game_theme.volume = 0.2;

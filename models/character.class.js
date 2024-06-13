@@ -6,10 +6,10 @@ class Character extends MovableObject {
     offsetX = 20;
     speed = 6;
     world; // Allows access to variables from World, including keyboard
-    walking_sound = new Audio('../audio/running_looped.mp3');
-    jumping_sound = new Audio('../audio/jump3.mp3');
-    snoring_sound = new Audio('../audio/snore.mp3');
-    hurt_sound = new Audio('../audio/character_hurt.mp3');
+
+
+    
+    
     isPlayingHurtingSound = false;
     isAnimatingDead = false;
     idleTime = 0;
@@ -167,11 +167,11 @@ class Character extends MovableObject {
      * This method plays the hurt sound.
      */
     playHurtSound() {
-        if (!this.isPlayingHurtSound) {
-            this.hurt_sound.currentTime = 0;
-            this.hurt_sound.play();
+        if (!isMuted && !this.isPlayingHurtSound) {
+            hurt_sound.currentTime = 0;
+            hurt_sound.play();
             this.isPlayingHurtSound = true;
-            this.hurt_sound.onended = () => {
+            hurt_sound.onended = () => {
                 this.isPlayingHurtSound = false;
             };
         }
@@ -305,9 +305,9 @@ class Character extends MovableObject {
      * This method plays the walking sound.
      */
     playWalkingSound() {
-        if (this.walking_sound.paused) {
-            this.walking_sound.currentTime = 0;
-            this.walking_sound.play();
+        if (!isMuted && walking_sound.paused) {
+            walking_sound.currentTime = 0;
+            walking_sound.play();
         }
     }
 
@@ -316,9 +316,9 @@ class Character extends MovableObject {
      * This method pauses the walking sound.
      */
     pauseWalkingSound() {
-        if (!this.walking_sound.paused) {
-            this.walking_sound.pause();
-            this.walking_sound.currentTime = 0;
+        if (!walking_sound.paused) {
+            walking_sound.pause();
+            walking_sound.currentTime = 0;
         }
     }
 
@@ -327,8 +327,10 @@ class Character extends MovableObject {
      * This method plays the jumping sound.
      */
     playJumpingSound() {
-        this.jumping_sound.currentTime = 0;
-        this.jumping_sound.play();
+        if (!isMuted) {
+            jumping_sound.currentTime = 0;
+            jumping_sound.play();
+        }
     }
 
 
@@ -411,9 +413,12 @@ class Character extends MovableObject {
      * This method plays the sleeping sound of the character.
      */
     playSleepingSound() {
-        this.snoring_sound.currentTime = 0;
-        this.snoring_sound.loop = true;
-        this.snoring_sound.play();
+        if (!isMuted) {
+            snoring_sound.currentTime = 0;
+            snoring_sound.loop = true;
+            snoring_sound.play();
+        }
+        
     }
 
 
@@ -421,8 +426,8 @@ class Character extends MovableObject {
      * This method stops the sleeping sound of the character.
      */
     pauseSleepingSound() {
-        this.snoring_sound.pause();
-        this.snoring_sound.currentTime = 0;
+        snoring_sound.pause();
+        snoring_sound.currentTime = 0;
     }
 
 }
