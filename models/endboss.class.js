@@ -55,7 +55,7 @@ class Endboss extends MovableObject {
     animationPhase = 0;
     currentImageIndex = 0;
     currentImages = this.IMAGES_ALERT;
-    speed = 3;
+    speed = 5;
     isCharacterNearby = false;
     endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
     isDead = false;
