@@ -32,7 +32,15 @@
     
     <h1>El Pollo Loco</h1>
 
-    <div id="start-screen">
+    <div id="start-question">
+        <h2>ARE YOU READY FOR PEPE'S CRAZY WILD WEST ADVENTURE?</h2>
+        <div>
+            <button class="btn" onclick="showStartscreen()">YES!</button>
+            <button class="btn" onclick="showStartscreen()">OH YEAH!</button>
+        </div>
+    </div>
+
+    <div id="start-screen" class="d-none">
         <button class="start-game-btn" onclick="startGame()">START GAME</button>
         <img src="./img/9_intro_outro_screens/start/startscreen_2.png" alt="start-screen">
     </div>
@@ -51,7 +59,7 @@
         <img class="second-layer-img" src="./img/9_intro_outro_screens/win/win_2.png" alt="game-won-text">
     </div>
 
-    <div class="controls-container">
+    <div id="controls" class="controls-container d-none">
             <div class="controls">
                 <img class="arrow-left" src="./img/12_icons/arrow_wood.png" alt="arrow left">
                 <span>LEFT</span>

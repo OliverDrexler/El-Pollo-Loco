@@ -24,8 +24,48 @@ h1 {
         -2px 2px 5px rgba(0, 0, 0, 0.4);
 }
 
+h2 {
+    color: #FFBE35;
+    font-family: 'Rye', Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
 .d-none {
     display: none !important;
+}
+
+#start-question {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {
+    border: 3px solid #7F559E;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #FFBE35;
+    font-family: 'Rye', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    padding: 15px 30px;
+    margin: 20px;
+    width: 190px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.btn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: #7F559E;
 }
 
 @font-face {

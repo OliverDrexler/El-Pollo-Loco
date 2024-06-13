@@ -1,9 +1,22 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let startscreenTheme = new Audio('./audio/theme.mp3');
+startscreenTheme.loop = true;
 let gameTheme = new Audio('./audio/ingame_music.mp3');
 gameTheme.loop = true;
 gameTheme.volume = 0.5;
+
+
+/**
+ * This function shows the startscreen and initiates the startscreen music.
+ */
+function showStartscreen() {
+    document.getElementById('start-question').classList.add('d-none');
+    document.getElementById('start-screen').classList.remove('d-none');
+    document.getElementById('controls').classList.remove('d-none');
+    playStartscreenMusic();
+}
 
 
 /**
@@ -27,6 +40,7 @@ function startGame() {
     document.getElementById('canvas').classList.remove('d-none');
     init();
     playIngameMusic();
+    stopStartscreenMusic();
 }
 
 
@@ -44,6 +58,23 @@ function restartGame() {
 }
 
 
+/**
+ * This function plays the starscreen music.
+ */
+function playStartscreenMusic() {
+    startscreenTheme.currentTime = 0;
+    startscreenTheme.play();
+}
+
+
+/**
+ * This function stops the starscreen music.
+ */
+function stopStartscreenMusic() {
+    startscreenTheme.pause();
+    startscreenTheme.currentTime = 0;
+}
+
 
 /**
  * This function clears all active intervals.
@@ -55,7 +86,7 @@ function clearAllIntervals() {
 
 
 /**
- * This function plays the ingame music and ensures it plays indefinitely.
+ * This function plays the ingame music.
  */
 function playIngameMusic() {
     gameTheme.currentTime = 0;
