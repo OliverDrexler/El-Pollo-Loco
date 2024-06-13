@@ -57,7 +57,6 @@ class Endboss extends MovableObject {
     currentImages = this.IMAGES_ALERT;
     speed = 5;
     isCharacterNearby = false;
-    hurt_sound = new Audio('../audio/endboss_hurt.mp3');
     isDead = false;
     energy = 100;
     isHurt = false;
@@ -254,8 +253,8 @@ class Endboss extends MovableObject {
      * This method plays the endboss hurt sound.
      */
     playHurtSound() {
-        this.hurt_sound.currentTime = 0;
-        this.hurt_sound.play();
+        endboss_hurt_sound.currentTime = 0;
+        endboss_hurt_sound.play();
     }
 
 
