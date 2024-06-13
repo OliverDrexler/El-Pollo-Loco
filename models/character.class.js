@@ -8,6 +8,7 @@ class Character extends MovableObject {
     world; // Allows access to variables from World, including keyboard
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
+    snoring_sound = new Audio('../audio/snore.mp3');
     isAnimatingDead = false;
     idleTime = 0;
     idleInterval = null;

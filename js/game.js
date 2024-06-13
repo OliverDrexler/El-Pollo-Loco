@@ -1,13 +1,13 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let startscreenTheme = new Audio('./audio/theme.mp3');
-startscreenTheme.loop = true;
-let gameTheme = new Audio('./audio/ingame_music.mp3');
-gameTheme.loop = true;
-gameTheme.volume = 0.5;
-let winTheme = new Audio('./audio/win.mp3');
-let loseTheme = new Audio('./audio/lose.mp3');
+let startscreen_theme = new Audio('./audio/theme.mp3');
+startscreen_theme.loop = true;
+let game_theme = new Audio('./audio/ingame_music.mp3');
+game_theme.loop = true;
+game_theme.volume = 0.5;
+let win_theme = new Audio('./audio/win.mp3');
+let lose_theme = new Audio('./audio/lose.mp3');
 
 
 /**
@@ -64,8 +64,8 @@ function restartGame() {
  * This function plays the starscreen music.
  */
 function playStartscreenMusic() {
-    startscreenTheme.currentTime = 0;
-    startscreenTheme.play();
+    startscreen_theme.currentTime = 0;
+    startscreen_theme.play();
 }
 
 
@@ -73,8 +73,8 @@ function playStartscreenMusic() {
  * This function stops the starscreen music.
  */
 function stopStartscreenMusic() {
-    startscreenTheme.pause();
-    startscreenTheme.currentTime = 0;
+    startscreen_theme.pause();
+    startscreen_theme.currentTime = 0;
 }
 
 
@@ -91,8 +91,8 @@ function clearAllIntervals() {
  * This function plays the ingame music.
  */
 function playIngameMusic() {
-    gameTheme.currentTime = 0;
-    gameTheme.play();
+    game_theme.currentTime = 0;
+    game_theme.play();
 }
 
 
@@ -100,8 +100,8 @@ function playIngameMusic() {
  * This function stops the ingame music.
  */
 function pauseIngameMusic() {
-    gameTheme.pause();
-    gameTheme.currentTime = 0;
+    game_theme.pause();
+    game_theme.currentTime = 0;
 }
 
 
@@ -109,8 +109,8 @@ function pauseIngameMusic() {
  * This function plays the win music.
  */
 function playWinMusic() {
-    winTheme.currentTime = 0;
-    winTheme.play();
+    win_theme.currentTime = 0;
+    win_theme.play();
 }
 
 
@@ -118,8 +118,8 @@ function playWinMusic() {
  * This function plays the lose music.
  */
 function playLoseMusic() {
-    loseTheme.currentTime = 0;
-    loseTheme.play();
+    lose_theme.currentTime = 0;
+    lose_theme.play();
 }
 
 
