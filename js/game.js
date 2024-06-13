@@ -30,11 +30,19 @@ function showStartscreen() {
     document.getElementById('start-screen').classList.remove('d-none');
     document.getElementById('controls').classList.remove('d-none');
     playStartscreenMusic();
+    checkMuteStatus();
+}
+
+function checkMuteStatus() {
+    setInterval(() => {
+        console.log('Mute Status:', isMuted);
+    }, 100);
 }
 
 function toggleMute() {
     isMuted = !isMuted;
     updateAllSounds();
+    updateMuteButtonText();
 }
 
 
@@ -66,6 +74,15 @@ function updateAllSounds() {
     } else {
         // Falls nötig, können Sie hier die Wiedergabe von Musik oder Soundeffekten wieder aufnehmen.
         // Beispiel: playIngameMusic();
+    }
+}
+
+function updateMuteButtonText() {
+    const button = document.getElementById('muteButton');
+    if (isMuted) {
+        button.textContent = 'AUDIO ON';
+    } else {
+        button.textContent = 'AUDIO OFF';
     }
 }
 
