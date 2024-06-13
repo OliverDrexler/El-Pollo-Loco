@@ -71,8 +71,20 @@ function updateAllSounds() {
     if (isMuted) {
         sounds.forEach(audio => audio.pause());
     } else {
-        //playIngameMusic();
+        resumeMusic();
     }
+}
+
+function resumeMusic() {
+    if (!isMuted) {
+        if (isGameActive()) {
+            playIngameMusic();
+        }
+    }
+}
+
+function isGameActive() {
+    return !document.getElementById('canvas').classList.contains('d-none');
 }
 
 function updateMuteButtonText() {
