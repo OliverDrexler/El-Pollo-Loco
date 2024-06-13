@@ -74,21 +74,23 @@ class World {
 
 
     /**
-     * This method displays the game over screen.
+     * This method displays the game over screen and stops the ingame music.
      */
     displayGameOverScreen() {
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('game-over-screen').classList.remove('d-none');
+        pauseIngameMusic();
     }
 
 
     /**
-     * This method displays the game over screen.
+     * This method displays the win screen and stops the ingame music.
      */
     displayWinScreen() {
         document.getElementById('canvas').classList.add('d-none');
         document.getElementById('game-won-screen').classList.remove('d-none');
         clearAllIntervals();
+        pauseIngameMusic();
     }
 
 

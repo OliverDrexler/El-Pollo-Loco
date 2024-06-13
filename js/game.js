@@ -40,6 +40,7 @@ function restartGame() {
     document.getElementById('game-won-screen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
+    playIngameMusic();
 }
 
 
@@ -53,12 +54,18 @@ function clearAllIntervals() {
 }
 
 
+/**
+ * This function plays the ingame music and ensures it plays indefinitely.
+ */
 function playIngameMusic() {
     gameTheme.currentTime = 0;
     gameTheme.play();
 }
 
 
+/**
+ * This function stops the ingame music.
+ */
 function pauseIngameMusic() {
     gameTheme.pause();
     gameTheme.currentTime = 0;
