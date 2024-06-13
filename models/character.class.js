@@ -6,10 +6,6 @@ class Character extends MovableObject {
     offsetX = 20;
     speed = 6;
     world; // Allows access to variables from World, including keyboard
-
-
-    
-    
     isPlayingHurtingSound = false;
     isAnimatingDead = false;
     idleTime = 0;
