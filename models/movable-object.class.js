@@ -13,6 +13,7 @@ class MovableObject extends DrawableObject {
     amountCoins = 0;
     amountBottles = 0;
     coin_sound = new Audio('../audio/coin.mp3');
+    bottle_sound = new Audio('../audio/collect_bottle.mp3');
 
 
     /**
@@ -134,13 +135,23 @@ class MovableObject extends DrawableObject {
 
 
     /**
-     * This method collects a bottle, increases the count of collected bottles
-     * and removes the bottle from the world.
+     * This method collects a bottle, increases the count of collected bottles,
+     * removes the bottle from the world and plays the bottle-collect sound.
      * @param {Object} bottle - The bottle object to be collected.
      */
     collectBottle(bottle) {
         this.amountBottles++;
         this.world.removeCollectableObject(bottle, this.world.level.bottles);
+        this.playBottleSound();
+    }
+
+
+    /**
+     * This method plays the sound, when a bottle is collected.
+     */
+    playBottleSound() {
+        this.bottle_sound.currentTime = 0;
+        this.bottle_sound.play();
     }
 
 
