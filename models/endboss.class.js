@@ -58,6 +58,7 @@ class Endboss extends MovableObject {
     speed = 5;
     isCharacterNearby = false;
     endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
+    hurt_sound = new Audio('../audio/endboss_hurt.mp3');
     isDead = false;
     energy = 100;
     isHurt = false;
@@ -111,7 +112,7 @@ class Endboss extends MovableObject {
 
 
     /**
-     * This method starts the endboss theme.
+     * This method plays the endboss theme.
      */
     playEndbossTheme() {
         pauseIngameMusic();
@@ -253,18 +254,28 @@ class Endboss extends MovableObject {
 
 
     /**
-     * This method reduces the endboss's energy when it takes damage.
+     * This method reduces the endboss's energy when it takes damage and plays the hurt sound.
      * If the energy falls below or equal to zero, the endboss dies.
      * Otherwise, it sets the endboss to the hurt state and switches to the hurt animation.
      */
     takeDamage() {
         this.reduceEnergy();
+        this.playHurtSound();
         if (this.isEnergyDepleted()) {
             this.energy = 0;
             this.die();
         } else {
             this.enterHurtState();
         }
+    }
+
+
+    /**
+     * This method plays the endboss hurt sound.
+     */
+    playHurtSound() {
+        this.hurt_sound.currentTime = 0;
+        this.hurt_sound.play();
     }
 
 
