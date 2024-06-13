@@ -9,6 +9,8 @@ class Character extends MovableObject {
     walking_sound = new Audio('../audio/running_looped.mp3');
     jumping_sound = new Audio('../audio/jump3.mp3');
     snoring_sound = new Audio('../audio/snore.mp3');
+    hurt_sound = new Audio('../audio/character_hurt.mp3');
+    isPlayingHurtingSound = false;
     isAnimatingDead = false;
     idleTime = 0;
     idleInterval = null;
@@ -99,12 +101,13 @@ class Character extends MovableObject {
 
     /**
      * This method checks if the character is hurt at regular intervals and initiates 
-     * the injury animation if the character is hurt.
+     * the injury animation and hurting sound, if the character is hurt.
      */
     checkCharacterHurt() {
         setInterval(() => {
             if (this.isHurt()) {
                 this.animateCharacterHurt();
+                this.playHurtSound();
             }
         }, 100);
     }
@@ -156,6 +159,21 @@ class Character extends MovableObject {
     animateCharacterHurt() {
         if (this.isHurt()) {
             this.playAnimation(CHARACTER_IMAGES.IMAGES_HURT);
+        }
+    }
+
+
+    /**
+     * This method plays the hurt sound.
+     */
+    playHurtSound() {
+        if (!this.isPlayingHurtSound) {
+            this.hurt_sound.currentTime = 0;
+            this.hurt_sound.play();
+            this.isPlayingHurtSound = true;
+            this.hurt_sound.onended = () => {
+                this.isPlayingHurtSound = false;
+            };
         }
     }
 
