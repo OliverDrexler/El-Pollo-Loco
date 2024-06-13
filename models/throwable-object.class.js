@@ -218,8 +218,10 @@ class ThrowableObject extends MovableObject {
      * This method plays the smashing bottle sound.
      */
     playSplashingBottleSound() {
-        splashing_bottle_sound.currentTime = 0;
-        splashing_bottle_sound.play();
+        if (!isMuted) {
+            splashing_bottle_sound.currentTime = 0;
+            splashing_bottle_sound.play();
+        }
     }
 
 }

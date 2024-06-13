@@ -414,7 +414,6 @@ class Character extends MovableObject {
             snoring_sound.loop = true;
             snoring_sound.play();
         }
-        
     }
 
 

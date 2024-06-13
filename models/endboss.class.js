@@ -253,8 +253,10 @@ class Endboss extends MovableObject {
      * This method plays the endboss hurt sound.
      */
     playHurtSound() {
-        endboss_hurt_sound.currentTime = 0;
-        endboss_hurt_sound.play();
+        if (!isMuted) {
+            endboss_hurt_sound.currentTime = 0;
+            endboss_hurt_sound.play();
+        }
     }
 
 

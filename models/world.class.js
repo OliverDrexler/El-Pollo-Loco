@@ -103,9 +103,12 @@ class World {
      * This method plays the endboss theme.
      */
     playEndbossTheme() {
-        pauseIngameMusic();
-        endboss_theme.currentTime = 0;
-        endboss_theme.play();
+        if (!isMuted) {
+            pauseIngameMusic();
+            endboss_theme.currentTime = 0;
+            endboss_theme.play();
+        }
+        
     }
 
 

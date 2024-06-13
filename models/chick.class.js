@@ -69,11 +69,13 @@ class Chick extends MovableObject {
      * This method plays the dying sound from 1 second to 1.72 seconds.
      */
     playDyingSound() {
-        chick_dying_sound.currentTime = 0.2;
+        if (!isMuted) {
+            chick_dying_sound.currentTime = 0.2;
         chick_dying_sound.play();
         setTimeout(() => {
             chick_dying_sound.pause();
         }, 720);
+        }
     }
 
 

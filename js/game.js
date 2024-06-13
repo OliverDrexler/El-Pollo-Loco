@@ -32,6 +32,43 @@ function showStartscreen() {
     playStartscreenMusic();
 }
 
+function toggleMute() {
+    isMuted = !isMuted;
+    updateAllSounds();
+}
+
+
+function updateAllSounds() {
+    const sounds = [
+        startscreen_theme, 
+        game_theme, 
+        win_theme, 
+        lose_theme, 
+        walking_sound, 
+        jumping_sound, 
+        snoring_sound, 
+        hurt_sound, 
+        chick_dying_sound, 
+        chicken_dying_sound, 
+        endboss_hurt_sound, 
+        coin_sound, 
+        bottle_sound, 
+        splashing_bottle_sound, 
+        endboss_theme
+    ];
+    sounds.forEach(audio => {
+        audio.muted = isMuted;
+    });
+
+    // Wenn das Spiel stummgeschaltet wird, pausieren Sie alle Sounds.
+    if (isMuted) {
+        sounds.forEach(audio => audio.pause());
+    } else {
+        // Falls nötig, können Sie hier die Wiedergabe von Musik oder Soundeffekten wieder aufnehmen.
+        // Beispiel: playIngameMusic();
+    }
+}
+
 
 /**
  * This function initializes the game by setting up the canvas and world.
@@ -76,8 +113,11 @@ function restartGame() {
  * This function plays the starscreen music.
  */
 function playStartscreenMusic() {
-    startscreen_theme.currentTime = 0;
-    startscreen_theme.play();
+    if (!isMuted) {
+        startscreen_theme.currentTime = 0;
+        startscreen_theme.play();
+    }
+    
 }
 
 
@@ -103,8 +143,10 @@ function clearAllIntervals() {
  * This function plays the ingame music.
  */
 function playIngameMusic() {
+    if (!isMuted) {
     game_theme.currentTime = 0;
     game_theme.play();
+    }
 }
 
 

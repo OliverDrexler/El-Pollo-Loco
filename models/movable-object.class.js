@@ -114,8 +114,10 @@ class MovableObject extends DrawableObject {
      * This method plays the sound, when a coin is collected.
      */
     playCoinSound() {
-        coin_sound.currentTime = 0;
-        coin_sound.play();
+        if (!isMuted) {
+            coin_sound.currentTime = 0;
+            coin_sound.play();
+        }
     }
 
 
@@ -148,8 +150,10 @@ class MovableObject extends DrawableObject {
      * This method plays the sound, when a bottle is collected.
      */
     playBottleSound() {
-        bottle_sound.currentTime = 0;
-        bottle_sound.play();
+        if (!isMuted) {
+            bottle_sound.currentTime = 0;
+            bottle_sound.play();
+        }  
     }
 
 
