@@ -6,6 +6,8 @@ startscreenTheme.loop = true;
 let gameTheme = new Audio('./audio/ingame_music.mp3');
 gameTheme.loop = true;
 gameTheme.volume = 0.5;
+let winTheme = new Audio('./audio/win.mp3');
+let loseTheme = new Audio('./audio/lose.mp3');
 
 
 /**
@@ -100,6 +102,24 @@ function playIngameMusic() {
 function pauseIngameMusic() {
     gameTheme.pause();
     gameTheme.currentTime = 0;
+}
+
+
+/**
+ * This function plays the win music.
+ */
+function playWinMusic() {
+    winTheme.currentTime = 0;
+    winTheme.play();
+}
+
+
+/**
+ * This function plays the lose music.
+ */
+function playLoseMusic() {
+    loseTheme.currentTime = 0;
+    loseTheme.play();
 }
 
 
