@@ -12,8 +12,6 @@ class MovableObject extends DrawableObject {
     groundLevel = 400;
     amountCoins = 0;
     amountBottles = 0;
-    coin_sound = new Audio('../audio/coin.mp3');
-    bottle_sound = new Audio('../audio/collect_bottle.mp3');
 
 
     /**
@@ -116,8 +114,8 @@ class MovableObject extends DrawableObject {
      * This method plays the sound, when a coin is collected.
      */
     playCoinSound() {
-        this.coin_sound.currentTime = 0;
-        this.coin_sound.play();
+        coin_sound.currentTime = 0;
+        coin_sound.play();
     }
 
 
@@ -150,8 +148,8 @@ class MovableObject extends DrawableObject {
      * This method plays the sound, when a bottle is collected.
      */
     playBottleSound() {
-        this.bottle_sound.currentTime = 0;
-        this.bottle_sound.play();
+        bottle_sound.currentTime = 0;
+        bottle_sound.play();
     }
 
 

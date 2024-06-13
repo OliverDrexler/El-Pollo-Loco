@@ -11,6 +11,8 @@ let hurt_sound = new Audio('../audio/character_hurt.mp3');
 let chick_dying_sound = new Audio('../audio/chick.mp3');
 let chicken_dying_sound = new Audio('../audio/chicken.mp3');
 let endboss_hurt_sound = new Audio('../audio/endboss_hurt.mp3');
+let coin_sound = new Audio('../audio/coin.mp3');
+let bottle_sound = new Audio('../audio/collect_bottle.mp3');
 
 let game_theme = new Audio('./audio/ingame_music.mp3');
 game_theme.loop = true;
