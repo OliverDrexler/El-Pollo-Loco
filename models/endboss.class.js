@@ -316,7 +316,6 @@ class Endboss extends MovableObject {
     die() {
         this.isDead = true;
         this.onCollisionCourse = false;
-        //this.playDyingSound();
         clearInterval(this.animationInterval);
         setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);

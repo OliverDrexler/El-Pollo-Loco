@@ -21,6 +21,8 @@ class ThrowableObject extends MovableObject {
         '../img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
     ];
 
+    bottle_sound = new Audio('../audio/glass_break.mp3');
+
 
     /**
      * Creates an instance of a ThrowableObject.
@@ -194,6 +196,7 @@ class ThrowableObject extends MovableObject {
         clearInterval(this.moveBottleInterval);
         clearInterval(this.collisionCheckInterval);
         this.animateBottleSplash();
+        this.playSplashingBottleSound();
         const self = this;
         setTimeout(() => {
             self.removeFromWorld();
@@ -210,6 +213,15 @@ class ThrowableObject extends MovableObject {
         if (this.world) {
             this.world.removeThrowableObject(this);
         }
+    }
+
+
+    /**
+     * This method plays the smashing bottle sound.
+     */
+    playSplashingBottleSound() {
+        this.bottle_sound.currentTime = 0;
+        this.bottle_sound.play();
     }
 
 }
