@@ -127,7 +127,7 @@ class World {
      * and adds it to the list of throwable objects if the throw is initiated.
      */
     checkThrowObjects() {
-        if (this.keyboard.SPACE) {
+        if (this.keyboard.D) {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100, this.character);
             bottle.setWorld(this);
             if (bottle.throwInitiated) {

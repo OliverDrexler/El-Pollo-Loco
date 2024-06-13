@@ -215,6 +215,9 @@ document.addEventListener('keydown', (event) => {
     if (event.key === ' ') {
         keyboard.SPACE = true;
     }
+    if (event.key === 'd' || event.key === 'D') {
+        keyboard.D = true;
+    }
 });
 
 
@@ -238,5 +241,8 @@ document.addEventListener('keyup', (event) => {
     }  
     if (event.key === ' ') {
         keyboard.SPACE = false;
+    }
+    if (event.key === 'd' || event.key === 'D') {
+        keyboard.D = false;
     }
 });
