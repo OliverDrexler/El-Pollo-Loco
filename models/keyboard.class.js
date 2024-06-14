@@ -13,6 +13,7 @@ class Keyboard {
      */
     constructor() {
         this.registerEventListeners();
+        this.registerTouchListeners();
     }
 
 
@@ -26,6 +27,27 @@ class Keyboard {
 
         document.addEventListener('keyup', (event) => {
             this.setKey(event.key, false);
+        });
+    }
+
+
+    /**
+     * This method registers the touch event listeners for the control buttons.
+     */
+    registerTouchListeners() {
+        const buttons = [
+            { id: 'btnLeft', key: 'ArrowLeft' },
+            { id: 'btnJump', key: 'ArrowUp' },
+            { id: 'btnRight', key: 'ArrowRight' },
+            { id: 'btnThrow', key: 'd' }
+        ];
+
+        buttons.forEach(button => {
+            const element = document.getElementById(button.id);
+            if (element) {
+                element.addEventListener('touchstart', () => this.setKey(button.key, true));
+                element.addEventListener('touchend', () => this.setKey(button.key, false));
+            }
         });
     }
 
