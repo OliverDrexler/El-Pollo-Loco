@@ -224,7 +224,6 @@ function playStartscreenMusic() {
         startscreen_theme.currentTime = 0;
         startscreen_theme.play();
     }
-    
 }
 
 
