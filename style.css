@@ -60,7 +60,7 @@ h2 {
     align-items: center;
     box-sizing: border-box;
     right: 5px;
-    top: 5px;
+    bottom: 5px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
         -2px -2px 5px rgba(0, 0, 0, 0.4),
         2px -2px 5px rgba(0, 0, 0, 0.4),
@@ -74,7 +74,7 @@ h2 {
 
 #muteButtonCanvas {
     right: 10px;
-    top: 10px;
+    bottom: 10px;
 }
 
 .btn {
@@ -349,12 +349,28 @@ canvas {
 @media only screen and (max-width: 720px) {
     canvas {
         width: 100%;
+        border-radius: 0px;
+        border: none;
     }
 
     #startScreen,
     #gameoverScreen,
     #gamewonScreen {
         width: 100%;
+        border-radius: 0px;
+        border: none;
+    }
+
+    #startScreen img,
+    #gameoverScreen img:nth-child(2),
+    #gamewonScreen img:nth-child(2) {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    .second-layer-img {
+        width: 100%;
+        border-radius: 0px;
     }
 }
 
@@ -366,6 +382,16 @@ canvas {
     #startScreen,
     #gameoverScreen,
     #gamewonScreen {
+        height: 100vh;
+    }
+
+    #startScreen img,
+    #gameoverScreen img:nth-child(2),
+    #gamewonScreen img:nth-child(2) {
+        height: 100vh;
+    }
+
+    .second-layer-img {
         height: 100vh;
     }
 }
