@@ -408,7 +408,14 @@ canvas {
     }
 }
 
-/* For screens smaller than 480px */
+@media only screen and (max-height: 800px) {
+    .controls-container,
+    .main-h1 {
+        display: none;
+    }
+}
+
+/* For screens lower than 480px */
 @media only screen and (max-height: 480px) {
     canvas,
     #startScreen,
