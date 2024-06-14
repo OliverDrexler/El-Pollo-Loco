@@ -58,6 +58,7 @@ class World {
      */
     checkGameOver() {
         if (this.character.isDead()) {
+            this.keyboard.resetKeys();
             setTimeout(() => {
                 this.stopGame();
             }, 1850);
@@ -93,6 +94,7 @@ class World {
         document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gamewonScreen').classList.remove('d-none');
         clearAllIntervals();
+        this.keyboard.resetKeys();
         pauseIngameMusic();
         playWinMusic();
     }

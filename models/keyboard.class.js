@@ -84,4 +84,18 @@ class Keyboard {
             this.D = value;
         }
     }
+
+
+    /**
+     * This method resets all keyboard properties to false.
+     */
+    resetKeys() {
+        this.LEFT = false;
+        this.RIGHT = false;
+        this.UP = false;
+        this.DOWN = false;
+        this.SPACE = false;
+        this.D = false;
+    }
+
 }
