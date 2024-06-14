@@ -114,19 +114,37 @@ class Character extends MovableObject {
      */
     animateCharacterDead() {
         if (!this.isAnimatingDead) {
-            pauseIngameMusic();
-            this.world.stopEndbossTheme();
-            this.isAnimatingDead = true;
-            let i = 0;
-            const interval = setInterval(() => {
-                if (i < CHARACTER_IMAGES.IMAGES_DEAD.length) {
-                    let path = CHARACTER_IMAGES.IMAGES_DEAD[i];
-                    this.img = this.imageCache[path];
-                    i++;
-                } else {
-                    clearInterval(interval);
-                }
-            }, 200);
+            this.handleDeathAnimation();
+        }
+    }
+
+
+    /**
+     * This method handles the death animation sequence.
+     */
+    handleDeathAnimation() {
+        pauseIngameMusic();
+        this.world.stopEndbossTheme();
+        this.isAnimatingDead = true;
+        let i = 0;
+        const interval = setInterval(() => {
+            this.updateDeathFrame(interval, i);
+            i++;
+        }, 200);
+    }
+
+    
+    /**
+     * This method updates the frame for the death animation.
+     * @param {number} interval - The interval ID for clearing.
+     * @param {number} frameIndex - The current frame index.
+     */
+    updateDeathFrame(interval, frameIndex) {
+        if (frameIndex < CHARACTER_IMAGES.IMAGES_DEAD.length) {
+            let path = CHARACTER_IMAGES.IMAGES_DEAD[frameIndex];
+            this.img = this.imageCache[path];
+        } else {
+            clearInterval(interval);
         }
     }
 

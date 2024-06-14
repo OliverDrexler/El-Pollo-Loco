@@ -41,7 +41,6 @@ class Keyboard {
             { id: 'btnRight', key: 'ArrowRight' },
             { id: 'btnThrow', key: 'd' }
         ];
-
         buttons.forEach(button => {
             const element = document.getElementById(button.id);
             if (element) {
