@@ -27,7 +27,7 @@
     <script src="./models/world.class.js"></script>
     <script src="./models/level.class.js"></script>
     <script src="./levels/level1.js"></script>
-    
+
 </head>
 
 <body>
@@ -48,15 +48,20 @@
 
     <div id="startScreen" class="d-none">
         <button class="start-game-btn" onclick="startGame()">START GAME</button>
-        <button id="muteButtonStart" class="d-none mute-button" onclick="toggleMute()">AUDIO OFF</button>
         <img src="./img/9_intro_outro_screens/start/startscreen_2.png" alt="start-screen">
+        <div>
+
+            <div class="mobile-left"></div>
+
+            <button id="muteButtonStart" class="d-none mute-button" onclick="toggleMute()">AUDIO OFF</button>
+        </div>
     </div>
 
     <div id="canvasContainer" class="canvas-container d-none">
         <canvas id="canvas" width="720px" height="480px"></canvas>
         <button id="muteButtonCanvas" class="mute-button" onclick="toggleMute()">AUDIO OFF</button>
     </div>
-    
+
     <div id="gameoverScreen" class="d-none">
         <button class="start-game-btn" onclick="restartGame()">RESTART</button>
         <img src="./img/5_background/first_half_background.png" alt="game-over-screen">
@@ -95,7 +100,7 @@
         <a class="legal-link" href="./templates/privacy-policy.html">Privacy Policy</a>
     </div>
 
-    <script src="./js/game.js"></script> 
+    <script src="./js/game.js"></script>
 
 </body>
 
