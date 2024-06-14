@@ -39,10 +39,11 @@ function showStartscreen() {
 
 /**
  * This function hides certain elements based on screen width.
- * If the screen width is less than 1000px, it hides the headline and legal container.
+ * If the screen width is less than 1000px and teh height is less than 750px, 
+ * it hides the headline and legal container.
  */
 function hideElements() {
-    if (window.innerWidth < 1000) {
+    if (window.innerWidth < 1000 && window.innerHeight < 750) {
         hideHeadline();
         hideLegalContainer();
     }
