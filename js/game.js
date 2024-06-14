@@ -33,17 +33,38 @@ function showStartscreen() {
     document.getElementById('muteButtonStart').classList.remove('d-none');
     playStartscreenMusic();
     //checkMuteStatus();
-    hideHeadline();
+    hideElements();
 }
 
 
 /**
- * This function hides the headline if the screen width is less than 720px.
+ * This function hides certain elements based on screen width.
+ * If the screen width is less than 720px, it hides the headline and legal container.
+ */
+function hideElements() {
+    if (window.innerWidth < 720) {
+        hideHeadline();
+        hideLegalContainer();
+    }
+}
+
+
+/**
+ * This function hides the headline by adding the 'd-none' class
+ * if the screen width is less than 720px.
  */
 function hideHeadline() {
-    if (window.innerWidth < 720) {
-        document.querySelector('h1').style.display = 'none';
-    }
+    return document.querySelector('h1').classList.add('d-none');
+}
+
+
+/**
+ * This function hides the legal container by adding the 'd-none' class
+ * if the screen width is less than 720px.
+ */
+
+function hideLegalContainer() {
+    return document.querySelector('.legal-container').classList.add('d-none');
 }
 
 
