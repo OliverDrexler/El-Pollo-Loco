@@ -114,7 +114,6 @@ class Character extends MovableObject {
      */
     animateCharacterDead() {
         if (!this.isAnimatingDead) {
-            this.pauseWalkingSound();
             this.isAnimatingDead = true;
             let i = 0;
             const interval = setInterval(() => {

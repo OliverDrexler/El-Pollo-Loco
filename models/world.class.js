@@ -298,7 +298,7 @@ class World {
      * @param {MovableObject} mo - The object to be drawn on the map.
      */
     addToMap(mo) {
-        mo.drawFrame(this.ctx);
+        //mo.drawFrame(this.ctx);
         if (mo.otherDirection) {
             this.mirrorImage(mo);
         }
