@@ -199,8 +199,7 @@ function init() {
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('muteButtonStart').classList.add('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('muteButtonCanvas').classList.remove('d-none');
+    document.getElementById('canvasWrapper').classList.remove('d-none');
     init();
     playIngameMusic();
     stopStartscreenMusic();
@@ -215,8 +214,7 @@ function restartGame() {
     clearAllIntervals();
     document.getElementById('gameoverScreen').classList.add('d-none');
     document.getElementById('gamewonScreen').classList.add('d-none');
-    document.getElementById('canvas').classList.remove('d-none');
-    document.getElementById('muteButtonCanvas').classList.remove('d-none');
+    document.getElementById('canvasWrapper').classList.remove('d-none');
     init();
     playIngameMusic();
 }
