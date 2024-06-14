@@ -82,6 +82,7 @@ h2 {
     bottom: 15px;
     position: absolute;
     z-index: 10;
+    display: none;
 }
 
 .mobile-left {
@@ -407,6 +408,7 @@ canvas {
 
 /* For screens narrower than 720px */
 @media only screen and (max-width: 720px) {
+
     canvas,
     #startScreen,
     #gameoverScreen,
@@ -453,6 +455,7 @@ canvas {
 
 /* For screens lower than 480px */
 @media only screen and (max-height: 480px) {
+
     canvas,
     #startScreen,
     #gameoverScreen,
@@ -467,6 +470,11 @@ canvas {
         height: 100vh;
     }
 
+    .controls,
+    .legal-container {
+        display: none;
+    }
+
     #startScreen img,
     #gameoverScreen img:nth-child(2),
     #gamewonScreen img:nth-child(2),
@@ -479,6 +487,7 @@ canvas {
 
 /* For screens narrower than 940px and lower than 480px */
 @media only screen and (max-width: 940px) and (max-height: 480px) {
+
     canvas,
     #startScreen,
     #gameoverScreen,
@@ -518,7 +527,15 @@ canvas {
         display: block;
     }
 
-    .controls {
+    .controls,
+    .legal-container {
         display: none;
+    }
+
+    .mobile-left,
+    .mobile-right,
+    .mobile-jump,
+    .mobile-throw {
+        display: block;
     }
 }
