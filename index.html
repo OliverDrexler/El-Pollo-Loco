@@ -100,25 +100,6 @@
     </div>
 
     <script src="./js/game.js"></script>
-    <script>
-        function requestFullscreen(element) {
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.mozRequestFullScreen) { // Firefox
-                element.mozRequestFullScreen();
-            } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                element.webkitRequestFullscreen();
-            } else if (element.msRequestFullscreen) { // IE/Edge
-                element.msRequestFullscreen();
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', (event) => {
-            document.body.addEventListener('click', () => {
-                requestFullscreen(document.documentElement);
-            });
-        });
-    </script>
 
 </body>
 
