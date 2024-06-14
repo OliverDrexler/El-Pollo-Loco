@@ -72,6 +72,11 @@ h2 {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+#muteButtonCanvas {
+    right: 10px;
+    top: 10px;
+}
+
 .btn {
     border: 3px solid #7F559E;
     border-radius: 10px;
