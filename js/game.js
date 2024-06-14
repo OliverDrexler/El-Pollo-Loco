@@ -154,7 +154,6 @@ function resumeAllSounds() {
     if (!isMuted) {
         if (isGameActive()) {
             if (isEndbossActive()) {
-                console.log('Endboss is active');
                 world.playEndbossTheme();
             } else {
                 playIngameMusic();
