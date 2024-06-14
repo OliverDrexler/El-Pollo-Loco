@@ -27,7 +27,7 @@
     <script src="./models/world.class.js"></script>
     <script src="./models/level.class.js"></script>
     <script src="./levels/level1.js"></script>
-    <script src="./js/game.js"></script>
+    
 </head>
 
 <body>
@@ -95,23 +95,7 @@
         <a class="legal-link" href="./templates/privacy-policy.html">Privacy Policy</a>
     </div>
 
-    <script>
-        window.addEventListener('resize', checkScreenWidth);
-
-        function checkScreenWidth() {
-            const rotateMessage = document.getElementById('rotateMessage');
-            if (window.innerWidth < 650) {
-                rotateMessage.classList.remove('d-none');
-            } else {
-                rotateMessage.classList.add('d-none');
-            }
-        }
-
-        // Initiale Überprüfung beim Laden der Seite
-        document.addEventListener('DOMContentLoaded', function() {
-            checkScreenWidth();
-        });
-    </script>
+    <script src="./js/game.js"></script>
 
 </body>
 

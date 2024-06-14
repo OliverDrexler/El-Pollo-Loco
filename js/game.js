@@ -15,7 +15,7 @@ let endboss_hurt_sound = new Audio('../audio/endboss_hurt.mp3');
 let coin_sound = new Audio('../audio/coin.mp3');
 let bottle_sound = new Audio('../audio/collect_bottle.mp3');
 let splashing_bottle_sound = new Audio('../audio/glass_break.mp3');
-let endboss_theme = new Audio ('../audio/ingame_music_endboss.mp3');
+let endboss_theme = new Audio('../audio/ingame_music_endboss.mp3');
 startscreen_theme.loop = true;
 game_theme.loop = true;
 game_theme.volume = 0.2;
@@ -106,20 +106,20 @@ function updateAllSounds() {
  */
 function getAllSounds() {
     return [
-        startscreen_theme, 
-        game_theme, 
-        win_theme, 
-        lose_theme, 
-        walking_sound, 
-        jumping_sound, 
-        snoring_sound, 
-        hurt_sound, 
-        chick_dying_sound, 
-        chicken_dying_sound, 
-        endboss_hurt_sound, 
-        coin_sound, 
-        bottle_sound, 
-        splashing_bottle_sound, 
+        startscreen_theme,
+        game_theme,
+        win_theme,
+        lose_theme,
+        walking_sound,
+        jumping_sound,
+        snoring_sound,
+        hurt_sound,
+        chick_dying_sound,
+        chicken_dying_sound,
+        endboss_hurt_sound,
+        coin_sound,
+        bottle_sound,
+        splashing_bottle_sound,
         endboss_theme
     ];
 }
@@ -157,7 +157,7 @@ function resumeAllSounds() {
                 world.playEndbossTheme();
             } else {
                 playIngameMusic();
-            }   
+            }
         }
         if (isStartscreenActive()) {
             playStartscreenMusic();
@@ -285,8 +285,8 @@ function clearAllIntervals() {
  */
 function playIngameMusic() {
     if (!isMuted) {
-    game_theme.currentTime = 0;
-    game_theme.play();
+        game_theme.currentTime = 0;
+        game_theme.play();
     }
 }
 
@@ -326,16 +326,16 @@ function playLoseMusic() {
 document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') {
         keyboard.LEFT = true;
-    }  
+    }
     if (event.key === 'ArrowRight') {
         keyboard.RIGHT = true;
-    }  
+    }
     if (event.key === 'ArrowUp') {
         keyboard.UP = true;
-    }  
+    }
     if (event.key === 'ArrowDown') {
         keyboard.DOWN = true;
-    }  
+    }
     if (event.key === ' ') {
         keyboard.SPACE = true;
     }
@@ -353,20 +353,53 @@ document.addEventListener('keydown', (event) => {
 document.addEventListener('keyup', (event) => {
     if (event.key === 'ArrowLeft') {
         keyboard.LEFT = false;
-    } 
+    }
     if (event.key === 'ArrowRight') {
         keyboard.RIGHT = false;
-    }  
+    }
     if (event.key === 'ArrowUp') {
         keyboard.UP = false;
-    }  
+    }
     if (event.key === 'ArrowDown') {
         keyboard.DOWN = false;
-    }  
+    }
     if (event.key === ' ') {
         keyboard.SPACE = false;
     }
     if (event.key === 'd' || event.key === 'D') {
         keyboard.D = false;
     }
+});
+
+
+/**
+ * Sets up an event listener to check the screen width when the window is resized.
+ */ 
+window.addEventListener('resize', checkScreenWidth);
+
+
+
+/**
+ * Checks the screen width and height to determine whether to display
+ * the rotate message. If the screen width is less than 650px and the height
+ * is less than 950px, it removes the 'd-none' class from the rotate message element,
+ * making it visible. Otherwise, it adds the 'd-none' class, hiding the message.
+ */
+function checkScreenWidth() {
+    const rotateMessage = document.getElementById('rotateMessage');
+    if (window.innerWidth < 650 && window.innerHeight < 950) {
+        rotateMessage.classList.remove('d-none');
+    } else {
+        rotateMessage.classList.add('d-none');
+    }
+}
+
+
+/**
+ * Adds an event listener to the DOMContentLoaded event to check the screen width
+ * when the document has finished loading. This ensures that the rotate message
+ * is correctly displayed or hidden based on the initial screen dimensions.
+ */
+document.addEventListener('DOMContentLoaded', function () {
+    checkScreenWidth();
 });
