@@ -60,7 +60,22 @@ function toggleMute() {
  * If muted, it pauses all sounds. Otherwise, it resumes the appropriate music.
  */
 function updateAllSounds() {
-    const sounds = [
+    const sounds = getAllSounds();
+    muteAllSounds(sounds);
+    if (isMuted) {
+        pauseAllSounds(sounds);
+    } else {
+        resumeAllSounds();
+    }
+}
+
+
+/**
+ * This function returns an array of all audio elements.
+ * @returns {Array} - Array of all audio elements.
+ */
+function getAllSounds() {
+    return [
         startscreen_theme, 
         game_theme, 
         win_theme, 
@@ -77,25 +92,42 @@ function updateAllSounds() {
         splashing_bottle_sound, 
         endboss_theme
     ];
-    sounds.forEach(audio => {
-        audio.muted = isMuted;
-    });
-    if (isMuted) {
-        sounds.forEach(audio => audio.pause());
-    } else {
-        resumeMusic();
-    }
 }
 
 
 /**
- * This function resumes the appropriate music based on the game state.
- * It checks if the game or startscreen is active and plays the corresponding music.
+ * This function mutes or unmutes all sounds based on the global isMuted variable.
+ * @param {Array} sounds - Array of all audio elements.
  */
-function resumeMusic() {
+function muteAllSounds(sounds) {
+    sounds.forEach(audio => {
+        audio.muted = isMuted;
+    });
+}
+
+
+/**
+ * This function pauses all sounds.
+ * @param {Array} sounds - Array of all audio elements.
+ */
+function pauseAllSounds(sounds) {
+    sounds.forEach(audio => audio.pause());
+}
+
+
+/**
+ * This function resumes the appropriate sounds based on the game state.
+ * It checks if the game, endboss or startscreen is active and plays the corresponding music.
+ */
+function resumeAllSounds() {
     if (!isMuted) {
         if (isGameActive()) {
-            playIngameMusic();
+            if (isEndbossActive()) {
+                console.log('Endboss is active');
+                world.playEndbossTheme();
+            } else {
+                playIngameMusic();
+            }   
         }
         if (isStartscreenActive()) {
             playStartscreenMusic();
@@ -110,6 +142,15 @@ function resumeMusic() {
  */
 function isGameActive() {
     return !document.getElementById('canvas').classList.contains('d-none');
+}
+
+
+/**
+ * This function checks if the endboss is active.
+ * @returns {boolean} - Returns true if the endboss is active, otherwise false.
+ */
+function isEndbossActive() {
+    return world.level.enemies.some(enemy => enemy instanceof Endboss && enemy.isCharacterNearby);
 }
 
 
