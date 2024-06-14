@@ -104,8 +104,9 @@ h2 {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    right: 5px;
+    left: 50%;
     bottom: 5px;
+    transform: translateX(-50%);
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
         -2px -2px 5px rgba(0, 0, 0, 0.4),
         2px -2px 5px rgba(0, 0, 0, 0.4),
@@ -118,7 +119,8 @@ h2 {
 }
 
 #muteButtonCanvas {
-    right: 10px;
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 10px;
 }
 
