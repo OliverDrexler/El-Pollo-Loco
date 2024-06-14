@@ -342,10 +342,32 @@ function checkScreenWidth() {
 
 
 /**
+ * Requests fullscreen mode for the provided element.
+ * @param {HTMLElement} element - The element to display in fullscreen mode.
+ */
+function requestFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.mozRequestFullScreen) { // Firefox
+        element.mozRequestFullScreen();
+    } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        element.webkitRequestFullscreen();
+    } else if (element.msRequestFullscreen) { // IE/Edge
+        element.msRequestFullscreen();
+    }
+}
+
+
+/**
  * Adds an event listener to the DOMContentLoaded event to check the screen width
  * when the document has finished loading. This ensures that the rotate message
  * is correctly displayed or hidden based on the initial screen dimensions.
+ * If the screen width is less than 940px and the height is less than 480px,
+ * it requests fullscreen mode for the document.
  */
 document.addEventListener('DOMContentLoaded', function () {
     checkScreenWidth();
+    if (window.innerWidth < 940 && window.innerHeight < 480) {
+        requestFullscreen(document.documentElement);
+    }
 });
