@@ -32,7 +32,7 @@ function showStartscreen() {
     document.getElementById('controls').classList.remove('d-none');
     document.getElementById('muteButtonStart').classList.remove('d-none');
     playStartscreenMusic();
-    checkMuteStatus();
+    //checkMuteStatus();
 }
 
 
@@ -142,7 +142,7 @@ function resumeAllSounds() {
  * @returns {boolean} - Returns true if the game is active, otherwise false.
  */
 function isGameActive() {
-    return !document.getElementById('canvas').classList.contains('d-none');
+    return !document.getElementById('canvasContainer').classList.contains('d-none');
 }
 
 
