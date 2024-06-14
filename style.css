@@ -364,14 +364,11 @@ canvas {
 
     #startScreen img,
     #gameoverScreen img:nth-child(2),
-    #gamewonScreen img:nth-child(2) {
-        width: 100%;
-        border-radius: 0px;
-    }
-
+    #gamewonScreen img:nth-child(2),
     .second-layer-img {
         width: 100%;
         border-radius: 0px;
+        height: 100%;
     }
 
     h1 {
@@ -400,11 +397,7 @@ canvas {
 
     #startScreen img,
     #gameoverScreen img:nth-child(2),
-    #gamewonScreen img:nth-child(2) {
-        height: 100vh;
-        border-radius: 0px;
-    }
-
+    #gamewonScreen img:nth-child(2),
     .second-layer-img {
         height: 100vh;
         border-radius: 0px;
