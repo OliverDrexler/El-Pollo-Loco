@@ -18,7 +18,7 @@ let splashing_bottle_sound = new Audio('../audio/glass_break.mp3');
 let endboss_theme = new Audio('../audio/ingame_music_endboss.mp3');
 startscreen_theme.loop = true;
 game_theme.loop = true;
-game_theme.volume = 0.2;
+game_theme.volume = 0.5;
 let isMuted = false;
 
 
