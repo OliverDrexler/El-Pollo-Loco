@@ -69,10 +69,10 @@ h2 {
     text-align: center;
 }
 
-.mobile-left,
-.mobile-right,
-.mobile-jump,
-.mobile-throw {
+#btnLeft,
+#btnRight,
+#btnJump,
+#btnThrow {
     background-image: url(../img/12_icons/arrow_mobile.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -86,21 +86,21 @@ h2 {
     border-radius: 55%;
 }
 
-.mobile-left {
+#btnLeft {
     left: 15px;
     transform: rotate(180deg);
 }
 
-.mobile-right {
+#btnRight {
     left: 85px;
 }
 
-.mobile-jump {
+#btnJump {
     right: 85px;
     transform: rotate(270deg);
 }
 
-.mobile-throw {
+#btnThrow {
     background-image: url(../img/12_icons/throw_mobile.png);
     right: 15px;
 }
@@ -531,10 +531,10 @@ canvas {
         display: none;
     }
 
-    .mobile-left,
-    .mobile-right,
-    .mobile-jump,
-    .mobile-throw {
+    #btnLeft,
+    #btnRight,
+    #btnJump,
+    #btnThrow {
         display: block;
     }
 }
