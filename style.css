@@ -69,18 +69,27 @@ h2 {
     text-align: center;
 }
 
-.mobile-left {
+.mobile-left,
+.mobile-right {
     background-image: url(../img/12_icons/arrow_mobile.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 40px;
     width: 40px;
-    bottom: 5px;
-    left: 5px;
     position: absolute;
     z-index: 10;
+}
+
+.mobile-left {
+    bottom: 10px;
+    left: 10px;
     transform: rotate(180deg);
+}
+
+.mobile-right {
+    bottom: 10px;
+    left: 70px;
 }
 
 .mute-button {

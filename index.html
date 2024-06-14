@@ -49,17 +49,15 @@
     <div id="startScreen" class="d-none">
         <button class="start-game-btn" onclick="startGame()">START GAME</button>
         <img src="./img/9_intro_outro_screens/start/startscreen_2.png" alt="start-screen">
-        <div>
-
-            <div class="mobile-left"></div>
-
-            <button id="muteButtonStart" class="d-none mute-button" onclick="toggleMute()">AUDIO OFF</button>
-        </div>
+        <button id="muteButtonStart" class="d-none mute-button" onclick="toggleMute()">AUDIO OFF</button>
+        <div class="mobile-left"></div>
+        <div class="mobile-right"></div>
     </div>
 
     <div id="canvasContainer" class="canvas-container d-none">
         <canvas id="canvas" width="720px" height="480px"></canvas>
         <button id="muteButtonCanvas" class="mute-button" onclick="toggleMute()">AUDIO OFF</button>
+        
     </div>
 
     <div id="gameoverScreen" class="d-none">
