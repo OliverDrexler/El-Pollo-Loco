@@ -381,13 +381,13 @@ window.addEventListener('resize', checkScreenWidth);
 
 /**
  * Checks the screen width and height to determine whether to display
- * the rotate message. If the screen width is less than 650px and the height
- * is less than 950px, it removes the 'd-none' class from the rotate message element,
+ * the rotate message. If the screen width is less than 650px, 
+ * it removes the 'd-none' class from the rotate message element,
  * making it visible. Otherwise, it adds the 'd-none' class, hiding the message.
  */
 function checkScreenWidth() {
     const rotateMessage = document.getElementById('rotateMessage');
-    if (window.innerWidth < 650 && window.innerHeight < 950) {
+    if (window.innerWidth < 650) {
         rotateMessage.classList.remove('d-none');
     } else {
         rotateMessage.classList.add('d-none');
