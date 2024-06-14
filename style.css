@@ -538,4 +538,8 @@ canvas {
     #btnThrow {
         display: block;
     }
+
+    .start-game-btn {
+        font-size: 24px;
+    }
 }
