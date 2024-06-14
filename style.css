@@ -377,6 +377,11 @@ only screen and (max-height: 480px) {
         box-sizing: border-box;
     }
 
+    .btn {
+        width: 170px;
+        font-size: 18px;
+    }
+
     h1 {
         font-size: 40px;
     }
