@@ -123,8 +123,6 @@ class Character extends MovableObject {
      * This method handles the death animation sequence.
      */
     handleDeathAnimation() {
-        pauseIngameMusic();
-        this.world.stopEndbossTheme();
         this.isAnimatingDead = true;
         let i = 0;
         const interval = setInterval(() => {

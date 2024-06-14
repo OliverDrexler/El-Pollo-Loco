@@ -81,6 +81,8 @@ class World {
         document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gameoverScreen').classList.remove('d-none');
         clearAllIntervals();
+        pauseIngameMusic();
+        this.stopEndbossTheme();
         playLoseMusic();
     }
 
