@@ -527,7 +527,8 @@ canvas {
         display: block;
     }
 
-    .controls {
+    .controls,
+    .legal-container {
         display: none;
     }
 
