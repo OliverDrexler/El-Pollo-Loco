@@ -34,12 +34,20 @@ function showStartscreen() {
     checkMuteStatus();
 }
 
+
+/**
+ * This function checks if the game is muted in steady intervals.
+ */
 function checkMuteStatus() {
     setInterval(() => {
         console.log('Mute Status:', isMuted);
     }, 100);
 }
 
+
+/**
+ * This function toggles the mute status, updates all sounds and updates the mute button text.
+ */
 function toggleMute() {
     isMuted = !isMuted;
     updateAllSounds();
@@ -47,6 +55,10 @@ function toggleMute() {
 }
 
 
+/**
+ * This function updates the mute status for all sounds.
+ * If muted, it pauses all sounds. Otherwise, it resumes the appropriate music.
+ */
 function updateAllSounds() {
     const sounds = [
         startscreen_theme, 
@@ -75,21 +87,45 @@ function updateAllSounds() {
     }
 }
 
+
+/**
+ * This function resumes the appropriate music based on the game state.
+ * It checks if the game or startscreen is active and plays the corresponding music.
+ */
 function resumeMusic() {
     if (!isMuted) {
         if (isGameActive()) {
             playIngameMusic();
         }
-        if (condition) {
-            
+        if (isStartscreenActive()) {
+            playStartscreenMusic();
         }
     }
 }
 
+
+/**
+ * This function checks if the game is active.
+ * @returns {boolean} - Returns true if the game is active, otherwise false.
+ */
 function isGameActive() {
     return !document.getElementById('canvas').classList.contains('d-none');
 }
 
+
+/**
+ * This function checks if the startscreen is active.
+ * @returns {boolean} - Returns true if the startscreen is active, otherwise false.
+ */
+
+function isStartscreenActive() {
+    return !document.getElementById('start-screen').classList.contains('d-none');
+}
+
+
+/**
+ * This function updates the text of the mute button.
+ */
 function updateMuteButtonText() {
     const button = document.getElementById('mute-button');
     if (isMuted) {
