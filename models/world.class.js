@@ -78,7 +78,7 @@ class World {
      */
     displayGameOverScreen() {
         document.getElementById('canvas').classList.add('d-none');
-        document.getElementById('game-over-screen').classList.remove('d-none');
+        document.getElementById('gameoverScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
         playLoseMusic();
@@ -92,7 +92,7 @@ class World {
      */
     displayWinScreen() {
         document.getElementById('canvas').classList.add('d-none');
-        document.getElementById('game-won-screen').classList.remove('d-none');
+        document.getElementById('gamewonScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
         playWinMusic();
