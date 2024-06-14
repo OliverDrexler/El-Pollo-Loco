@@ -210,6 +210,7 @@ h2 {
     border: 2.5px solid black;
     font-family: 'Rye', Arial, Helvetica, sans-serif;
     font-size: 30px;
+    color: black;
     animation: pulse 1.5s infinite;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
