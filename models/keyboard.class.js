@@ -35,12 +35,7 @@ class Keyboard {
      * This method registers the touch event listeners for the control buttons.
      */
     registerTouchListeners() {
-        const buttons = [
-            { id: 'btnLeft', key: 'ArrowLeft' },
-            { id: 'btnJump', key: 'ArrowUp' },
-            { id: 'btnRight', key: 'ArrowRight' },
-            { id: 'btnThrow', key: 'd' }
-        ];
+        const buttons = this.getControlButtons();
         buttons.forEach(button => {
             const element = document.getElementById(button.id);
             if (element) {
@@ -48,6 +43,19 @@ class Keyboard {
                 element.addEventListener('touchend', () => this.setKey(button.key, false));
             }
         });
+    }
+
+    /**
+    * This method returns the control buttons with their corresponding keys.
+    * @returns {Array} An array of control buttons with IDs and keys.
+    */
+    getControlButtons() {
+        return [
+            { id: 'btnLeft', key: 'ArrowLeft' },
+            { id: 'btnJump', key: 'ArrowUp' },
+            { id: 'btnRight', key: 'ArrowRight' },
+            { id: 'btnThrow', key: 'd' }
+        ];
     }
 
 
