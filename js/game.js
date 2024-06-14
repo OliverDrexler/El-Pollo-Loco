@@ -169,12 +169,14 @@ function isStartscreenActive() {
  * This function updates the text of the mute button.
  */
 function updateMuteButtonText() {
-    const button = document.getElementById('muteButton');
-    if (isMuted) {
-        button.textContent = 'AUDIO ON';
-    } else {
-        button.textContent = 'AUDIO OFF';
-    }
+    const buttons = document.querySelectorAll('.mute-button');
+    buttons.forEach(button => {
+        if (isMuted) {
+            button.textContent = 'AUDIO ON';
+        } else {
+            button.textContent = 'AUDIO OFF';
+        }
+    });
 }
 
 
