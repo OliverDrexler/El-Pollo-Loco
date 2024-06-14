@@ -26,10 +26,10 @@ let isMuted = false;
  * This function shows the startscreen and initiates the startscreen music.
  */
 function showStartscreen() {
-    document.getElementById('start-question').classList.add('d-none');
-    document.getElementById('start-screen').classList.remove('d-none');
+    document.getElementById('startQuestion').classList.add('d-none');
+    document.getElementById('startScreen').classList.remove('d-none');
     document.getElementById('controls').classList.remove('d-none');
-    document.getElementById('mute-button').classList.remove('d-none');
+    document.getElementById('muteButton').classList.remove('d-none');
     playStartscreenMusic();
     checkMuteStatus();
 }
@@ -160,7 +160,7 @@ function isEndbossActive() {
  */
 
 function isStartscreenActive() {
-    return !document.getElementById('start-screen').classList.contains('d-none');
+    return !document.getElementById('startScreen').classList.contains('d-none');
 }
 
 
@@ -168,7 +168,7 @@ function isStartscreenActive() {
  * This function updates the text of the mute button.
  */
 function updateMuteButtonText() {
-    const button = document.getElementById('mute-button');
+    const button = document.getElementById('muteButton');
     if (isMuted) {
         button.textContent = 'AUDIO ON';
     } else {
@@ -194,7 +194,7 @@ function init() {
  * showing the canvas and initializing the game.
  */
 function startGame() {
-    document.getElementById('start-screen').classList.add('d-none');
+    document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
     playIngameMusic();
@@ -208,8 +208,8 @@ function startGame() {
  */
 function restartGame() {
     clearAllIntervals();
-    document.getElementById('game-over-screen').classList.add('d-none');
-    document.getElementById('game-won-screen').classList.add('d-none');
+    document.getElementById('gameoverScreen').classList.add('d-none');
+    document.getElementById('gamewonScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
     init();
     playIngameMusic();
