@@ -28,8 +28,9 @@ let isMuted = false;
 function showStartscreen() {
     document.getElementById('startQuestion').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
+    document.getElementById('muteButtonStart').classList.remove('d-none');
     document.getElementById('controls').classList.remove('d-none');
-    document.getElementById('muteButton').classList.remove('d-none');
+    document.getElementById('muteButtonStart').classList.remove('d-none');
     playStartscreenMusic();
     checkMuteStatus();
 }
@@ -195,7 +196,9 @@ function init() {
  */
 function startGame() {
     document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('muteButtonStart').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('muteButtonCanvas').classList.remove('d-none');
     init();
     playIngameMusic();
     stopStartscreenMusic();
@@ -211,6 +214,7 @@ function restartGame() {
     document.getElementById('gameoverScreen').classList.add('d-none');
     document.getElementById('gamewonScreen').classList.add('d-none');
     document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('muteButtonCanvas').classList.remove('d-none');
     init();
     playIngameMusic();
 }

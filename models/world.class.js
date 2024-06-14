@@ -78,6 +78,7 @@ class World {
      */
     displayGameOverScreen() {
         document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gameoverScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
@@ -92,6 +93,7 @@ class World {
      */
     displayWinScreen() {
         document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gamewonScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
