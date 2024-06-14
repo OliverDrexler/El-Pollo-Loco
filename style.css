@@ -444,8 +444,8 @@ canvas {
     }
 }
 
+/* For screens lower than 800px */
 @media only screen and (max-height: 800px) {
-    .controls-container,
     .main-h1 {
         display: none;
     }
@@ -516,5 +516,9 @@ canvas {
 
     .h1-legal {
         display: block;
+    }
+
+    .controls {
+        display: none;
     }
 }
