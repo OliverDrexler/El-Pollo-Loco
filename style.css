@@ -47,6 +47,31 @@ h2 {
     margin-bottom: 15%;
 }
 
+.mute-button {
+    border: 2px solid #7F559E;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #FFBE35;
+    font-family: 'Rye', Arial, Helvetica, sans-serif;
+    z-index: 5;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    right: 5px;
+    top: 5px;
+    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8),
+        -2px -2px 5px rgba(0, 0, 0, 0.4),
+        2px -2px 5px rgba(0, 0, 0, 0.4),
+        -2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+#mute-button:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
 .btn {
     border: 3px solid #7F559E;
     border-radius: 10px;
@@ -89,6 +114,7 @@ h2 {
 #gamewonScreen {
     display: flex;
     justify-content: center;
+    position: relative;
     width: 720px; 
     height: 480px;
     border-radius: 30px;
