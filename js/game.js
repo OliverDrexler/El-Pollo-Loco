@@ -33,6 +33,17 @@ function showStartscreen() {
     document.getElementById('muteButtonStart').classList.remove('d-none');
     playStartscreenMusic();
     //checkMuteStatus();
+    hideHeadline();
+}
+
+
+/**
+ * This function hides the headline if the screen width is less than 720px.
+ */
+function hideHeadline() {
+    if (window.innerWidth < 720) {
+        document.querySelector('h1').style.display = 'none';
+    }
 }
 
 
