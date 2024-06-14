@@ -77,7 +77,8 @@ class World {
      * ingame music and plays the lose music.
      */
     displayGameOverScreen() {
-        document.getElementById('canvasWrapper').classList.add('d-none');
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gameoverScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
@@ -91,7 +92,8 @@ class World {
      * and plays the win music..
      */
     displayWinScreen() {
-        document.getElementById('canvasWrapper').classList.add('d-none');
+        document.getElementById('canvas').classList.add('d-none');
+        document.getElementById('muteButtonCanvas').classList.add('d-none');
         document.getElementById('gamewonScreen').classList.remove('d-none');
         clearAllIntervals();
         pauseIngameMusic();
