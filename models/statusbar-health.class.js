@@ -11,7 +11,7 @@ class StatusbarHealth extends DrawableObject {
 
     percentage = 100;
     x = 25;
-    y = 0;
+    y = 10;
     width = 230;
     height = 60;
 
