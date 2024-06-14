@@ -38,6 +38,27 @@ h2 {
     display: none !important;
 }
 
+.rotate-message {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFBE35;
+    font-family: 'Rye', Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    z-index: 10;
+}
+
+.rotate-message p {
+    padding: 20px;
+    text-align: center;
+}
+
 #startQuestion {
     height: 100%;
     display: flex;
