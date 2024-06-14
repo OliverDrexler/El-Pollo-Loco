@@ -83,6 +83,7 @@ h2 {
     position: absolute;
     z-index: 10;
     display: none;
+    border-radius: 55%;
 }
 
 .mobile-left {
@@ -470,8 +471,7 @@ canvas {
         height: 100vh;
     }
 
-    .controls,
-    .legal-container {
+    .controls {
         display: none;
     }
 
@@ -527,8 +527,7 @@ canvas {
         display: block;
     }
 
-    .controls,
-    .legal-container {
+    .controls {
         display: none;
     }
 
