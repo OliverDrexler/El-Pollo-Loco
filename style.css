@@ -386,21 +386,27 @@ canvas {
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
+        border-radius: 0px;
+        border: none;
     }
 
     #startScreen,
     #gameoverScreen,
     #gamewonScreen {
         height: 100vh;
+        border-radius: 0px;
+        border: none;
     }
 
     #startScreen img,
     #gameoverScreen img:nth-child(2),
     #gamewonScreen img:nth-child(2) {
         height: 100vh;
+        border-radius: 0px;
     }
 
     .second-layer-img {
         height: 100vh;
+        border-radius: 0px;
     }
 }

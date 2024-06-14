@@ -39,10 +39,10 @@ function showStartscreen() {
 
 /**
  * This function hides certain elements based on screen width.
- * If the screen width is less than 720px, it hides the headline and legal container.
+ * If the screen width is less than 1000px, it hides the headline and legal container.
  */
 function hideElements() {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 1000) {
         hideHeadline();
         hideLegalContainer();
     }
@@ -50,8 +50,7 @@ function hideElements() {
 
 
 /**
- * This function hides the headline by adding the 'd-none' class
- * if the screen width is less than 720px.
+ * This function hides the headline by adding the 'd-none' class.
  */
 function hideHeadline() {
     return document.querySelector('h1').classList.add('d-none');
@@ -59,10 +58,8 @@ function hideHeadline() {
 
 
 /**
- * This function hides the legal container by adding the 'd-none' class
- * if the screen width is less than 720px.
+ * This function hides the legal container by adding the 'd-none' class.
  */
-
 function hideLegalContainer() {
     return document.querySelector('.legal-container').classList.add('d-none');
 }
