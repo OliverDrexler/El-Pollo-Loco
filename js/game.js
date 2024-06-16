@@ -34,6 +34,7 @@ function showStartscreen() {
     playStartscreenMusic();
     //checkMuteStatus();
     hideElements();
+    console.warn('Hi Waldemar, vielen Dank für dein tolles Feedback! :) Ich schreibe dir hier kurz, da ich über den DA Campus keinen Kommentar zur Abgabe hinzufügen kann - das console.warn lösche ich dann natürlich wieder raus. Die Statusbar der Coins erhöht sich nicht mit jedem gesammelten Coin, da die img Dateien der Statusbar nur in 20%-Schritten verfügbar sind.');
 }
 
 
