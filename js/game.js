@@ -26,6 +26,7 @@ let isMuted = JSON.parse(localStorage.getItem('isMuted')) || false;
  * This function shows the startscreen and initiates the startscreen music.
  */
 function showStartscreen() {
+    console.log('Hi Waldemar, vielen Dank für dein tolles Feedback! :) Ich schreibe dir hier kurz, da ich über den DA Campus keinen Kommentar zur Abgabe hinzufügen kann - das console.warn lösche ich dann natürlich wieder raus. Die Statusbar der Coins erhöht sich nicht mit jedem gesammelten Coin, da die img Dateien der Statusbar nur in 20%-Schritten verfügbar sind.');
     document.getElementById('startQuestion').classList.add('d-none');
     document.getElementById('startScreen').classList.remove('d-none');
     document.getElementById('muteButtonStart').classList.remove('d-none');
@@ -34,7 +35,6 @@ function showStartscreen() {
     playStartscreenMusic();
     //checkMuteStatus();
     hideElements();
-    console.log('Hi Waldemar, vielen Dank für dein tolles Feedback! :) Ich schreibe dir hier kurz, da ich über den DA Campus keinen Kommentar zur Abgabe hinzufügen kann - das console.warn lösche ich dann natürlich wieder raus. Die Statusbar der Coins erhöht sich nicht mit jedem gesammelten Coin, da die img Dateien der Statusbar nur in 20%-Schritten verfügbar sind.');
 }
 
 
