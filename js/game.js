@@ -19,7 +19,7 @@ let endboss_theme = new Audio('../audio/ingame_music_endboss.mp3');
 startscreen_theme.loop = true;
 game_theme.loop = true;
 game_theme.volume = 0.5;
-let isMuted = false;
+let isMuted = JSON.parse(localStorage.getItem('isMuted')) || false;
 
 
 /**
@@ -77,10 +77,12 @@ function checkMuteStatus() {
 
 
 /**
- * This function toggles the mute status, updates all sounds and updates the mute button text.
+ * This function toggles the mute status, saves the mute status to the local storage, 
+ * updates all sounds and updates the mute button text.
  */
 function toggleMute() {
     isMuted = !isMuted;
+    localStorage.setItem('isMuted', JSON.stringify(isMuted));
     updateAllSounds();
     updateMuteButtonText();
 }
