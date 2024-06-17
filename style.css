@@ -457,6 +457,7 @@ canvas {
 
 /* For screens lower than 480px */
 @media only screen and (max-height: 480px) {
+
     canvas,
     #startScreen,
     #gameoverScreen,
@@ -487,6 +488,7 @@ canvas {
 
 /* For screens narrower than 820px and lower than 1280px */
 @media only screen and (max-width: 820px) and (max-height: 1280px) {
+
     .controls,
     .legal-container {
         display: none;
@@ -502,6 +504,7 @@ canvas {
 
 /* For screens narrower than 1280px and lower than 820px */
 @media only screen and (max-width: 1280px) and (max-height: 820px) {
+
     .controls,
     .legal-container {
         display: none;
@@ -517,6 +520,7 @@ canvas {
 
 /* For screens narrower than 940px and lower than 480px */
 @media only screen and (max-width: 940px) and (max-height: 480px) {
+
     canvas,
     #startScreen,
     #gameoverScreen,
