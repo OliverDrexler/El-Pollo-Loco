@@ -5,12 +5,12 @@ class Chick extends MovableObject {
     height = 70;
 
     IMAGES_WALKING = [
-        '../img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
-        '../img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
-        '../img/3_enemies_chicken/chicken_small/1_walk/3_w.png'
+        'https://oliverdrexler.com/pollo-loco/img/3_enemies_chicken/chicken_small/1_walk/1_w.png',
+        'https://oliverdrexler.com/pollo-loco/img/3_enemies_chicken/chicken_small/1_walk/2_w.png',
+        'https://oliverdrexler.com/pollo-loco/img/3_enemies_chicken/chicken_small/1_walk/3_w.png'
     ];
 
-    img_dead = '../img/3_enemies_chicken/chicken_small/2_dead/dead.png';
+    img_dead = 'https://oliverdrexler.com/pollo-loco/img/3_enemies_chicken/chicken_small/2_dead/dead.png';
     onCollisionCourse = true;
     isDead = false;
 
@@ -22,7 +22,7 @@ class Chick extends MovableObject {
      * @param {number} [x] - The optional initial x position for the chick.
      */
     constructor(x) {
-        super().loadImage('../img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
+        super().loadImage('https://oliverdrexler.com/pollo-loco/img/3_enemies_chicken/chicken_small/1_walk/1_w.png');
         this.loadImages(this.IMAGES_WALKING);
         this.x = x !== undefined ? x : 400 + Math.random() * 3200;
         this.speed = 0.10 + Math.random() * 0.20;

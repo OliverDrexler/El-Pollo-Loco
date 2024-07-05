@@ -1,12 +1,12 @@
 class StatusbarBottle extends DrawableObject {
 
     IMAGES_STATUSBAR = [
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png',
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png',
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/40.png',
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/60.png',
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png',
-        '../img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png'
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/0.png',
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/20.png',
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/40.png',
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/60.png',
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/80.png',
+        'https://oliverdrexler.com/pollo-loco/img/7_statusbars/1_statusbar/3_statusbar_bottle/orange/100.png'
     ];
 
     amount = 0;

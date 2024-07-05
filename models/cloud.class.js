@@ -11,7 +11,7 @@ class Cloud extends MovableObject {
      * @param {number} [x] - The optional initial x position for the cloud.
      */
     constructor(x) {
-        super().loadImage('../img/5_background/layers/4_clouds/1.png');
+        super().loadImage('https://oliverdrexler.com/pollo-loco/img/5_background/layers/4_clouds/1.png');
         this.x = x !== undefined ? x : Math.random() * 2500;
         this.animate();
     }
